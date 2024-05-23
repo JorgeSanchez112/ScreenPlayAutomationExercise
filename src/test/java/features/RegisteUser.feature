@@ -10,7 +10,7 @@ Feature: User Registration on Automation Exercise Website
     Then 'New User Signup!' should be visible
 
   Scenario: Enter User Details
-    Given the user is on the 'Signup / Login' page
+    Given the user is on the 'SignupLogin' page
     When the user enters the name and email address
     And the user clicks the 'Signup' button
     Then 'ENTER ACCOUNT INFORMATION' should be visible
