@@ -35,7 +35,7 @@ Feature: User Registration on Automation Exercise Website
     And the user selects the checkbox 'Receive special offers from our partners!'
     And the user fills in the details: First name, Last name, Company, Address, Address2, Country, State, City, Zipcode, Mobile Number
     And the user clicks the 'Create Account' button
-    When the user clicks the 'Continue' button
+    And the user clicks the 'Continue' button
     Then 'Logged in as username' should be visible
 
   Scenario: Delete Account
