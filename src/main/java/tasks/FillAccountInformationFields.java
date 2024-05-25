@@ -1,7 +1,10 @@
 package tasks;
 
+import interactions.ClickOnAnElementByText;
+import interactions.WaitForVisibility;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
+import uiScreens.SignUpPage;
 
 public class FillAccountInformationFields implements Task {
     private String title;
@@ -16,10 +19,15 @@ public class FillAccountInformationFields implements Task {
         this.birthDay = birthDay;
     }
 
-
+    public static FillAccountInformationFields the(String title, String name, String password, String birthDay){
+        return new FillAccountInformationFields(title,name,password,birthDay);
+    }
 
     @Override
     public <T extends Actor> void performAs(T actor) {
-
+        actor.attemptsTo(
+                WaitForVisibility.the(SignUpPage.radioButtonTitles),
+                ClickOnAnElementByText.the(SignUpPage.radioButtonTitles,title)
+        );
     }
 }
