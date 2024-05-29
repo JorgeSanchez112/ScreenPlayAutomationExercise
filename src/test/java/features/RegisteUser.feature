@@ -18,7 +18,7 @@ Feature: User Registration on Automation Exercise Website
   Scenario: Fill Account Information
     When the user clicks on the 'SignupLogin' button
     And the user enters the name and email address
-    And the user clicks the 'Signup' button
+    And the user clicks the Signup button
     And the user fills in the details: Title, Name, Email, Password, Date of birth
     And the user selects the checkbox 'Sign up for our newsletter!'
     And the user selects the checkbox 'Receive special offers from our partners!'

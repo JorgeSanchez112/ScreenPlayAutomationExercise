@@ -3,12 +3,11 @@ package interactions;
 import net.serenitybdd.core.pages.ListOfWebElementFacades;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Interaction;
-import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.targets.Target;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import java.util.List;
+import java.util.Objects;
+
 
 public class ClickOnAnElementByText implements Interaction {
 
@@ -28,9 +27,9 @@ public class ClickOnAnElementByText implements Interaction {
     public <T extends Actor> void performAs(T actor) {
         ListOfWebElementFacades a = target.resolveAllFor(actor);
         for (WebElement element : a) {
-            System.out.println(element);
+            if (Objects.equals(element.getText(), text)){
+                element.click();
+            }
         }
-
-        System.out.println(text);
     }
 }
