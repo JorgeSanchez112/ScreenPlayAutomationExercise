@@ -2,6 +2,7 @@ package checkout;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import net.serenitybdd.core.annotations.events.BeforeScenario;
 import net.serenitybdd.screenplay.Actor;
@@ -28,7 +29,7 @@ public class SetUp {
         goToProjectPage("https://automationexercise.com/login");
     }
 
-    @And("the user navigates to {string}")
+    @When("the user navigates to {string}")
     public void goToProjectPage(String url){
         Actor user = OnStage.theActorCalled("user");
 

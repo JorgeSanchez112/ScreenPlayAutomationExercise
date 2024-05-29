@@ -12,8 +12,8 @@ public class SignUpPage extends PageObject {
     public static Target selectDayBox = Target.the("day of birth").located(By.id("days"));
     public static Target selectMonthBox = Target.the("month of birth").located(By.id("months"));
     public static Target selectYearBox = Target.the("year of birth").located(By.id("years"));
-    public static Target newsletterCheckBox = Target.the("Sign up for our newsletter! Check Box").located(By.id("uniform-newsletter"));
-    public static Target specialOffersCheckBox = Target.the("Receive special offers from our partners! Check Box").located(By.id("uniform-optin"));
+    public static Target newsletterCheckBox = Target.the("Sign up for our newsletter! Check Box").located(By.id("newsletter"));
+    public static Target specialOffersCheckBox = Target.the("Receive special offers from our partners! Check Box").located(By.id("optin"));
     public static Target firstNameField = Target.the("first name").located(By.id("first_name"));
     public static Target lastNameField = Target.the("last name").located(By.id("last_name"));
     public static Target companyField = Target.the("company").located(By.id("company"));

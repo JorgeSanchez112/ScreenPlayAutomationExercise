@@ -24,7 +24,7 @@ public class LoginStepDefinition {
         );
     }
 
-    @And("the user clicks the Signup button")
+    @When("the user clicks the Signup button")
     public void clickOnSignUpButton(){
         Actor user = OnStage.theActorCalled("user");
 

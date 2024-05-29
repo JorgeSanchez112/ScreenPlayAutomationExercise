@@ -20,11 +20,10 @@ Feature: User Registration on Automation Exercise Website
     And the user enters the name and email address
     And the user clicks the Signup button
     And the user fills in the details: Title, Name, Email, Password, Date of birth
-    And the user selects the checkbox 'Sign up for our newsletter!'
-    And the user selects the checkbox 'Receive special offers from our partners!'
+    And the user selects all checkbox in Enter Account Information
     And the user fills in the details: First name, Last name, Company, Address, Address2, Country, State, City, Zipcode, Mobile Number
-    And the user clicks the 'Create Account' button
-    Then 'ACCOUNT CREATED!' should be visible
+    And the user clicks the Create Account button
+    Then ACCOUNT CREATED! should be visible
 
 #  Scenario: Complete Registration
 #    When the user clicks on the 'SignupLogin' button

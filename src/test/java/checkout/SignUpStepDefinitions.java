@@ -1,44 +1,61 @@
 package checkout;
 
-import io.cucumber.java.en.And;
+import interactions.ClickOn;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.questions.CurrentVisibility;
 import tasks.FillAccountInformationFields;
+import tasks.FillAddressInformationFields;
 import uiScreens.SignUpPage;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 
 public class SignUpStepDefinitions{
 
-    @And("the user fills in the details: Title, Name, Email, Password, Date of birth")
+    @When("the user fills in the details: Title, Name, Email, Password, Date of birth")
     public void fillAccountInformationFields(){
         Actor user = OnStage.theActorCalled("user");
 
         user.attemptsTo(
-                FillAccountInformationFields.the("Mr.","a","a","123")
+                FillAccountInformationFields.the("Mr.","a","a","31","5","2000")
         );
 
     }
 
-    @When("the user selects the checkbox {string}")
-    public void the_user_selects_the_checkbox(String string) {
-        // Write code here that turns the phrase above into concrete actions
+    @When("the user selects all checkbox in Enter Account Information")
+    public void the_user_selects_the_checkbox() {
+        Actor user = OnStage.theActorCalled("user");
+
+        user.attemptsTo(
+                ClickOn.the(SignUpPage.newsletterCheckBox),
+                ClickOn.the(SignUpPage.specialOffersCheckBox)
+        );
     }
+
     @When("the user fills in the details: First name, Last name, Company, Address, Address2, Country, State, City, Zipcode, Mobile Number")
-    public void the_user_fills_in_the_details_first_name_last_name_company_address_address2_country_state_city_zipcode_mobile_number() {
-        // Write code here that turns the phrase above into concrete actions
+    public void fillAddressInformationFields() {
+        Actor user = OnStage.theActorCalled("user");
+
+        user.attemptsTo(
+                FillAddressInformationFields.withCredentials("lola","12","IT","sfasf","afsadf","Israel","michigan","capital","asd1","1234567891")
+        );
+
     }
-    @When("the user clicks the {string} button")
-    public void the_user_clicks_the_button(String string) {
-        // Write code here that turns the phrase above into concrete actions
+
+    @When("the user clicks the Create Account button")
+    public void the_user_clicks_the_button() {
+        Actor user = OnStage.theActorCalled("user");
+
+        user.attemptsTo(
+                ClickOn.the(SignUpPage.createAccountButton)
+        );
     }
 
 
-    @Then("'ENTER ACCOUNT INFORMATION' should be visible")
-    public void IsFirstSubtitleVisible(){
+    @Then("{string} should be visible")
+    public void IsFirstSubtitleVisible(String value){
         Actor user = OnStage.theActorCalled("user");
 
         user.should(
