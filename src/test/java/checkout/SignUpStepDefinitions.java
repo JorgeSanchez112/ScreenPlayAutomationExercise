@@ -54,8 +54,8 @@ public class SignUpStepDefinitions{
     }
 
 
-    @Then("{string} should be visible")
-    public void IsFirstSubtitleVisible(String value){
+    @Then("ENTER ACCOUNT INFORMATION should be visible")
+    public void IsFirstSubtitleVisible(){
         Actor user = OnStage.theActorCalled("user");
 
         user.should(

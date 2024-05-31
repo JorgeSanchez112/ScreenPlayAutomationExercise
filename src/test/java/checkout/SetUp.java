@@ -1,6 +1,5 @@
 package checkout;
 
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -21,12 +20,9 @@ public class SetUp {
     public void userLaunchBrowser(){
         Actor user = OnStage.theActorCalled("user");
 
-        user.can(BrowseTheWeb.with(WebDriverManager.operadriver().getWebDriver()));
-    }
-
-    @Given("the user is on the 'SignupLogin' page")
-    public void userIsOnSignUpLoginPage(){
-        goToProjectPage("https://automationexercise.com/login");
+        user.can(
+                BrowseTheWeb.with(WebDriverManager.operadriver().getWebDriver())
+        );
     }
 
     @When("the user navigates to {string}")

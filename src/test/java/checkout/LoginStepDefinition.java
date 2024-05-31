@@ -2,7 +2,6 @@ package checkout;
 
 import interactions.ClickOn;
 import interactions.TypeIn;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.Actor;
@@ -14,13 +13,13 @@ import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 
 public class LoginStepDefinition {
 
-    @When("the user enters the name and email address")
-    public void typeNameAndEmailAddress(){
+    @When("the user enters the name {string} and email {string} address")
+    public void typeNameAndEmailAddress(String name, String email){
         Actor user = OnStage.theActorCalled("user");
 
         user.attemptsTo(
-                TypeIn.the(LoginPage.nameInput,"loco"),
-                TypeIn.the(LoginPage.emailAddressInputSignUp,"test@loco.com")
+                TypeIn.the(LoginPage.nameInput,name),
+                TypeIn.the(LoginPage.emailAddressInputSignUp,email)
         );
     }
 
