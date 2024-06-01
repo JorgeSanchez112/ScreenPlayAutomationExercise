@@ -8,7 +8,6 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.questions.CurrentVisibility;
-import net.serenitybdd.screenplay.targets.Target;
 import uiScreens.HomePage;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
