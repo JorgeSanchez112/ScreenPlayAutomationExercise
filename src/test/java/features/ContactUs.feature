@@ -1,9 +1,4 @@
-Feature: Contact Us Form Submission
-
-  Scenario: Successful submission of contact us form
-    Given the browser is launched
-    When I navigate to url "http://automationexercise.com"
-    Then the home page should be visible successfully
+Feature: Contact
 
   Scenario: Text on Contact us page is visible
     When I click on "Contact Us" button
