@@ -6,7 +6,6 @@ Feature: Contact
     When The user click on "Contact Us" button
 
   Scenario: Text on Contact us page is visible
-    When The user click on "Contact Us" button
     Then "GET IN TOUCH" should be visible
 
   Scenario: Successful submission of contact us form

@@ -20,16 +20,18 @@ Feature: View Product
     Then The product detail page should be opened
 
   Scenario: Add product to cart with specific quantity
-    When The user increase the quantity to 4
+    When The user click the "View Product" button for any product
+    And The user increase the quantity to 4
     And The user click the "Add to cart" button
     And The user click the "View Cart" button
     Then The product should be displayed in the cart page with the exact quantity
 
   Scenario: Successful perform of product's detail
-    When The user click on the "View Product" button
+    When The user click the "View Product" button for any product
     Then "Write Your Review" should be visible
 
   Scenario: Write a product review
-    When The user enter name, email, and review
+    When The user click the "View Product" button for any product
+    And The user enter name, email, and review
     And The user click the "Submit" button
     Then The success message "Thank you for your review." should be visible

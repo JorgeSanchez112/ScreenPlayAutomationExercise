@@ -38,12 +38,15 @@ Feature: User Registration
     Then 'New User Signup!' should be visible
 
   Scenario: Unsuccessful signup with already registered email
-    When The user enter name and an already registered email address
+    When The user clicks on the SignupLogin button
+    And The user enter name and an already registered email address
     And  The user click the "Signup" button
     Then The error message "Email Address already exist!" should be visible
 
   Scenario: Create an account
     When The user click the "Signup / Login" button
+    And The user enters the name 'try' and email 'tryOther@thing.com' address
+    And The user clicks the Signup button
     And The user fill all details in Signup and create an account
     Then "ACCOUNT CREATED!" should be visible
     And The user click the "Continue" button

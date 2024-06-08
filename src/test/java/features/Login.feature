@@ -23,12 +23,14 @@ Feature: Login scenarios
     Then "Login to your account" should be visible
 
   Scenario: Successful login
-    When The user enter the correct email address and password
+    When The user click on "Signup / Login" button
+    And The user enter the correct email address and password
     And The user click the "login" button
     Then "Logged in as username" should be visible
 
   Scenario: Unsuccessful login with incorrect credentials
-    When The user enter an incorrect email address and password
+    When The user click on "Signup / Login" button
+    And The user enter an incorrect email address and password
     And The user click the "login" button
     Then the error message "Your email or password is incorrect!" should be visible
 

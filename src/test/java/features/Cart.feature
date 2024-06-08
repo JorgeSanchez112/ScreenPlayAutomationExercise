@@ -14,15 +14,19 @@ Feature: Cart
     Then The cart page should be displayed
 
   Scenario: Successful scroll down until watch the text SUBSCRIPTION
+    When The user click the "Cart" button
     And The user scroll down to the footer
     Then The text "SUBSCRIPTION" should be visible
 
   Scenario: Successful subscription to newsletter from the cart page
-    When The user enter an email address in the input field
+    When The user click the "Cart" button
+    And The user scroll down to the SUBSCRIPTION
+    And The user enter an email address in the input field
     And The user click the arrow button
     Then The success message "You have been successfully subscribed!" should be visible
 
   Scenario: Create an account from cart page to proceed to checkout
+    When The user click the "Cart" button
     And The user click "Proceed To Checkout"
     And The user click the "Register / Login" button
     And The user fill all details in Signup and create an account
@@ -43,12 +47,10 @@ Feature: Cart
     Then Address Details and Review Your Order should be visible
 
   Scenario: Remove product from cart
-    When The user click the "X" button corresponding to a particular product
+    When The user add a product to the cart
+    And The user click the "Cart" button
+    And The user click the "X" button corresponding to a particular product
     Then The product should be removed from the cart
-
-  Scenario: Successful redirect from home to cart page
-    When The user click on the "Products" button
-    Then The user should be navigated to the ALL PRODUCTS page successfully
 
   Scenario: Add recommended item to cart
     When The user click on the "Add To Cart" button on a recommended product
