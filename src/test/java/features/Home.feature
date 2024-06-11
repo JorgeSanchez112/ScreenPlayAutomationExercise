@@ -10,7 +10,10 @@ Feature: Home scenarios
 #Otherssssssssssssssssssssssssssss-------------------------------------------------------------------------------------------------
 
   Scenario: Successful account deletion
-    When The user click the "Delete Account" button
+    When The user click on "Signup / Login" button
+    And And The user enter the correct email address and password
+    And The user click the "login" button
+    And The user click the "Delete Account" button
     Then "ACCOUNT DELETED!" should be visible
 
   Scenario: Successful logout
