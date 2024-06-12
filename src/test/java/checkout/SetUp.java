@@ -16,7 +16,7 @@ public class SetUp {
         OnStage.setTheStage(new OnlineCast());
     }
 
-    @Given("the user has launched the browser")
+    @Given("The user has launched the browser")
     public void userLaunchBrowser(){
         Actor user = OnStage.theActorCalled("user");
 
@@ -25,7 +25,7 @@ public class SetUp {
         );
     }
 
-    @When("the user navigates to {string}")
+    @When("The user navigates to {string}")
     public void goToProjectPage(String url){
         Actor user = OnStage.theActorCalled("user");
 

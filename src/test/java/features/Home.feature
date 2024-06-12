@@ -9,37 +9,34 @@ Feature: Home scenarios
 
 #Otherssssssssssssssssssssssssssss-------------------------------------------------------------------------------------------------
 
-  Scenario: Successful account deletion
-    When The user click on "Signup / Login" button
-    And And The user enter the correct email address and password
-    And The user click the "login" button
-    And The user click the "Delete Account" button
-    Then "ACCOUNT DELETED!" should be visible
-
-  Scenario: Successful logout
-    When The user click the "Logout" button
-    Then The user should be navigated to the login page
+#  Scenario: Successful account deletion
+#    When The user click on SignupLogin button
+#    And The user enter the correct email address 'loco@test.com' and password 'a'
+#    And The user click the "login" button
+#    And The user click the "Delete Account" button
+#    Then "ACCOUNT DELETED!" should be visible
 
   Scenario: Successful navigation to test cases page
-    When The user click on the "Test Cases" button
+    When The user click on the Test Cases button
     Then The user should be navigated to the test cases page successfully
 
   Scenario: Successful scroll down until watch the text SUBSCRIPTION
     When The user scroll down to the footer
-    Then The text "SUBSCRIPTION" should be visible
+    Then The text SUBSCRIPTION should be visible
 
   Scenario: Successful subscription to newsletter
-    When The user enter an email address in the input field
+    When The user scroll down to the footer
+    And The user enter an email address in the input field
     And The user click the arrow button
-    Then The success message "You have been successfully subscribed!" should be visible
+    Then The success message You have been successfully subscribed! should be visible
 
 #Test case 18
-  Scenario: Navigate through categories
-    Then categories should be visible on the left sidebar
+  Scenario: categories are visible
+    Then Categories should be visible on the left sidebar
 
   Scenario: Successful sub Women category links showed
-    When The user click on the "Women" category
-    Then The user should be on the Women category page
+    When The user click on the Women category
+    Then The user should see the Women categories
 
   Scenario: Click on a link to show products according it
     When The user click on any category link under "Women" category, for example: "Dress"

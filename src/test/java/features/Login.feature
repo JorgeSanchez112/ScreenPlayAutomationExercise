@@ -22,6 +22,10 @@ Feature: Login scenarios
     When The user click on "Signup / Login" button
     Then "Login to your account" should be visible
 
+  Scenario: Successful logout
+    When The user click the "Logout" button
+    Then The user should be navigated to the login page
+
   Scenario: Successful login
     When The user click on "Signup / Login" button
     And The user enter the correct email address and password

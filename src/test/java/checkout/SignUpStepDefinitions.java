@@ -14,7 +14,7 @@ import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 
 public class SignUpStepDefinitions{
 
-    @When("the user fills in the details: Title, Name, Email, Password, Date of birth")
+    @When("The user fills in the details: Title, Name, Email, Password, Date of birth")
     public void fillAccountInformationFields(){
         Actor user = OnStage.theActorCalled("user");
 
@@ -24,7 +24,7 @@ public class SignUpStepDefinitions{
 
     }
 
-    @When("the user selects all checkbox in Enter Account Information")
+    @When("The user selects all checkbox in Enter Account Information")
     public void the_user_selects_the_checkbox() {
         Actor user = OnStage.theActorCalled("user");
 
@@ -34,7 +34,7 @@ public class SignUpStepDefinitions{
         );
     }
 
-    @When("the user fills in the details: First name, Last name, Company, Address, Address2, Country, State, City, Zipcode, Mobile Number")
+    @When("The user fills in the details: First name, Last name, Company, Address, Address2, Country, State, City, Zipcode, Mobile Number")
     public void fillAddressInformationFields() {
         Actor user = OnStage.theActorCalled("user");
 
@@ -44,7 +44,7 @@ public class SignUpStepDefinitions{
 
     }
 
-    @When("the user clicks the Create Account button")
+    @When("The user clicks the Create Account button")
     public void the_user_clicks_the_button() {
         Actor user = OnStage.theActorCalled("user");
 

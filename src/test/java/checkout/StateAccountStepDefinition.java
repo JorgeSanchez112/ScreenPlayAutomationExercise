@@ -12,7 +12,7 @@ import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 
 public class StateAccountStepDefinition {
 
-    @When("the user clicks the Continue button")
+    @When("The user clicks the Continue button")
     public void userClicksContinueButton(){
         Actor user = OnStage.theActorCalled("user");
 
