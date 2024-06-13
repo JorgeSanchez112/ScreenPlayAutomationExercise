@@ -38,10 +38,23 @@ Feature: Home scenarios
     When The user click on the Women category
     Then The user should see the Women categories
 
-  Scenario: Click on a link to show products according it
-    When The user click on any category link under "Women" category, for example: "Dress"
-    Then The category page should be displayed
-    And The user should confirm the text "WOMEN - TOPS PRODUCTS"
+  Scenario Outline: Click on a sub category women link, user should be redirect to category selected
+    When The user click on <subCategory> category link under Women category
+    Then The category page should be displayed <url>
+    Examples:
+      | subCategory |                         url                        |
+      | DRESS       | https://automationexercise.com/category_products/1 |
+      | TOPS        | https://automationexercise.com/category_products/2 |
+      | SAREE       | https://automationexercise.com/category_products/7 |
+
+  Scenario Outline: Click on a sub category women link, user should be the title of category selected
+    When The user click on <subCategory> category link under Women category
+    Then The user should confirm the <title> text of <subcategory> page
+    Examples:
+      | subCategory |            title            |
+      |  DRESS      |   WOMEN - DRESS PRODUCTS    |
+      |  TOPS       |   WOMEN - TOPS PRODUCTS     |
+      |  SAREE      |   WOMEN - SAREE PRODUCTS    |
 
   Scenario: Navigate through categories
     When The user click on any sub-category link of "Men" category on the left sidebar

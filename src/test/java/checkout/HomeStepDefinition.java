@@ -1,9 +1,6 @@
 package checkout;
 
-import interactions.ClickOn;
-import interactions.ScrollToElement;
-import interactions.TypeIn;
-import interactions.WaitForVisibility;
+import interactions.*;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -81,9 +78,23 @@ public class HomeStepDefinition {
         );
     }
 
+    @When("The user click on any category link under Women category")
+    public void clickOnSubWomenCategories(){
+        Actor user = OnStage.theActorCalled("user");
+
+        user.attemptsTo(
+                ScrollToElement.target(HomePage.categoriesBox),
+                ClickOnAnElementByText.the(HomePage.WomenCategories,"DRESS")
+        );
+    }
+
     @Then("The home page should be visible successfully")
     public void homePageShouldBeVisible(){
         Actor user = OnStage.theActorCalled("user");
+
+        user.attemptsTo(
+                WaitForVisibility.the(HomePage.logo)
+        );
 
         user.should(
                 seeThat(CurrentVisibility.of(HomePage.logo))
