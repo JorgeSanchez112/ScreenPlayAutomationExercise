@@ -8,7 +8,11 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.questions.CurrentVisibility;
+import uiScreens.DressSubCategoryPage;
 import uiScreens.HomePage;
+import uiScreens.TestCasesPage;
+import utils.AdBlockerJs;
+
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 
@@ -25,11 +29,23 @@ public class HomeStepDefinition {
 
     @When("The user click on the Test Cases button")
     public void clickOnTestCasesButton(){
+        boolean validate = false;
+
         Actor user = OnStage.theActorCalled("user");
 
-        user.attemptsTo(
-                Click.on(HomePage.headerMenu.resolveAllFor(user).get(4))
-        );
+        AdBlockerJs.AdBlockerJs(BrowserStepDefinitions.driver);
+
+        do{
+            user.attemptsTo(
+                    Click.on(HomePage.headerMenu.resolveAllFor(user).get(4)).afterWaitingUntilPresent()
+            );
+
+            if (TestCasesPage.TestCaseTitle.isVisibleFor(user)){
+                validate = true;
+            }
+        }while (!validate);
+
+
     }
 
     @When("The user scroll down to the footer")
@@ -74,18 +90,26 @@ public class HomeStepDefinition {
         Actor user = OnStage.theActorCalled("user");
 
         user.attemptsTo(
+                WaitForVisibility.the(HomePage.brandsTitle),
+                ScrollToElement.target(HomePage.brandsTitle),
                 Click.on(HomePage.categories.resolveAllFor(user).get(0))
         );
     }
 
-    @When("The user click on any category link under Women category")
-    public void clickOnSubWomenCategories(){
+    @When("The user click on {string} category link under Women category")
+    public void clickOnSubWomenCategories(String subcategory){
+        boolean validate = false;
+
         Actor user = OnStage.theActorCalled("user");
 
+        AdBlockerJs.AdBlockerJs(BrowserStepDefinitions.driver);
+
         user.attemptsTo(
-                ScrollToElement.target(HomePage.categoriesBox),
-                ClickOnAnElementByText.the(HomePage.WomenCategories,"DRESS")
+                ScrollToElement.target(HomePage.brandsTitle),
+                Click.on(HomePage.categories.resolveAllFor(user).get(0)),
+                ClickOnAnElementByText.the(HomePage.womenCategories,subcategory)
         );
+
     }
 
     @Then("The home page should be visible successfully")
@@ -150,7 +174,7 @@ public class HomeStepDefinition {
         Actor user = OnStage.theActorCalled("user");
 
         user.should(
-                seeThat(CurrentVisibility.of(HomePage.WomenCategories))
+                seeThat(CurrentVisibility.of(HomePage.womenCategories))
         );
     }
 }

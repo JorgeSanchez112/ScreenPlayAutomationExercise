@@ -39,8 +39,8 @@ Feature: Home scenarios
     Then The user should see the Women categories
 
   Scenario Outline: Click on a sub category women link, user should be redirect to category selected
-    When The user click on <subCategory> category link under Women category
-    Then The category page should be displayed <url>
+    When The user click on '<subCategory>' category link under Women category
+    Then The category page should be displayed '<url>'
     Examples:
       | subCategory |                         url                        |
       | DRESS       | https://automationexercise.com/category_products/1 |
@@ -48,8 +48,8 @@ Feature: Home scenarios
       | SAREE       | https://automationexercise.com/category_products/7 |
 
   Scenario Outline: Click on a sub category women link, user should be the title of category selected
-    When The user click on <subCategory> category link under Women category
-    Then The user should confirm the <title> text of <subcategory> page
+    When The user click on '<subCategory>' category link under Women category
+    Then The user should confirm the '<title>' text of '<subcategory>' page
     Examples:
       | subCategory |            title            |
       |  DRESS      |   WOMEN - DRESS PRODUCTS    |

@@ -15,8 +15,6 @@ public class TestCasesStepDefinition {
     public void isTestCasesTitleVisible(){
         Actor user = OnStage.theActorCalled("user");
 
-        AdBlockerJs.AdBlockerJs(BrowserStepDefinitions.driver);
-
         user.attemptsTo(
                 WaitForVisibility.the(TestCasesPage.TestCaseTitle)
         );
