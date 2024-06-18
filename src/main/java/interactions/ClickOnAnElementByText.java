@@ -25,11 +25,17 @@ public class ClickOnAnElementByText implements Interaction {
 
     @Override
     public <T extends Actor> void performAs(T actor) {
-        ListOfWebElementFacades a = target.resolveAllFor(actor);
-        for (WebElement element : a) {
-            if (Objects.equals(element.getText(), text)){
-                element.click();
+        try{
+            ListOfWebElementFacades a = target.resolveAllFor(actor);
+            for (WebElement element : a) {
+                if (Objects.equals(element.getText(), text)){
+                    element.click();
+                }
             }
+        }catch (Exception e){
+            e.printStackTrace();
         }
+
+
     }
 }

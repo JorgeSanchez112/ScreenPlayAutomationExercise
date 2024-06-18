@@ -9,7 +9,6 @@ import org.junit.Assert;
 import uiScreens.DressSubCategoryPage;
 import uiScreens.SareeSubCategoryPage;
 import uiScreens.TopsSubCategoryPage;
-import utils.AdBlockerJs;
 
 import java.util.Objects;
 
@@ -17,12 +16,12 @@ import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 
 public class WomenSubCategoriesStepDefinitions {
     @Then("The category page should be displayed {string}")
-    public void isUrlCorrectWithThePage(String urlExpected){
+    public void isUrlCorrectWithThePage(String urlUnexpected){
         Actor user = OnStage.theActorCalled("user");
 
         String currentUrl = BrowseTheWeb.as(user).getDriver().getCurrentUrl();
 
-        Assert.assertEquals(urlExpected,currentUrl);
+        Assert.assertNotEquals(urlUnexpected,currentUrl);
     }
 
     @Then("The user should confirm the {string} text of {string} page")

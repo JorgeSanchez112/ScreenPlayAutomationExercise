@@ -8,7 +8,6 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.questions.CurrentVisibility;
-import uiScreens.DressSubCategoryPage;
 import uiScreens.HomePage;
 import uiScreens.TestCasesPage;
 import utils.AdBlockerJs;
@@ -98,8 +97,6 @@ public class HomeStepDefinition {
 
     @When("The user click on {string} category link under Women category")
     public void clickOnSubWomenCategories(String subcategory){
-        boolean validate = false;
-
         Actor user = OnStage.theActorCalled("user");
 
         AdBlockerJs.AdBlockerJs(BrowserStepDefinitions.driver);
@@ -109,8 +106,41 @@ public class HomeStepDefinition {
                 Click.on(HomePage.categories.resolveAllFor(user).get(0)),
                 ClickOnAnElementByText.the(HomePage.womenCategories,subcategory)
         );
+    }
+
+    @When("The user click on any sub-category link of Men category on the left sidebar")
+    public void goThroughMenSubCategory(){
+        Actor user = OnStage.theActorCalled("user");
+
+        AdBlockerJs.AdBlockerJs(BrowserStepDefinitions.driver);
+
+        user.attemptsTo(
+                ScrollToElement.target(HomePage.brandsTitle),
+                Click.on(HomePage.categories.resolveAllFor(user).get(1)),
+                ClickOnAnElementByText.the(HomePage.menCategories,"TSHIRTS")
+        );
 
     }
+
+    @When("The user scroll down to the bottom of the page")
+    public void scrollToBottomCarousel(){
+        Actor user = OnStage.theActorCalled("user");
+
+        user.attemptsTo(
+                ScrollToElement.target(HomePage.carouselOfRecommendedItems)
+        );
+    }
+
+    @When("The user click on the arrow at the bottom right side to move upward")
+    public void clickOnTheArrowAtTheBottomRight(){
+        Actor user = OnStage.theActorCalled("user");
+
+        user.attemptsTo(
+                ScrollToElement.target(HomePage.footerPage),
+                ClickOn.the(HomePage.arrowUpButton)
+        );
+    }
+
 
     @Then("The home page should be visible successfully")
     public void homePageShouldBeVisible(){
@@ -177,4 +207,50 @@ public class HomeStepDefinition {
                 seeThat(CurrentVisibility.of(HomePage.womenCategories))
         );
     }
+
+    @Then("RECOMMENDED ITEMS should be visible")
+    public void isRecommendedItemsTitleVisible(){
+        Actor user = OnStage.theActorCalled("user");
+
+        user.should(
+                seeThat(CurrentVisibility.of(HomePage.recommendedItemsTitle))
+        );
+    }
+
+    @Then("SUBSCRIPTION should be visible")
+    public void isSubscriptionVisible(){
+        Actor user = OnStage.theActorCalled("user");
+
+        user.should(
+                seeThat(CurrentVisibility.of(HomePage.subscriptionText))
+        );
+    }
+
+    @Then ("The page should be scrolled up")
+    public void isLogoVisible(){
+        Actor user = OnStage.theActorCalled("user");
+
+        user.should(
+                seeThat(CurrentVisibility.of(HomePage.logo))
+        );
+    }
+
+    @Then("Full-Fledged practice website for Automation Engineers should be visible on the screen")
+    public void isFullFledgedTextVisible(){
+        Actor user = OnStage.theActorCalled("user");
+
+        user.should(
+                seeThat(CurrentVisibility.of(HomePage.FullFledgedText))
+        );
+    }
+
+    @When("The user scroll up to the top of the page")
+    public void scrollUpToTheTopOfThePage() {
+        Actor user = OnStage.theActorCalled("user");
+
+        user.should(
+                seeThat(CurrentVisibility.of(HomePage.logo))
+        );
+    }
+
 }
