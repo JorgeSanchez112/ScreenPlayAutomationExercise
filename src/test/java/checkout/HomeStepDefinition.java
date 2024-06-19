@@ -5,9 +5,11 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.Actor;
+import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.questions.CurrentVisibility;
+import org.junit.Assert;
 import uiScreens.HomePage;
 import uiScreens.TestCasesPage;
 import utils.AdBlockerJs;
@@ -141,6 +143,23 @@ public class HomeStepDefinition {
         );
     }
 
+    @When("The user click on Contact Us button")
+    public void clickOnContactUsButton(){
+        Actor user = OnStage.theActorCalled("user");
+
+        user.attemptsTo(
+                Click.on(HomePage.headerMenu.resolveAllFor(user).get(7)).afterWaitingUntilPresent()
+        );
+    }
+
+    @When("The user scroll up to the top of the page")
+    public void scrollUpToTheTopOfThePage(){
+        Actor user = OnStage.theActorCalled("user");
+
+        user.should(
+                seeThat(CurrentVisibility.of(HomePage.logo))
+        );
+    }
 
     @Then("The home page should be visible successfully")
     public void homePageShouldBeVisible(){
@@ -244,13 +263,14 @@ public class HomeStepDefinition {
         );
     }
 
-    @When("The user scroll up to the top of the page")
-    public void scrollUpToTheTopOfThePage() {
+
+    @Then("The user should be navigated to the home page successfully {string}")
+    public void userShouldBeOnHomePage(String urlExpected){
         Actor user = OnStage.theActorCalled("user");
 
-        user.should(
-                seeThat(CurrentVisibility.of(HomePage.logo))
-        );
+        String currentUrl = BrowseTheWeb.as(user).getDriver().getCurrentUrl();
+
+        Assert.assertNotEquals(urlExpected,currentUrl);
     }
 
 }
