@@ -10,6 +10,7 @@ import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.questions.CurrentVisibility;
 import org.junit.Assert;
+import tasks.GenerateRandomNumber;
 import uiScreens.HomePage;
 import uiScreens.TestCasesPage;
 import utils.AdBlockerJs;
@@ -156,8 +157,41 @@ public class HomeStepDefinition {
     public void scrollUpToTheTopOfThePage(){
         Actor user = OnStage.theActorCalled("user");
 
-        user.should(
-                seeThat(CurrentVisibility.of(HomePage.logo))
+        user.attemptsTo(
+                ScrollToElement.target(HomePage.logo)
+        );
+    }
+
+    @When("The user click on the Products button")
+    public void the_user_click_on_the_products_button() {
+        Actor user = OnStage.theActorCalled("user");
+
+        user.attemptsTo(
+                Click.on(HomePage.headerMenu.resolveAllFor(user).get(1))
+        );
+    }
+
+    @When("The user scroll down to Brands")
+    public void scrollDownToBrands(){
+        Actor user = OnStage.theActorCalled("user");
+
+        user.attemptsTo(
+               ScrollToElement.target(HomePage.brandsTitle)
+        );
+    }
+
+    @When("The user clicks on any brand name")
+    public void clickOnAnyBrandName(){
+        Actor user = OnStage.theActorCalled("user");
+        AdBlockerJs.AdBlockerJs(BrowserStepDefinitions.driver);
+
+        user.attemptsTo(GenerateRandomNumber.Between(0,7));
+
+        int randomNumber = user.recall("RANDOM_NUMBER");
+
+        user.attemptsTo(
+                ScrollToElement.target(HomePage.brandsTitle),
+                Click.on(HomePage.brands.resolveAllFor(user).get(randomNumber))
         );
     }
 

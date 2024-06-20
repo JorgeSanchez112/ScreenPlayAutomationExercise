@@ -6,7 +6,6 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.questions.CurrentVisibility;
 import uiScreens.TestCasesPage;
-import utils.AdBlockerJs;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 

@@ -16,7 +16,7 @@ import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 
 public class WomenSubCategoriesStepDefinitions {
     @Then("The category page should be displayed {string}")
-    public void isUrlCorrectWithThePage(String urlUnexpected){
+    public void isUrlIncorrectWithThePage(String urlUnexpected){
         Actor user = OnStage.theActorCalled("user");
 
         String currentUrl = BrowseTheWeb.as(user).getDriver().getCurrentUrl();
