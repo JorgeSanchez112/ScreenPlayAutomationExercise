@@ -20,7 +20,7 @@ import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 
 public class HomeStepDefinition {
 
-    @Given("The user clicks on the SignupLogin button")
+    @When("The user clicks on SignupLogin button")
     public void redirectToLoginPage(){
         Actor user = OnStage.theActorCalled("user");
 
@@ -195,6 +195,15 @@ public class HomeStepDefinition {
         );
     }
 
+    @When("The user clicks the Logout button")
+    public void clickLogOutButton(){
+        Actor user = OnStage.theActorCalled("user");
+
+        user.attemptsTo(
+                Click.on(HomePage.headerMenu.resolveAllFor(user).get(3))
+        );
+    }
+
     @Then("The home page should be visible successfully")
     public void homePageShouldBeVisible(){
         Actor user = OnStage.theActorCalled("user");
@@ -213,7 +222,7 @@ public class HomeStepDefinition {
         Actor user = OnStage.theActorCalled("user");
 
         user.should(
-                seeThat(CurrentVisibility.of(HomePage.headerMenu.of("loco2a")))
+                seeThat(CurrentVisibility.of(HomePage.headerMenu.of("loco1a")))
         );
     }
 
