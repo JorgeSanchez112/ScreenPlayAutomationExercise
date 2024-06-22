@@ -53,6 +53,19 @@ public class SignUpStepDefinitions{
         );
     }
 
+    @When("The user fill all details in Signup and create an account")
+    public void fillAllDetailsInSignupAndCreateAccount() {
+        Actor user = OnStage.theActorCalled("user");
+
+        user.attemptsTo(
+                FillAccountInformationFields.the("Mr.","a","a","31","5","2000"),
+                ClickOn.the(SignUpPage.newsletterCheckBox),
+                ClickOn.the(SignUpPage.specialOffersCheckBox),
+                FillAddressInformationFields.withCredentials("anything","12","IT","sfasf","afsadf","Israel","michigan","capital","asd1","1234567891"),
+                ClickOn.the(SignUpPage.createAccountButton)
+        );
+    }
+
 
     @Then("ENTER ACCOUNT INFORMATION should be visible")
     public void IsFirstSubtitleVisible(){

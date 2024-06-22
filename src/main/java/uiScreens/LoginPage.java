@@ -12,6 +12,7 @@ public class LoginPage extends PageObject {
     public static Target passwordInput = Target.the("Password field").located(By.name("password"));
     public static Target emailAddressInputSignUp = Target.the("Email address field of sign up form").locatedBy(".signup-form *> input[name='email']");
     public static Target wrongCredentialsMessage = Target.the("Your email or password is incorrect! message").locatedBy(".login-form >* p");
+    public static Target EmailAlreadyExistMessage = Target.the("Email Address already exist! message").locatedBy(".signup-form >* p");
     public static Target buttonLogin = Target.the("Login button").locatedBy(".login-form *> button[class='btn btn-default']");
     public static Target buttonSignUp = Target.the("Sign up button").locatedBy(".signup-form *> button[class='btn btn-default']");
 }

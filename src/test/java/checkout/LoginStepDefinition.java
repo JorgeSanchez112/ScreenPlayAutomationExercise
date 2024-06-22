@@ -66,6 +66,16 @@ public class LoginStepDefinition {
 
     }
 
+    @When("The user enter name and an already registered email address")
+    public void enterNameAndAlreadyRegisteredEmailAddress() {
+        Actor user = OnStage.theActorCalled("user");
+
+        user.attemptsTo(
+                TypeIn.the(LoginPage.nameInput,"loco2"),
+                TypeIn.the(LoginPage.emailAddressInputSignUp,"loco2@test.com")
+        );
+    }
+
 
     @Then("Login to your account should be visible")
     public void isLoginToYourAccountVisible() {
@@ -101,6 +111,15 @@ public class LoginStepDefinition {
         String currentUrl = BrowseTheWeb.as(user).getDriver().getCurrentUrl();
 
         Assert.assertNotEquals("https://automationexercise.com/",currentUrl);
+    }
+
+    @Then("The error message Email Address already exist! should be visible")
+    public void isEmailAlreadyExistMessageVisible(String string) {
+        Actor user = OnStage.theActorCalled("user");
+
+        user.should(
+                seeThat(CurrentVisibility.of(LoginPage.EmailAlreadyExistMessage))
+        );
     }
 
 }

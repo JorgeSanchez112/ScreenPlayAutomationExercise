@@ -1,7 +1,6 @@
 package checkout;
 
 import interactions.*;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.Actor;
@@ -314,6 +313,15 @@ public class HomeStepDefinition {
         String currentUrl = BrowseTheWeb.as(user).getDriver().getCurrentUrl();
 
         Assert.assertNotEquals(urlExpected,currentUrl);
+    }
+
+    @Then("Logged in as {string} should be visible at the top")
+    public void logged_in_as_should_be_visible_at_the_top(String string1) {
+        Actor user = OnStage.theActorCalled("user");
+
+        user.should(
+                seeThat(CurrentVisibility.of(HomePage.headerMenu.of(string1)))
+        );
     }
 
 }
