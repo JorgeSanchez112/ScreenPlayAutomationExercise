@@ -1,17 +1,15 @@
 package checkout;
 
-import interactions.ClickOn;
+import interactions.*;
 import interactions.HoverOverElement;
-import interactions.ScrollToElement;
-import interactions.TypeIn;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.Actor;
-import net.serenitybdd.screenplay.actions.Click;
-import net.serenitybdd.screenplay.actions.MoveMouse;
-import net.serenitybdd.screenplay.actions.MoveMouseToBy;
+import net.serenitybdd.screenplay.Performable;
+import net.serenitybdd.screenplay.actions.*;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.questions.CurrentVisibility;
+import net.serenitybdd.screenplay.questions.TextValue;
 import net.serenitybdd.screenplay.questions.TheSize;
 import org.junit.Assert;
 import uiScreens.ProductsPage;
@@ -126,9 +124,7 @@ public class AllProductsStepDefinitions {
     public void isBookTitleValueCorrect(String expectedBookTitle) {
         Actor user = OnStage.theActorCalled("user");
 
-        user.attemptsTo(ScrollToElement.target(ProductsPage.products));
-
-        String valueOFProduct = ProductsPage.titleOFProduct.resolveAllFor(user).get(0).getValue();
+        String valueOFProduct = user.asksFor(TextValue.of(ProductsPage.titleOFProduct));
 
         Assert.assertEquals(expectedBookTitle,valueOFProduct);
     }

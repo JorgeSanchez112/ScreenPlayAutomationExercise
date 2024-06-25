@@ -3,21 +3,18 @@ package checkout;
 import io.cucumber.java.en.Then;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.actors.OnStage;
-import net.serenitybdd.screenplay.questions.CurrentVisibility;
+import net.serenitybdd.screenplay.questions.Visibility;
 import org.junit.Assert;
 import uiScreens.CartPage;
-import uiScreens.ProductsPage;
-
-import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 
 public class CartStepDefinitions {
     @Then("both products should be added to the cart")
     public void areProductsVisibleInCart() {
         Actor user = OnStage.theActorCalled("user");
 
-        user.should(
-                seeThat(CurrentVisibility.of(CartPage.products))
-        );
+        boolean visible = user.asksFor(Visibility.of(CartPage.products));
+
+        Assert.assertTrue(visible);
     }
 
     @Then("The details of both products including their prices, quantities, and total price should be correct")
