@@ -168,6 +168,13 @@ public class HomeStepDefinition {
         user.attemptsTo(
                 Click.on(HomePage.headerMenu.resolveAllFor(user).get(1))
         );
+
+        AdBlockerJs.AdBlockerJs(BrowserStepDefinitions.driver);
+
+        user.attemptsTo(
+                Click.on(HomePage.headerMenu.resolveAllFor(user).get(1))
+        );
+
     }
 
     @When("The user scroll down to Brands")
