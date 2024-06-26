@@ -1,7 +1,6 @@
 package checkout;
 
 import interactions.ClickOn;
-import interactions.ScrollToElement;
 import interactions.TypeIn;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -10,7 +9,6 @@ import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.questions.CurrentVisibility;
 import org.junit.Assert;
-import uiScreens.BrandProductsPage;
 import uiScreens.LoginPage;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
