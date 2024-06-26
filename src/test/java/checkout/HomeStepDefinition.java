@@ -10,7 +10,9 @@ import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.questions.CurrentVisibility;
 import org.junit.Assert;
 import tasks.GenerateRandomNumber;
+import uiScreens.CartPage;
 import uiScreens.HomePage;
+import uiScreens.SignUpPage;
 import uiScreens.TestCasesPage;
 import utils.AdBlockerJs;
 
@@ -21,11 +23,22 @@ public class HomeStepDefinition {
 
     @When("The user clicks on SignupLogin button")
     public void redirectToLoginPage(){
-        Actor user = OnStage.theActorCalled("user");
+        boolean validate = false;
 
-        user.attemptsTo(
-                Click.on(HomePage.headerMenu.resolveAllFor(user).get(3))
-        );
+        Actor user = OnStage.theActorCalled("user");
+        AdBlockerJs.AdBlockerJs(BrowserStepDefinitions.driver);
+
+        do{
+            user.attemptsTo(
+                    Click.on(HomePage.headerMenu.resolveAllFor(user).get(3))
+            );
+
+            if (SignUpPage.subTitles.isVisibleFor(user)){
+                validate = true;
+            }
+        }while (!validate);
+
+
     }
 
     @When("The user click on the Test Cases button")
@@ -208,6 +221,41 @@ public class HomeStepDefinition {
         user.attemptsTo(
                 Click.on(HomePage.headerMenu.resolveAllFor(user).get(3))
         );
+    }
+
+    @When("The user add products to the cart")
+    public void AddProductsToCart() {
+        Actor user = OnStage.theActorCalled("user");
+        AdBlockerJs.AdBlockerJs(BrowserStepDefinitions.driver);
+
+        user.attemptsTo(
+                WaitForVisibility.the(HomePage.brandsTitle),
+                Click.on(HomePage.addToCartButton.resolveAllFor(user).get(0)),
+                ClickOn.the(HomePage.continueShoppingButton),
+                Click.on(HomePage.addToCartButton.resolveAllFor(user).get(1)),
+                ClickOn.the(HomePage.continueShoppingButton)
+        );
+    }
+
+    @When("The user clicks the Cart button")
+    public void clickOnCartButton() {
+        Actor user = OnStage.theActorCalled("user");
+        AdBlockerJs.AdBlockerJs(BrowserStepDefinitions.driver);
+        boolean validate = false;
+
+        do{
+            user.attemptsTo(
+                    Click.on(HomePage.headerMenu.resolveAllFor(user).get(2))
+            );
+
+            if (CartPage.products.isVisibleFor(user)){
+                validate = true;
+            }
+        }while (!validate);
+
+
+
+
     }
 
     @Then("The home page should be visible successfully")

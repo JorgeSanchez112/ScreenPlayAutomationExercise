@@ -14,6 +14,8 @@ public class HomePage extends PageObject {
     public static Target menCategories = Target.the("Men categories").locatedBy("#Men >* a");
     public static Target brandsTitle =  Target.the("Brands title").locatedBy(".brands_products > h2");
     public static Target brands = Target.the("Brands").locatedBy(".brands-name >* li");
+    public static Target addToCartButton = Target.the("Add to cart button of products").locatedBy(".features_items >* .productinfo > .add-to-cart");
+    public static Target continueShoppingButton = Target.the("Continuer Shopping button of the cart modal").locatedBy("#cartModal >* .modal-footer > button");
     public static Target arrowUpButton = Target.the("Arrow up Button to scroll up").located(By.id("scrollUp"));
     public static Target recommendedItemsTitle = Target.the("Recommended Items Title").locatedBy(".recommended_items > h2");
     public static Target carouselOfRecommendedItems = Target.the("Carouse of recommended items").locatedBy("#recommended-item-carousel.carousel.slide");

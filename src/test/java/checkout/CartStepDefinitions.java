@@ -1,6 +1,9 @@
 package checkout;
 
+import interactions.ClickOn;
+import interactions.ScrollToElement;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.questions.Visibility;
@@ -8,6 +11,17 @@ import org.junit.Assert;
 import uiScreens.CartPage;
 
 public class CartStepDefinitions {
+
+    @When("The user clicks Proceed To Checkout")
+    public void clickOnProceedToCheckout() {
+        Actor user = OnStage.theActorCalled("user");
+
+        user.attemptsTo(
+                ScrollToElement.target(CartPage.ProceedToCheckoutButton),
+                ClickOn.the(CartPage.ProceedToCheckoutButton)
+        );
+    }
+
     @Then("both products should be added to the cart")
     public void areProductsVisibleInCart() {
         Actor user = OnStage.theActorCalled("user");
