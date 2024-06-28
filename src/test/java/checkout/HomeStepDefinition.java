@@ -6,6 +6,8 @@ import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.actions.Click;
+import net.serenitybdd.screenplay.actions.Scroll;
+import net.serenitybdd.screenplay.actions.ScrollTo;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.questions.CurrentVisibility;
 import org.junit.Assert;
@@ -251,12 +253,34 @@ public class HomeStepDefinition {
             if (CartPage.products.isVisibleFor(user)){
                 validate = true;
             }
-        }while (!validate);
-
-
-
-
+        } while (!validate);
     }
+
+    @When("The user clicks on the View Product button of the first product")
+    public void clickOnTheViewProductButtonOfFirstProduct() {
+        Actor user = OnStage.theActorCalled("user");
+        AdBlockerJs.AdBlockerJs(BrowserStepDefinitions.driver);
+
+        user.attemptsTo(
+                Click.on(HomePage.viewProductButton.resolveAllFor(user).get(0))
+        );
+    }
+
+    @When("The user clicks the View Product button for any product")
+    public void clickOnViewProductButtonForAnyProduct() {
+        Actor user = OnStage.theActorCalled("user");
+        AdBlockerJs.AdBlockerJs(BrowserStepDefinitions.driver);
+
+        user.attemptsTo(GenerateRandomNumber.Between(0,33));
+
+        int randomNumber = user.recall("RANDOM_NUMBER");
+
+        user.attemptsTo(
+                Scroll.to(HomePage.viewProductButton.resolveAllFor(user).get(randomNumber)),
+                Click.on(HomePage.viewProductButton.resolveAllFor(user).get(randomNumber))
+        );
+    }
+
 
     @Then("The home page should be visible successfully")
     public void homePageShouldBeVisible(){
