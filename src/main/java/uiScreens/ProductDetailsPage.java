@@ -10,7 +10,7 @@ public class ProductDetailsPage extends PageObject {
     public static Target productPrice = Target.the("Price of the product").locatedBy(".product-information >span > span");
     public static Target labelOfProductQuantity = Target.the("label of product quantity").locatedBy(".product-information >span > label");
     public static Target inputOfProductQuantity = Target.the("Input of product quantity").located(By.id("quantity"));
-    public static Target addToCartButton = Target.the("Add to cart button").locatedBy("span > button");
+    public static Target addToCartButton = Target.the("Add to cart button").located(By.cssSelector("span > button"));
     public static Target viewCartButton = Target.the("View cart button").locatedBy(".modal-footer > button");
     public static Target productAvailability = Target.the("Availability of product").locatedBy(".product-information > p:nth-child(6)");
     public static Target productCondition = Target.the("condition of product").locatedBy(".product-information > p:nth-child(7)");

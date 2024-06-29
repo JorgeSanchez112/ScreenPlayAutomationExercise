@@ -6,13 +6,7 @@ Feature: View Product
 
   Scenario: Successful navigation to view product showing the product's details
     When The user clicks on the View Product button of the first product
-    Then The product details should be visible:
-      | product name  |
-      | category      |
-      | price         |
-      | availability  |
-      | condition     |
-      | brand         |
+    Then The product details should be visible
 
   Scenario: The view product of any product show details about it
     When The user clicks the View Product button for any product

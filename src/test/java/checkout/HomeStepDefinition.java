@@ -12,10 +12,7 @@ import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.questions.CurrentVisibility;
 import org.junit.Assert;
 import tasks.GenerateRandomNumber;
-import uiScreens.CartPage;
-import uiScreens.HomePage;
-import uiScreens.SignUpPage;
-import uiScreens.TestCasesPage;
+import uiScreens.*;
 import utils.AdBlockerJs;
 
 
@@ -260,25 +257,46 @@ public class HomeStepDefinition {
     public void clickOnTheViewProductButtonOfFirstProduct() {
         Actor user = OnStage.theActorCalled("user");
         AdBlockerJs.AdBlockerJs(BrowserStepDefinitions.driver);
+        boolean validate = false;
 
-        user.attemptsTo(
-                Click.on(HomePage.viewProductButton.resolveAllFor(user).get(0))
-        );
+        do{
+            user.attemptsTo(
+                    Click.on(HomePage.viewProductButton.resolveAllFor(user).get(0))
+            );
+
+
+            if (ProductDetailsPage.productName.isVisibleFor(user)){
+                validate = true;
+            }
+        } while (!validate);
+
+
+        BrowseTheWeb.as(user).getDriver().navigate().refresh();
     }
 
     @When("The user clicks the View Product button for any product")
     public void clickOnViewProductButtonForAnyProduct() {
         Actor user = OnStage.theActorCalled("user");
         AdBlockerJs.AdBlockerJs(BrowserStepDefinitions.driver);
+        boolean validate = false;
 
         user.attemptsTo(GenerateRandomNumber.Between(0,33));
 
         int randomNumber = user.recall("RANDOM_NUMBER");
 
-        user.attemptsTo(
-                Scroll.to(HomePage.viewProductButton.resolveAllFor(user).get(randomNumber)),
-                Click.on(HomePage.viewProductButton.resolveAllFor(user).get(randomNumber))
-        );
+        do{
+            user.attemptsTo(
+                    Scroll.to(HomePage.viewProductButton.resolveAllFor(user).get(randomNumber)),
+                    Click.on(HomePage.viewProductButton.resolveAllFor(user).get(randomNumber))
+            );
+
+
+            if (ProductDetailsPage.productName.isVisibleFor(user)){
+                validate = true;
+            }
+        } while (!validate);
+
+        BrowseTheWeb.as(user).getDriver().navigate().refresh();
     }
 
 

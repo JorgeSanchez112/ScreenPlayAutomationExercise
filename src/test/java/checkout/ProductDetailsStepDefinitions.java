@@ -3,6 +3,7 @@ package checkout;
 import interactions.ClickOn;
 import interactions.ScrollToElement;
 import interactions.TypeIn;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.Actor;
@@ -16,6 +17,9 @@ import uiScreens.CartPage;
 import uiScreens.ProductDetailsPage;
 import utils.AdBlockerJs;
 
+import java.util.List;
+import java.util.Map;
+
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 
 public class ProductDetailsStepDefinitions {
@@ -25,7 +29,7 @@ public class ProductDetailsStepDefinitions {
 
         user.attemptsTo(
                 ScrollToElement.target(ProductDetailsPage.inputOfProductQuantity),
-                TypeIn.the(ProductDetailsPage.inputOfProductQuantity,quantity)
+                TypeIn.the(ProductDetailsPage.inputOfProductQuantity, quantity)
         );
     }
 
@@ -45,7 +49,7 @@ public class ProductDetailsStepDefinitions {
         Actor user = OnStage.theActorCalled("user");
 
         user.attemptsTo(
-                FillOutReviewForm.withCredentials("testName","TestAddressEmail", "Testing text are review.")
+                FillOutReviewForm.withCredentials("testName", "TestAddress@Email.test", "Testing text are review.")
         );
     }
 
@@ -75,7 +79,7 @@ public class ProductDetailsStepDefinitions {
 
         String currentUrl = BrowseTheWeb.as(user).getDriver().getCurrentUrl();
 
-        Assert.assertNotEquals("https://automationexercise.com/",currentUrl);
+        Assert.assertNotEquals("https://automationexercise.com/", currentUrl);
     }
 
     @Then("The product should be displayed in the cart page with the exact quantity {string}")
@@ -84,7 +88,7 @@ public class ProductDetailsStepDefinitions {
 
         String currentQuantity = user.asksFor(TextValue.of(CartPage.quantityField));
 
-        Assert.assertNotEquals(expectedQuantity,currentQuantity);
+        Assert.assertNotEquals(expectedQuantity, currentQuantity);
     }
 
     @Then("Write Your Review should be visible")
@@ -105,13 +109,16 @@ public class ProductDetailsStepDefinitions {
         );
     }
 
-    @Then("The product details should be visible:")
+    @Then("The product details should be visible")
     public void isProductsDetailsVisible() {
         Actor user = OnStage.theActorCalled("user");
+
+        user.attemptsTo(
+                ScrollToElement.target(ProductDetailsPage.productName)
+        );
 
         user.should(
                 seeThat(CurrentVisibility.of(ProductDetailsPage.productName))
         );
     }
-
 }
