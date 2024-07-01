@@ -247,7 +247,7 @@ public class HomeStepDefinition {
                     Click.on(HomePage.headerMenu.resolveAllFor(user).get(2))
             );
 
-            if (CartPage.products.isVisibleFor(user)){
+            if (CartPage.shoppingCartLabel.isVisibleFor(user)){
                 validate = true;
             }
         } while (!validate);

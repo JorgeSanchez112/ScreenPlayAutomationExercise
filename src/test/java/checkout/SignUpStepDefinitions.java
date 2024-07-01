@@ -45,7 +45,7 @@ public class SignUpStepDefinitions{
     }
 
     @When("The user clicks the Create Account button")
-    public void the_user_clicks_the_button() {
+    public void clickOnCreateAccountButton() {
         Actor user = OnStage.theActorCalled("user");
 
         user.attemptsTo(
