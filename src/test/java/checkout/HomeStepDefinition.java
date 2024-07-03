@@ -7,7 +7,6 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Scroll;
-import net.serenitybdd.screenplay.actions.ScrollTo;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.questions.CurrentVisibility;
 import org.junit.Assert;
@@ -40,7 +39,7 @@ public class HomeStepDefinition {
 
     }
 
-    @When("The user click on the Test Cases button")
+    @When("The user clicks on the Test Cases button")
     public void clickOnTestCasesButton(){
         boolean validate = false;
 
@@ -89,7 +88,7 @@ public class HomeStepDefinition {
         );
     }
 
-    @When("The user click the arrow button")
+    @When("The user clicks the arrow button")
     public void clickOnArrowButton(){
         Actor user = OnStage.theActorCalled("user");
 
@@ -98,7 +97,7 @@ public class HomeStepDefinition {
         );
     }
 
-    @When("The user click on the Women category")
+    @When("The user clicks on the Women category")
     public void clickOnWomenCategory(){
         Actor user = OnStage.theActorCalled("user");
 
@@ -109,7 +108,7 @@ public class HomeStepDefinition {
         );
     }
 
-    @When("The user click on {string} category link under Women category")
+    @When("The user clicks on {string} category link under Women category")
     public void clickOnSubWomenCategories(String subcategory){
         Actor user = OnStage.theActorCalled("user");
 
@@ -122,7 +121,7 @@ public class HomeStepDefinition {
         );
     }
 
-    @When("The user click on any sub-category link of Men category on the left sidebar")
+    @When("The user clicks on any sub-category link of Men category on the left sidebar")
     public void goThroughMenSubCategory(){
         Actor user = OnStage.theActorCalled("user");
 
@@ -145,7 +144,7 @@ public class HomeStepDefinition {
         );
     }
 
-    @When("The user click on the arrow at the bottom right side to move upward")
+    @When("The user clicks on the arrow at the bottom right side to move upward")
     public void clickOnTheArrowAtTheBottomRight(){
         Actor user = OnStage.theActorCalled("user");
 
@@ -155,7 +154,7 @@ public class HomeStepDefinition {
         );
     }
 
-    @When("The user click on Contact Us button")
+    @When("The user clicks on Contact Us button")
     public void clickOnContactUsButton(){
         Actor user = OnStage.theActorCalled("user");
 
@@ -173,7 +172,7 @@ public class HomeStepDefinition {
         );
     }
 
-    @When("The user click on the Products button")
+    @When("The user clicks on the Products button")
     public void the_user_click_on_the_products_button() {
         Actor user = OnStage.theActorCalled("user");
 

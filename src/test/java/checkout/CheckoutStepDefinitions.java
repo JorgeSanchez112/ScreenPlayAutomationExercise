@@ -55,5 +55,13 @@ public class CheckoutStepDefinitions {
         );
     }
 
+    @Then("Address Details and Review Your Order should be visible")
+    public void areTitlesVisible() {
+        Actor user = OnStage.theActorCalled("user");
+
+        user.should(
+                seeThat(CurrentVisibility.of(CheckoutPage.titles))
+        );
+    }
 
 }

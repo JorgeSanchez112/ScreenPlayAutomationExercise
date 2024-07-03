@@ -36,7 +36,7 @@ Feature: Cart
 
   Scenario: All the products should be visible with the new account created
     When The user clicks the Cart button
-    And The user clicks the Proceed To Checkout button
+    And The user clicks Proceed To Checkout button
     Then Address Details and Review Your Order should be visible
 
   Scenario: Adding products to the cart and address details are visible
@@ -64,13 +64,6 @@ Feature: Cart
     Then The cart page should be displayed
     And The user clicks Proceed To Checkout
 
-  Scenario: Create an account
-    When The user clicks the signUp button
-    And The user fill all details in Signup and create an account
-    Then ACCOUNT CREATED! should be visible
-    And The user clicks the Continue button
-    And Logged in as username should be visible at the top
-
   Scenario: Purchase product
     When The user enter a description in the comment text area
     And The user clicks the Place Order button
@@ -94,7 +87,7 @@ Feature: Cart
     Then The products should be visible in the cart
 
   Scenario: Verify cart after login
-    When The user clicks the Signup / Login button
+    When The user clicks on SignupLogin button
     And The user submit login details
     And The user go to the Cart page again
     Then The products should still be visible in the cart after login

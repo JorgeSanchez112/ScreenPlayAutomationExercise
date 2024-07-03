@@ -10,7 +10,7 @@ Feature: Purchase
   Scenario Outline: Complete purchase
     When The user add products to the cart
     And The user clicks the Cart button
-    And The user clicks Proceed To Checkout
+    And The user clicks Proceed To Checkout button
     And The user enter a description 'Trying to type something' in the comment text area
     And The user clicks the Place Order button
     And The user enter payment details: '<Name on Card>', '<Card Number>', '<CVC>', '<Month of expiration date>', '<Year of expiration date>'

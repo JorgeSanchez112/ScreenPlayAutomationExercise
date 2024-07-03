@@ -16,7 +16,7 @@ import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 
 public class CartStepDefinitions {
 
-    @When("The user clicks Proceed To Checkout")
+    @When("The user clicks Proceed To Checkout button")
     public void clickOnProceedToCheckout() {
         Actor user = OnStage.theActorCalled("user");
 
