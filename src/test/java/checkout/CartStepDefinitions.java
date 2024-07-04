@@ -35,6 +35,16 @@ public class CartStepDefinitions {
         );
     }
 
+    @When("The user clicks the X button corresponding to a particular product")
+    public void clickOnXButtonCorrespondingToAProduct() {
+        Actor user = OnStage.theActorCalled("user");
+
+        user.attemptsTo(
+                ScrollToElement.target(CartPage.deleteProductButton),
+                ClickOn.the(CartPage.deleteProductButton)
+        );
+    }
+
     @Then("both products should be added to the cart")
     public void areProductsVisibleInCart() {
         Actor user = OnStage.theActorCalled("user");
@@ -72,7 +82,7 @@ public class CartStepDefinitions {
     }
 
     @Then("The user should be on the cart page")
-    public void the_user_should_be_on_the_cart_page() {
+    public void isUserOnCartPage() {
         Actor user = OnStage.theActorCalled("user");
 
         String currentUrl = BrowseTheWeb.as(user).getDriver().getCurrentUrl();
@@ -87,6 +97,34 @@ public class CartStepDefinitions {
         user.should(
                 seeThat(CurrentVisibility.of(CartPage.shoppingCartLabel))
         );
+    }
+
+    @Then("the product should be displayed in the cart page")
+    public void isProductsOfCartPageNotEmpty() {
+        Actor user = OnStage.theActorCalled("user");
+
+        int sizeProducts = CartPage.products.resolveAllFor(user).size();
+
+        Assert.assertTrue(sizeProducts > 0);
+    }
+
+    @Then("The product should be removed from the cart")
+    public void isProductNotVisible() {
+        Actor user = OnStage.theActorCalled("user");
+
+        int sizeProducts = CartPage.products.resolveAllFor(user).size();
+
+        Assert.assertTrue(sizeProducts == 0);
+    }
+
+
+    @Then("The products should still be visible in the cart after login")
+    public void the_products_should_still_be_visible_in_the_cart_after_login() {
+        Actor user = OnStage.theActorCalled("user");
+
+        int sizeProducts = CartPage.products.resolveAllFor(user).size();
+
+        Assert.assertTrue(sizeProducts > 0);
     }
 
 }

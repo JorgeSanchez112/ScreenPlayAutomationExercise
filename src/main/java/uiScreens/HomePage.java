@@ -16,10 +16,12 @@ public class HomePage extends PageObject {
     public static Target brands = Target.the("Brands").locatedBy(".brands-name >* li");
     public static Target addToCartButton = Target.the("Add to cart button of products").locatedBy(".features_items >* .productinfo > .add-to-cart");
     public static Target continueShoppingButton = Target.the("Continuer Shopping button of the cart modal").locatedBy("#cartModal >* .modal-footer > button");
+    public static Target viewCartLink = Target.the("View cart link of the cart modal").locatedBy("#cartModal >* .modal-body >* a");
     public static Target viewProductButton = Target.the("View product button of each product").locatedBy(".choose >* a");
     public static Target arrowUpButton = Target.the("Arrow up Button to scroll up").located(By.id("scrollUp"));
     public static Target recommendedItemsTitle = Target.the("Recommended Items Title").locatedBy(".recommended_items > h2");
     public static Target carouselOfRecommendedItems = Target.the("Carouse of recommended items").locatedBy("#recommended-item-carousel.carousel.slide");
+    public static Target recommendedItemsProducts = Target.the("add cart button of each product of recommended item").locatedBy("#recommended-item-carousel >* .item.active >* .add-to-cart");
     public static Target footerPage = Target.the("Footer's page").located(By.id("footer"));
     public static Target subscriptionText = Target.the("Subscription text of footer").locatedBy(".single-widget > h2");
     public static Target subscribeEmailInput = Target.the("Input of Subscription input over the footer").locatedBy("#susbscribe_email");

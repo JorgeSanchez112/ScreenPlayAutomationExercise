@@ -298,6 +298,25 @@ public class HomeStepDefinition {
         BrowseTheWeb.as(user).getDriver().navigate().refresh();
     }
 
+    @When("The user clicks on the Add To Cart button on a recommended product")
+    public void the_user_clicks_on_the_add_to_cart_button_on_a_recommended_product() {
+        Actor user = OnStage.theActorCalled("user");
+
+        user.attemptsTo(
+                ScrollToElement.target(HomePage.carouselOfRecommendedItems),
+                Click.on(HomePage.recommendedItemsProducts.resolveAllFor(user).get(1))
+        );
+    }
+
+    @When("The user clicks on the View Cart button")
+    public void the_user_clicks_on_the_view_cart_button() {
+        Actor user = OnStage.theActorCalled("user");
+
+        user.attemptsTo(
+                WaitForVisibility.the(HomePage.viewCartLink),
+                ClickOn.the(HomePage.viewCartLink)
+        );
+    }
 
     @Then("The home page should be visible successfully")
     public void homePageShouldBeVisible(){
@@ -309,6 +328,21 @@ public class HomeStepDefinition {
 
         user.should(
                 seeThat(CurrentVisibility.of(HomePage.logo))
+        );
+    }
+
+    @When("The user add a product to the cart")
+    public void AddAProductToCart() {
+        Actor user = OnStage.theActorCalled("user");
+        AdBlockerJs.AdBlockerJs(BrowserStepDefinitions.driver);
+
+        user.attemptsTo(GenerateRandomNumber.Between(0,33));
+
+        int randomNumber = user.recall("RANDOM_NUMBER");
+
+        user.attemptsTo(
+                Scroll.to(HomePage.addToCartButton.resolveAllFor(user).get(randomNumber)),
+                Click.on(HomePage.addToCartButton.resolveAllFor(user).get(randomNumber))
         );
     }
 
