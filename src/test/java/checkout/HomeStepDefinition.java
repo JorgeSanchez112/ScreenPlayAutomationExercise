@@ -5,7 +5,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
-import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Scroll;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.questions.CurrentVisibility;
@@ -28,7 +27,7 @@ public class HomeStepDefinition {
 
         do{
             user.attemptsTo(
-                    Click.on(HomePage.headerMenu.resolveAllFor(user).get(3))
+                    ClickOn.the(HomePage.headerMenu.resolveAllFor(user).get(3))
             );
 
             if (SignUpPage.subTitles.isVisibleFor(user)){
@@ -49,7 +48,7 @@ public class HomeStepDefinition {
 
         do{
             user.attemptsTo(
-                    Click.on(HomePage.headerMenu.resolveAllFor(user).get(4)).afterWaitingUntilPresent()
+                    ClickOn.the(HomePage.headerMenu.resolveAllFor(user).get(4))
             );
 
             if (TestCasesPage.TestCaseTitle.isVisibleFor(user)){
@@ -84,7 +83,7 @@ public class HomeStepDefinition {
 
         user.attemptsTo(
                 WaitForVisibility.the(HomePage.headerMenu),
-                Click.on(HomePage.headerMenu.resolveAllFor(user).get(4))
+                ClickOn.the(HomePage.headerMenu.resolveAllFor(user).get(4))
         );
     }
 
@@ -104,7 +103,7 @@ public class HomeStepDefinition {
         user.attemptsTo(
                 WaitForVisibility.the(HomePage.brandsTitle),
                 ScrollToElement.target(HomePage.brandsTitle),
-                Click.on(HomePage.categories.resolveAllFor(user).get(0))
+                ClickOn.the(HomePage.categories.resolveAllFor(user).get(0))
         );
     }
 
@@ -116,7 +115,7 @@ public class HomeStepDefinition {
 
         user.attemptsTo(
                 ScrollToElement.target(HomePage.brandsTitle),
-                Click.on(HomePage.categories.resolveAllFor(user).get(0)),
+                ClickOn.the(HomePage.categories.resolveAllFor(user).get(0)),
                 ClickOnAnElementByText.the(HomePage.womenCategories,subcategory)
         );
     }
@@ -129,7 +128,7 @@ public class HomeStepDefinition {
 
         user.attemptsTo(
                 ScrollToElement.target(HomePage.brandsTitle),
-                Click.on(HomePage.categories.resolveAllFor(user).get(1)),
+                ClickOn.the(HomePage.categories.resolveAllFor(user).get(1)),
                 ClickOnAnElementByText.the(HomePage.menCategories,"TSHIRTS")
         );
 
@@ -159,7 +158,7 @@ public class HomeStepDefinition {
         Actor user = OnStage.theActorCalled("user");
 
         user.attemptsTo(
-                Click.on(HomePage.headerMenu.resolveAllFor(user).get(7)).afterWaitingUntilPresent()
+                ClickOn.the(HomePage.headerMenu.resolveAllFor(user).get(7))
         );
     }
 
@@ -177,13 +176,13 @@ public class HomeStepDefinition {
         Actor user = OnStage.theActorCalled("user");
 
         user.attemptsTo(
-                Click.on(HomePage.headerMenu.resolveAllFor(user).get(1))
+                ClickOn.the(HomePage.headerMenu.resolveAllFor(user).get(1))
         );
 
         AdBlockerJs.AdBlockerJs(BrowserStepDefinitions.driver);
 
         user.attemptsTo(
-                Click.on(HomePage.headerMenu.resolveAllFor(user).get(1))
+                ClickOn.the(HomePage.headerMenu.resolveAllFor(user).get(1))
         );
 
     }
@@ -208,7 +207,7 @@ public class HomeStepDefinition {
 
         user.attemptsTo(
                 ScrollToElement.target(HomePage.brandsTitle),
-                Click.on(HomePage.brands.resolveAllFor(user).get(randomNumber))
+                ClickOn.the(HomePage.brands.resolveAllFor(user).get(randomNumber))
         );
     }
 
@@ -217,7 +216,7 @@ public class HomeStepDefinition {
         Actor user = OnStage.theActorCalled("user");
 
         user.attemptsTo(
-                Click.on(HomePage.headerMenu.resolveAllFor(user).get(3))
+                ClickOn.the(HomePage.headerMenu.resolveAllFor(user).get(3))
         );
     }
 
@@ -228,9 +227,9 @@ public class HomeStepDefinition {
 
         user.attemptsTo(
                 WaitForVisibility.the(HomePage.brandsTitle),
-                Click.on(HomePage.addToCartButton.resolveAllFor(user).get(0)),
+                ClickOn.the(HomePage.addToCartButton.resolveAllFor(user).get(0)),
                 ClickOn.the(HomePage.continueShoppingButton),
-                Click.on(HomePage.addToCartButton.resolveAllFor(user).get(1)),
+                ClickOn.the(HomePage.addToCartButton.resolveAllFor(user).get(1)),
                 ClickOn.the(HomePage.continueShoppingButton)
         );
     }
@@ -243,7 +242,7 @@ public class HomeStepDefinition {
 
         do{
             user.attemptsTo(
-                    Click.on(HomePage.headerMenu.resolveAllFor(user).get(2))
+                    ClickOn.the(HomePage.headerMenu.resolveAllFor(user).get(2))
             );
 
             if (CartPage.shoppingCartLabel.isVisibleFor(user)){
@@ -260,7 +259,7 @@ public class HomeStepDefinition {
 
         do{
             user.attemptsTo(
-                    Click.on(HomePage.viewProductButton.resolveAllFor(user).get(0))
+                    ClickOn.the(HomePage.viewProductButton.resolveAllFor(user).get(0))
             );
 
 
@@ -286,7 +285,7 @@ public class HomeStepDefinition {
         do{
             user.attemptsTo(
                     Scroll.to(HomePage.viewProductButton.resolveAllFor(user).get(randomNumber)),
-                    Click.on(HomePage.viewProductButton.resolveAllFor(user).get(randomNumber))
+                    ClickOn.the(HomePage.viewProductButton.resolveAllFor(user).get(randomNumber))
             );
 
 
@@ -304,7 +303,7 @@ public class HomeStepDefinition {
 
         user.attemptsTo(
                 ScrollToElement.target(HomePage.carouselOfRecommendedItems),
-                Click.on(HomePage.recommendedItemsProducts.resolveAllFor(user).get(1))
+                ClickOn.the(HomePage.recommendedItemsProducts.resolveAllFor(user).get(1))
         );
     }
 
@@ -342,7 +341,7 @@ public class HomeStepDefinition {
 
         user.attemptsTo(
                 Scroll.to(HomePage.addToCartButton.resolveAllFor(user).get(randomNumber)),
-                Click.on(HomePage.addToCartButton.resolveAllFor(user).get(randomNumber))
+                ClickOn.the(HomePage.addToCartButton.resolveAllFor(user).get(randomNumber))
         );
     }
 
@@ -440,9 +439,11 @@ public class HomeStepDefinition {
     public void userShouldBeOnHomePage(String urlExpected){
         Actor user = OnStage.theActorCalled("user");
 
+        BrowseTheWeb.as(user).getDriver().navigate().refresh();
+
         String currentUrl = BrowseTheWeb.as(user).getDriver().getCurrentUrl();
 
-        Assert.assertNotEquals(urlExpected,currentUrl);
+        Assert.assertEquals(urlExpected,currentUrl);
     }
 
     @Then("Logged in as {string} should be visible at the top")

@@ -1,5 +1,6 @@
 package checkout;
 
+import interactions.ClickOn;
 import interactions.ScrollToElement;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -27,7 +28,7 @@ public class BrandsStepDefinitions {
 
         user.attemptsTo(
                 ScrollToElement.target(BrandProductsPage.brandsTitle),
-                Click.on(BrandProductsPage.brands.resolveAllFor(user).get(randomNumber))
+                ClickOn.the(BrandProductsPage.brands.resolveAllFor(user).get(randomNumber))
         );
     }
 

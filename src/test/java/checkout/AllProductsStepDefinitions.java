@@ -27,7 +27,7 @@ public class AllProductsStepDefinitions {
         );
     }
 
-    @When("The user click the search button")
+    @When("The user clicks the search button")
     public void userClickOnSearchButton() {
         Actor user = OnStage.theActorCalled("user");
 
@@ -46,16 +46,16 @@ public class AllProductsStepDefinitions {
         );
     }
 
-    @When("The user click the Add to cart button")
+    @When("The user clicks the Add to cart button overlay")
     public void clickOnAddToCartButtonOverlay(){
         Actor user = OnStage.theActorCalled("user");
 
         user.attemptsTo(
-                Click.on(ProductsPage.addToCartButtonOverlay.resolveAllFor(user).get(0)).afterWaitingUntilPresent()
+                ClickOn.the(ProductsPage.addToCartButtonOverlay.resolveAllFor(user).get(0))
         );
     }
 
-    @When("The user click the Continue Shopping button")
+    @When("The user clicks the Continue Shopping button")
     public void clickOnContinueShoppingButton(){
         Actor user = OnStage.theActorCalled("user");
 
@@ -74,21 +74,21 @@ public class AllProductsStepDefinitions {
         );
     }
 
-    @When("The user click the Add to cart button 2")
+    @When("The user clicks the Add to cart button 2")
     public void clickOnAddToCartButtonOverlay2(){
         Actor user = OnStage.theActorCalled("user");
 
         user.attemptsTo(
-                Click.on(ProductsPage.addToCartButtonOverlay.resolveAllFor(user).get(1)).afterWaitingUntilPresent()
+                ClickOn.the(ProductsPage.addToCartButtonOverlay.resolveAllFor(user).get(1))
         );
     }
 
-    @When("The user click the View Cart link")
+    @When("The user clicks the View Cart link")
     public void clickOnViewCartLink(){
         Actor user = OnStage.theActorCalled("user");
 
         user.attemptsTo(
-                Click.on(ProductsPage.viewCartLink).afterWaitingUntilPresent()
+                ClickOn.the(ProductsPage.viewCartLink)
         );
     }
 

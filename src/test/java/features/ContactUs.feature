@@ -3,7 +3,7 @@ Feature: Contact
   Background:
     Given The user has launched the browser
     And The user navigates to 'https://automationexercise.com/'
-    When The user click on Contact Us button
+    When The user clicks on Contact Us button
 
   Scenario: Text on Contact us page is visible
     Then GET IN TOUCH should be visible

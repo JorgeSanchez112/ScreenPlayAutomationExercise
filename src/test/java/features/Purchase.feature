@@ -24,7 +24,7 @@ Feature: Purchase
   Scenario: Purchase a product and verify address
     When The user add products to the cart
     And The user clicks the Cart button
-    And The user clicks Proceed To Checkout
+    And The user clicks Proceed To Checkout button
     Then The delivery address should be visible
     And The billing address should be visible
 

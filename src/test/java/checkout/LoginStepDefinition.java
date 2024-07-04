@@ -112,7 +112,7 @@ public class LoginStepDefinition {
     }
 
     @Then("The error message Email Address already exist! should be visible")
-    public void isEmailAlreadyExistMessageVisible(String string) {
+    public void isEmailAlreadyExistMessageVisible() {
         Actor user = OnStage.theActorCalled("user");
 
         user.should(

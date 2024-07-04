@@ -6,7 +6,7 @@ Feature: Brands
 
   #Test case 19
   Scenario: Redirect to products page and brand are visible on the left sidebar
-    When The user click on the Products button
+    When The user clicks on the Products button
     Then brands should be visible on the left sidebar
 
   Scenario: Redirect to a brand page and the user should be in that page
