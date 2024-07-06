@@ -284,7 +284,7 @@ public class HomeStepDefinition {
 
         do{
             user.attemptsTo(
-                    Scroll.to(HomePage.viewProductButton.resolveAllFor(user).get(randomNumber)),
+                    ScrollToElement.elementFacade(HomePage.viewProductButton.resolveAllFor(user).get(randomNumber)),
                     ClickOn.the(HomePage.viewProductButton.resolveAllFor(user).get(randomNumber))
             );
 
@@ -308,7 +308,7 @@ public class HomeStepDefinition {
     }
 
     @When("The user clicks on the View Cart button")
-    public void the_user_clicks_on_the_view_cart_button() {
+    public void clickOnViewCartButton() {
         Actor user = OnStage.theActorCalled("user");
 
         user.attemptsTo(
@@ -340,7 +340,7 @@ public class HomeStepDefinition {
         int randomNumber = user.recall("RANDOM_NUMBER");
 
         user.attemptsTo(
-                Scroll.to(HomePage.addToCartButton.resolveAllFor(user).get(randomNumber)),
+                ScrollToElement.elementFacade(HomePage.addToCartButton.resolveAllFor(user).get(randomNumber)),
                 ClickOn.the(HomePage.addToCartButton.resolveAllFor(user).get(randomNumber))
         );
     }

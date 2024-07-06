@@ -24,14 +24,14 @@ public class BrowserStepDefinitions {
 
         driver = new WebDriverSetup().setupChromeDriver();
 
-        user.can(BrowseTheWeb.with(driver));
+
 
         AdBlockerJs.AdBlockerJs(driver);
     }
 
     @Given("The user has launched the browser")
     public void userLaunchBrowser() {
-
+        user.can(BrowseTheWeb.with(driver));
     }
 
     @When("The user navigates to {string}")
