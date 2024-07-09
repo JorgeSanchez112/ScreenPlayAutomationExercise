@@ -5,10 +5,9 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
-import net.serenitybdd.screenplay.actions.Scroll;
 import net.serenitybdd.screenplay.actors.OnStage;
+import net.serenitybdd.screenplay.ensure.Ensure;
 import net.serenitybdd.screenplay.questions.CurrentVisibility;
-import org.junit.Assert;
 import tasks.GenerateRandomNumber;
 import uiScreens.*;
 import utils.AdBlockerJs;
@@ -298,7 +297,7 @@ public class HomeStepDefinition {
     }
 
     @When("The user clicks on the Add To Cart button on a recommended product")
-    public void the_user_clicks_on_the_add_to_cart_button_on_a_recommended_product() {
+    public void clickOnAddToCartButtonOnRecommendedProduct() {
         Actor user = OnStage.theActorCalled("user");
 
         user.attemptsTo(
@@ -443,11 +442,13 @@ public class HomeStepDefinition {
 
         String currentUrl = BrowseTheWeb.as(user).getDriver().getCurrentUrl();
 
-        Assert.assertEquals(urlExpected,currentUrl);
+        user.attemptsTo(
+                Ensure.that(currentUrl).isEqualTo(urlExpected)
+        );
     }
 
     @Then("Logged in as {string} should be visible at the top")
-    public void logged_in_as_should_be_visible_at_the_top(String string1) {
+    public void isLoggedInAsVisibleAtTheTop(String string1) {
         Actor user = OnStage.theActorCalled("user");
 
         user.should(

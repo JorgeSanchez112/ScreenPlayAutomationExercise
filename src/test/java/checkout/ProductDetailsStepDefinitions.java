@@ -3,22 +3,19 @@ package checkout;
 import interactions.ClickOn;
 import interactions.ScrollToElement;
 import interactions.TypeIn;
-import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.actors.OnStage;
+import net.serenitybdd.screenplay.ensure.Ensure;
 import net.serenitybdd.screenplay.questions.CurrentVisibility;
 import net.serenitybdd.screenplay.questions.TextValue;
-import org.junit.Assert;
 import tasks.FillOutReviewForm;
 import uiScreens.CartPage;
 import uiScreens.ProductDetailsPage;
 import utils.AdBlockerJs;
 
-import java.util.List;
-import java.util.Map;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 
@@ -42,7 +39,6 @@ public class ProductDetailsStepDefinitions {
                 ClickOn.the(ProductDetailsPage.addToCartButton)
         );
     }
-
 
     @When("The user enter name, email, and review")
     public void fillOutReviewFields() {
@@ -79,16 +75,22 @@ public class ProductDetailsStepDefinitions {
 
         String currentUrl = BrowseTheWeb.as(user).getDriver().getCurrentUrl();
 
-        Assert.assertNotEquals("https://automationexercise.com/", currentUrl);
+        user.attemptsTo(
+                Ensure.that(currentUrl).isNotEqualTo("https://automationexercise.com/")
+        );
     }
 
+    //Weird assert, this needs a revision
     @Then("The product should be displayed in the cart page with the exact quantity {string}")
     public void isQuantityProductSameOnCartPage(String expectedQuantity) {
         Actor user = OnStage.theActorCalled("user");
 
         String currentQuantity = user.asksFor(TextValue.of(CartPage.quantityField));
 
-        Assert.assertNotEquals(expectedQuantity, currentQuantity);
+        user.attemptsTo(
+                Ensure.that(currentQuantity).isNotEqualTo(expectedQuantity)
+        );
+
     }
 
     @Then("Write Your Review should be visible")

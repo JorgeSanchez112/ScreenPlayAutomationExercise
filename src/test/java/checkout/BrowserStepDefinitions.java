@@ -24,8 +24,6 @@ public class BrowserStepDefinitions {
 
         driver = new WebDriverSetup().setupChromeDriver();
 
-
-
         AdBlockerJs.AdBlockerJs(driver);
     }
 

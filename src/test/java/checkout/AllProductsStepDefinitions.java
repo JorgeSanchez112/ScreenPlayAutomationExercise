@@ -1,17 +1,14 @@
 package checkout;
 
 import interactions.*;
-import interactions.HoverOverElement;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.Actor;
-import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.actions.*;
 import net.serenitybdd.screenplay.actors.OnStage;
+import net.serenitybdd.screenplay.ensure.Ensure;
 import net.serenitybdd.screenplay.questions.CurrentVisibility;
 import net.serenitybdd.screenplay.questions.TextValue;
-import net.serenitybdd.screenplay.questions.TheSize;
-import org.junit.Assert;
 import uiScreens.ProductsPage;
 
 
@@ -117,7 +114,9 @@ public class AllProductsStepDefinitions {
 
         int CurrentNumberOfProductsShowed = ProductsPage.products.resolveAllFor(user).size();
 
-        Assert.assertTrue(CurrentNumberOfProductsShowed < 34);
+        user.attemptsTo(
+                Ensure.that(CurrentNumberOfProductsShowed).isLessThan(34)
+        );
     }
 
     @Then("{string} should be visible")
@@ -126,6 +125,8 @@ public class AllProductsStepDefinitions {
 
         String valueOFProduct = user.asksFor(TextValue.of(ProductsPage.titleOFProduct));
 
-        Assert.assertEquals(expectedBookTitle,valueOFProduct);
+        user.attemptsTo(
+                Ensure.that(valueOFProduct).isEqualTo(expectedBookTitle)
+        );
     }
 }

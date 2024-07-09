@@ -66,7 +66,6 @@ public class SignUpStepDefinitions{
         );
     }
 
-
     @Then("ENTER ACCOUNT INFORMATION should be visible")
     public void IsFirstSubtitleVisible(){
         Actor user = OnStage.theActorCalled("user");

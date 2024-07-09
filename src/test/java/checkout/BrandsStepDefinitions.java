@@ -7,8 +7,8 @@ import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.actors.OnStage;
+import net.serenitybdd.screenplay.ensure.Ensure;
 import net.serenitybdd.screenplay.questions.CurrentVisibility;
-import org.junit.Assert;
 import tasks.GenerateRandomNumber;
 import uiScreens.BrandProductsPage;
 import utils.AdBlockerJs;
@@ -37,7 +37,9 @@ public class BrandsStepDefinitions {
 
         String currentUrl = BrowseTheWeb.as(user).getDriver().getCurrentUrl();
 
-        Assert.assertNotEquals(urlUnexpected,currentUrl);
+        user.attemptsTo(
+                Ensure.that(currentUrl).isEqualTo(urlUnexpected)
+        );
     }
 
     @Then("brand products should be displayed")

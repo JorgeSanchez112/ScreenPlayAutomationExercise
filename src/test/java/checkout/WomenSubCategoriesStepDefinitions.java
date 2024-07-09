@@ -4,8 +4,8 @@ import io.cucumber.java.en.Then;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.actors.OnStage;
+import net.serenitybdd.screenplay.ensure.Ensure;
 import net.serenitybdd.screenplay.questions.TextValue;
-import org.junit.Assert;
 import uiScreens.DressSubCategoryPage;
 import uiScreens.SareeSubCategoryPage;
 import uiScreens.TopsSubCategoryPage;
@@ -16,12 +16,15 @@ import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 
 public class WomenSubCategoriesStepDefinitions {
     @Then("The category page should be displayed {string}")
-    public void isUrlIncorrectWithThePage(String urlUnexpected){
+    public void isUrlIncorrectWithThePage(String urlExpected){
         Actor user = OnStage.theActorCalled("user");
 
         String currentUrl = BrowseTheWeb.as(user).getDriver().getCurrentUrl();
 
-        Assert.assertNotEquals(urlUnexpected,currentUrl);
+        user.attemptsTo(
+                Ensure.that(currentUrl).isEqualTo(urlExpected)
+        );
+
     }
 
     @Then("The user should confirm the {string} text of {string} page")

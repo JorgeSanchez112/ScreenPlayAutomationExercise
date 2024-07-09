@@ -7,8 +7,8 @@ import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.actors.OnStage;
+import net.serenitybdd.screenplay.ensure.Ensure;
 import net.serenitybdd.screenplay.questions.CurrentVisibility;
-import org.junit.Assert;
 import uiScreens.LoginPage;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
@@ -74,7 +74,6 @@ public class LoginStepDefinition {
         );
     }
 
-
     @Then("Login to your account should be visible")
     public void isLoginToYourAccountVisible() {
         Actor user = OnStage.theActorCalled("user");
@@ -108,7 +107,9 @@ public class LoginStepDefinition {
 
         String currentUrl = BrowseTheWeb.as(user).getDriver().getCurrentUrl();
 
-        Assert.assertNotEquals("https://automationexercise.com/",currentUrl);
+        user.attemptsTo(
+                Ensure.that(currentUrl).isNotEqualTo("https://automationexercise.com/")
+        );
     }
 
     @Then("The error message Email Address already exist! should be visible")
