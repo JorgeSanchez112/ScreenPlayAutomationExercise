@@ -31,9 +31,7 @@ public class BrowserStepDefinitions {
         theRestApiBaseUrl = environmentVariables.optionalProperty("restapi.baseurl")
                 .orElse("https://automationexercise.com/api");
 
-        user = Actor.named("Supervisor of correct work of the API").whoCan(CallAnApi.at(theRestApiBaseUrl));
-
-
+        user.can(CallAnApi.at(theRestApiBaseUrl));
 
         AdBlockerJs.AdBlockerJs(driver);
     }

@@ -9,7 +9,7 @@ import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.ensure.Ensure;
 import net.serenitybdd.screenplay.questions.CurrentVisibility;
-import tasks.ValidateAccountExist;
+import questions.DoesAccountExist;
 import uiScreens.LoginPage;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
@@ -20,10 +20,16 @@ public class LoginStepDefinition {
     public void typeNameAndEmailAddress(String name, String email){
         Actor user = OnStage.theActorCalled("user");
 
-        user.attemptsTo(
-                TypeIn.the(LoginPage.nameInput,name),
-                TypeIn.the(LoginPage.emailAddressInputSignUp,email)
-        );
+        if (DoesAccountExist.forEmail(email).answeredBy(user)){
+
+        }else{
+            user.attemptsTo(
+                    TypeIn.the(LoginPage.nameInput,name),
+                    TypeIn.the(LoginPage.emailAddressInputSignUp,email)
+            );
+        }
+
+
     }
 
     @When("The user clicks the Signup button")
