@@ -7,6 +7,7 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.questions.CurrentVisibility;
 import uiScreens.AccountCreatedPage;
+import uiScreens.AccountDeletedPage;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 
@@ -22,12 +23,23 @@ public class StateAccountStepDefinition {
     }
 
     @Then("ACCOUNT CREATED! should be visible")
-    public void should_be_visible() {
+    public void isAccountCreatedTitleVisible() {
         Actor user = OnStage.theActorCalled("user");
 
         user.should(
                 seeThat(
                         CurrentVisibility.of(AccountCreatedPage.titleAccountCreated)
+                )
+        );
+    }
+
+    @Then("ACCOUNT DELETED! should be visible")
+    public void isAccountDeletedTitleVisible(){
+        Actor user = OnStage.theActorCalled("user");
+
+        user.should(
+                seeThat(
+                        CurrentVisibility.of(AccountDeletedPage.titlePage)
                 )
         );
     }

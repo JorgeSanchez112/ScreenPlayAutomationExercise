@@ -344,6 +344,16 @@ public class HomeStepDefinition {
         );
     }
 
+    @When("The user clicks the Delete Account button")
+    public void ClickOnDeleteAccount() {
+        Actor user = OnStage.theActorCalled("user");
+
+        user.attemptsTo(
+                ClickOn.the(HomePage.headerMenu.resolveAllFor(user).get(4))
+        );
+    }
+
+
     @Then("Logged in as username should be visible")
     public void isLoggedInVisible(){
         Actor user = OnStage.theActorCalled("user");

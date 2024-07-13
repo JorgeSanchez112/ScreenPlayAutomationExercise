@@ -21,14 +21,13 @@ public class LoginStepDefinition {
         Actor user = OnStage.theActorCalled("user");
 
         if (DoesAccountExist.forEmail(email).answeredBy(user)){
-
+            System.out.println("Account has been already created");
         }else{
             user.attemptsTo(
                     TypeIn.the(LoginPage.nameInput,name),
                     TypeIn.the(LoginPage.emailAddressInputSignUp,email)
             );
         }
-
 
     }
 
