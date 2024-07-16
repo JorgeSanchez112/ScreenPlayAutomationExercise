@@ -26,7 +26,7 @@ public class HomeStepDefinition {
 
         do{
             user.attemptsTo(
-                    ClickOn.the(HomePage.headerMenu.resolveAllFor(user).get(3))
+                    ClickOn.the(HeaderMenuComponent.headerMenu.resolveAllFor(user).get(3))
             );
 
             if (SignUpPage.subTitles.isVisibleFor(user)){
@@ -47,7 +47,7 @@ public class HomeStepDefinition {
 
         do{
             user.attemptsTo(
-                    ClickOn.the(HomePage.headerMenu.resolveAllFor(user).get(4))
+                    ClickOn.the(HeaderMenuComponent.headerMenu.resolveAllFor(user).get(4))
             );
 
             if (TestCasesPage.TestCaseTitle.isVisibleFor(user)){
@@ -81,8 +81,8 @@ public class HomeStepDefinition {
         Actor user = OnStage.theActorCalled("user");
 
         user.attemptsTo(
-                WaitForVisibility.the(HomePage.headerMenu),
-                ClickOn.the(HomePage.headerMenu.resolveAllFor(user).get(4))
+                WaitForVisibility.the(HeaderMenuComponent.headerMenu),
+                ClickOn.the(HeaderMenuComponent.headerMenu.resolveAllFor(user).get(4))
         );
     }
 
@@ -157,7 +157,7 @@ public class HomeStepDefinition {
         Actor user = OnStage.theActorCalled("user");
 
         user.attemptsTo(
-                ClickOn.the(HomePage.headerMenu.resolveAllFor(user).get(7))
+                ClickOn.the(HeaderMenuComponent.headerMenu.resolveAllFor(user).get(7))
         );
     }
 
@@ -175,13 +175,13 @@ public class HomeStepDefinition {
         Actor user = OnStage.theActorCalled("user");
 
         user.attemptsTo(
-                ClickOn.the(HomePage.headerMenu.resolveAllFor(user).get(1))
+                ClickOn.the(HeaderMenuComponent.headerMenu.resolveAllFor(user).get(1))
         );
 
         AdBlockerJs.AdBlockerJs(BrowserStepDefinitions.driver);
 
         user.attemptsTo(
-                ClickOn.the(HomePage.headerMenu.resolveAllFor(user).get(1))
+                ClickOn.the(HeaderMenuComponent.headerMenu.resolveAllFor(user).get(1))
         );
 
     }
@@ -215,7 +215,7 @@ public class HomeStepDefinition {
         Actor user = OnStage.theActorCalled("user");
 
         user.attemptsTo(
-                ClickOn.the(HomePage.headerMenu.resolveAllFor(user).get(3))
+                ClickOn.the(HeaderMenuComponent.buttonsOfUserLogged.resolveAllFor(user).get(0))
         );
     }
 
@@ -241,7 +241,7 @@ public class HomeStepDefinition {
 
         do{
             user.attemptsTo(
-                    ClickOn.the(HomePage.headerMenu.resolveAllFor(user).get(2))
+                    ClickOn.the(HeaderMenuComponent.headerMenu.resolveAllFor(user).get(2))
             );
 
             if (CartPage.shoppingCartLabel.isVisibleFor(user)){
@@ -349,7 +349,7 @@ public class HomeStepDefinition {
         Actor user = OnStage.theActorCalled("user");
 
         user.attemptsTo(
-                ClickOn.the(HomePage.headerMenu.resolveAllFor(user).get(4))
+                ClickOn.the(HeaderMenuComponent.buttonsOfUserLogged.resolveAllFor(user).get(1))
         );
     }
 
@@ -359,7 +359,7 @@ public class HomeStepDefinition {
         Actor user = OnStage.theActorCalled("user");
 
         user.should(
-                seeThat(CurrentVisibility.of(HomePage.headerMenu.of("loco1a")))
+                seeThat(CurrentVisibility.of(HeaderMenuComponent.headerMenu.of("loco1a")))
         );
     }
 
@@ -462,7 +462,7 @@ public class HomeStepDefinition {
         Actor user = OnStage.theActorCalled("user");
 
         user.should(
-                seeThat(CurrentVisibility.of(HomePage.headerMenu.of(string1)))
+                seeThat(CurrentVisibility.of(HeaderMenuComponent.headerMenu.of(string1)))
         );
     }
 

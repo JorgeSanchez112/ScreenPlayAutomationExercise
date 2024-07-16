@@ -120,13 +120,13 @@ public class AllProductsStepDefinitions {
     }
 
     @Then("{string} should be visible")
-    public void isBookTitleValueCorrect(String expectedBookTitle) {
+    public void isProductTitleValueCorrect(String expectedProductTitle) {
         Actor user = OnStage.theActorCalled("user");
 
         String valueOFProduct = user.asksFor(TextValue.of(ProductsPage.titleOFProduct));
 
         user.attemptsTo(
-                Ensure.that(valueOFProduct).isEqualTo(expectedBookTitle)
+                Ensure.that(valueOFProduct).isEqualTo(expectedProductTitle)
         );
     }
 }

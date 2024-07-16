@@ -9,12 +9,12 @@ Feature: Home scenarios
 
 #Otherssssssssssssssssssssssssssss-------------------------------------------------------------------------------------------------
 
-#  Scenario: Successful account deletion
-#    When The user click on SignupLogin button
-#    And The user enter the correct email address 'loco@test.com' and password 'a'
-#    And The user click the "login" button
-#    And The user click the "Delete Account" button
-#    Then "ACCOUNT DELETED!" should be visible
+  Scenario: Successful account deletion
+    When The user click on SignupLogin button
+    And The user enter the correct email address 'loco@test.com' and password 'a'
+    And The user click the "login" button
+    And The user click the "Delete Account" button
+    Then "ACCOUNT DELETED!" should be visible
 
   Scenario: Successful navigation to test cases page
     When The user clicks on the Test Cases button
@@ -40,12 +40,12 @@ Feature: Home scenarios
 
   Scenario Outline: Click on a sub category women link, user should be redirect to category selected
     When The user clicks on '<subCategory>' category link under Women category
-    Then The category page should be displayed 'https://automationexercise.com/'
+    Then The category page should be displayed '<url>'
     Examples:
-      | subCategory |
-      | DRESS       |
-      | TOPS        |
-      | SAREE       |
+      | subCategory |                           url                         |
+      | DRESS       | https://automationexercise.com/category_products/1    |
+      | TOPS        | https://automationexercise.com/category_products/2    |
+      | SAREE       | https://automationexercise.com/category_products/7    |
 
   Scenario Outline: Click on a sub category women link, user should be the title of category selected
     When The user clicks on '<subCategory>' category link under Women category

@@ -6,7 +6,6 @@ import org.openqa.selenium.By;
 
 public class HomePage extends PageObject {
     public static Target logo = Target.the("Logo").locatedBy(".logo.pull-left");
-    public static Target headerMenu = Target.the("Menu elements").locatedBy(".navbar-nav > li");
     public static Target FullFledgedText = Target.the("Full-Fledged practice website for Automation Engineers text").locatedBy("#slider >* .item.active >* h2");
     public static Target categoriesBox = Target.the("Categories side bar box").located(By.id("accordian"));
     public static Target categories = Target.the("All the categories in the left side bar").locatedBy("#accordian > .panel-default >* > h4 > a");

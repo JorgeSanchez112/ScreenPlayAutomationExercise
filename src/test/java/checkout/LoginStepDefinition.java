@@ -108,7 +108,7 @@ public class LoginStepDefinition {
     }
 
     @Then("The user should be navigated to the login page")
-    public void the_user_should_be_navigated_to_the_login_page() {
+    public void isUserOnLoginPage() {
         Actor user = OnStage.theActorCalled("user");
 
         String currentUrl = BrowseTheWeb.as(user).getDriver().getCurrentUrl();
