@@ -9,6 +9,7 @@ import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.ensure.Ensure;
 import net.serenitybdd.screenplay.questions.CurrentVisibility;
 import tasks.GenerateRandomNumber;
+import tasks.NavigateTo;
 import uiScreens.*;
 import utils.AdBlockerJs;
 
@@ -19,43 +20,21 @@ public class HomeStepDefinition {
 
     @When("The user clicks on SignupLogin button")
     public void redirectToLoginPage(){
-        boolean validate = false;
-
         Actor user = OnStage.theActorCalled("user");
-        AdBlockerJs.AdBlockerJs(BrowserStepDefinitions.driver);
 
-        do{
-            user.attemptsTo(
-                    ClickOn.the(HeaderMenuComponent.headerMenu.resolveAllFor(user).get(3))
-            );
-
-            if (SignUpPage.subTitles.isVisibleFor(user)){
-                validate = true;
-            }
-        }while (!validate);
-
-
+        user.attemptsTo(
+                NavigateTo.withElementFacade(HeaderMenuComponent.headerMenu.resolveAllFor(user).get(3))
+        );
     }
 
     @When("The user clicks on the Test Cases button")
     public void clickOnTestCasesButton(){
-        boolean validate = false;
-
         Actor user = OnStage.theActorCalled("user");
 
-        AdBlockerJs.AdBlockerJs(BrowserStepDefinitions.driver);
 
-        do{
-            user.attemptsTo(
-                    ClickOn.the(HeaderMenuComponent.headerMenu.resolveAllFor(user).get(4))
-            );
-
-            if (TestCasesPage.TestCaseTitle.isVisibleFor(user)){
-                validate = true;
-            }
-        }while (!validate);
-
-
+        user.attemptsTo(
+                NavigateTo.withElementFacade(HeaderMenuComponent.headerMenu.resolveAllFor(user).get(4))
+        );
     }
 
     @When("The user scroll down to the footer")
@@ -175,13 +154,7 @@ public class HomeStepDefinition {
         Actor user = OnStage.theActorCalled("user");
 
         user.attemptsTo(
-                ClickOn.the(HeaderMenuComponent.headerMenu.resolveAllFor(user).get(1))
-        );
-
-        AdBlockerJs.AdBlockerJs(BrowserStepDefinitions.driver);
-
-        user.attemptsTo(
-                ClickOn.the(HeaderMenuComponent.headerMenu.resolveAllFor(user).get(1))
+                NavigateTo.withElementFacade(HeaderMenuComponent.headerMenu.resolveAllFor(user).get(1))
         );
 
     }

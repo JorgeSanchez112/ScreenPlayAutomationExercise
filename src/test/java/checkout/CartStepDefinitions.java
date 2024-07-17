@@ -9,7 +9,6 @@ import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.ensure.Ensure;
 import net.serenitybdd.screenplay.questions.CurrentVisibility;
-import net.serenitybdd.screenplay.questions.Visibility;
 import uiScreens.CartPage;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
