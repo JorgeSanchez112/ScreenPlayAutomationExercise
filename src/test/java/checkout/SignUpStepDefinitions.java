@@ -1,6 +1,7 @@
 package checkout;
 
 import interactions.ClickOn;
+import interactions.ClickOnAnElementByText;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.Actor;
@@ -14,28 +15,27 @@ import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 
 public class SignUpStepDefinitions{
 
-    @When("The user fills in the details: Title, Name, Email, Password, Date of birth")
-    public void fillAccountInformationFields(){
+    @When("User fills details of account information {string} {string} {string} {string} {string} {string}")
+    public void fillAccountInformationFields(String title, String name, String password, String birthDay, String birthMonth, String birthYear){
         Actor user = OnStage.theActorCalled("user");
 
         user.attemptsTo(
-                FillAccountInformationFields.the("Mr.","a","a","31","5","2000")
+                FillAccountInformationFields.the(title, name, password, birthDay, birthMonth, birthYear)
         );
 
     }
 
-    @When("The user selects all checkbox in Enter Account Information")
-    public void the_user_selects_the_checkbox() {
+    @When("User selects checkbox {string}")
+    public void selectCheckboxByLabelText(String checkBoxLabel) {
         Actor user = OnStage.theActorCalled("user");
 
         user.attemptsTo(
-                ClickOn.the(SignUpPage.newsletterCheckBox),
-                ClickOn.the(SignUpPage.specialOffersCheckBox)
+                ClickOnAnElementByText.the(SignUpPage.checkboxes,checkBoxLabel)
         );
     }
 
-    @When("The user fills in the details: First name, Last name, Company, Address, Address2, Country, State, City, Zipcode, Mobile Number")
-    public void fillAddressInformationFields() {
+    @When("User fills in the details of information {string} {string} {string} {string} {string} {string} {string} {string} {string} {string}")
+    public void fillAddressInformationFields(String firstName, String lastName, String company, String address, String address2, String country, String state, String city, String zipCode, String mobileNumber) {
         Actor user = OnStage.theActorCalled("user");
 
         user.attemptsTo(
@@ -44,7 +44,7 @@ public class SignUpStepDefinitions{
 
     }
 
-    @When("The user clicks the Create Account button")
+    @When("User clicks Create Account button")
     public void clickOnCreateAccountButton() {
         Actor user = OnStage.theActorCalled("user");
 
@@ -59,8 +59,6 @@ public class SignUpStepDefinitions{
 
         user.attemptsTo(
                 FillAccountInformationFields.the("Mr.","a","a","31","5","2000"),
-                ClickOn.the(SignUpPage.newsletterCheckBox),
-                ClickOn.the(SignUpPage.specialOffersCheckBox),
                 FillAddressInformationFields.withCredentials("anything","12","IT","sfasf","afsadf","Israel","michigan","capital","asd1","1234567891"),
                 ClickOn.the(SignUpPage.createAccountButton)
         );

@@ -16,7 +16,7 @@ import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 
 public class LoginStepDefinition {
 
-    @When("The user enters the name {string} and email {string} address")
+    @When("User enters name {string} and email {string} address")
     public void typeNameAndEmailAddress(String name, String email){
         Actor user = OnStage.theActorCalled("user");
 
@@ -31,7 +31,7 @@ public class LoginStepDefinition {
 
     }
 
-    @When("The user clicks the Signup button")
+    @When("User clicks SignUp button")
     public void clickOnSignUpButton(){
         Actor user = OnStage.theActorCalled("user");
 

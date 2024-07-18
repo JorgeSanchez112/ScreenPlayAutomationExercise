@@ -18,7 +18,7 @@ import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 
 public class HomeStepDefinition {
 
-    @When("The user clicks on SignupLogin button")
+    @When("User clicks on Signup Login button")
     public void redirectToLoginPage(){
         Actor user = OnStage.theActorCalled("user");
 
@@ -55,7 +55,7 @@ public class HomeStepDefinition {
         );
     }
 
-    @When("The user clicks on the Delete Account button")
+    @When("User clicks Delete Account button")
     public void clickOnDeleteAccountButton(){
         Actor user = OnStage.theActorCalled("user");
 

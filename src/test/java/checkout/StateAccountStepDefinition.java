@@ -13,7 +13,7 @@ import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 
 public class StateAccountStepDefinition {
 
-    @When("The user clicks the Continue button")
+    @When("User clicks Continue button")
     public void userClicksContinueButton(){
         Actor user = OnStage.theActorCalled("user");
 
@@ -33,7 +33,7 @@ public class StateAccountStepDefinition {
         );
     }
 
-    @Then("ACCOUNT DELETED! should be visible")
+    @Then("User verifies that account has been deleted")
     public void isAccountDeletedTitleVisible(){
         Actor user = OnStage.theActorCalled("user");
 
