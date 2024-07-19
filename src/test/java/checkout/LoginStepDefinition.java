@@ -40,8 +40,8 @@ public class LoginStepDefinition {
         );
     }
 
-    @When("The user enter the correct email address and password")
-    public void fillEmailAndPasswordInput() {
+    @When("User enters email {string} and password {string}")
+    public void fillEmailAndPasswordInput(String email, String password) {
         Actor user = OnStage.theActorCalled("user");
 
         user.attemptsTo(
@@ -51,7 +51,7 @@ public class LoginStepDefinition {
 
     }
 
-    @When("The user clicks the login button")
+    @When("User clicks login button")
     public void clickLoginButton() {
         Actor user = OnStage.theActorCalled("user");
 

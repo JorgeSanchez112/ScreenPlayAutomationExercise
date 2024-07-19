@@ -17,8 +17,18 @@ Feature: TestCases
     And User clicks Delete Account button
     Then User verifies that account has been deleted
     And User clicks Continue button
-    Examples: Account Information fields
+    Examples:
       |     Title       |     Name     |     Email           |       Password       | day of birth | month of birth | year of birth | First name     |  Last name    |  Company         |  Address          | Address2          | Country | State   | City           | Zipcode   | Mobile Number |
-      |   testTitle     |  testName    |  testloco4@test.com |   testPassword       | 2            | 12             |    2000       |FirstName Test | LastName Test | NameCompany Test | Street #1 address | Street #2 address | Canada  | State 1 | Capital Canada | #22024#22 | 1002334531    |
+      |   testTitle     |  testName    |  testloco4@test.com |   testPassword       | 2            | 12             |    2000       |FirstName Test | LastName Test | NameCompany Test  | Street #1 address | Street #2 address | Canada  | State 1 | Capital Canada | #22024#22 | 1002334531    |
 
 
+    Scenario Outline: Login user with correct parameters
+      When User clicks on Signup Login button
+      And User enters email '<Email>' and password '<Password>'
+      And User clicks login button
+      And User clicks Delete Account button
+      Then User verifies that account has been deleted
+
+      Examples:
+        | Email          | Password |
+        | loco1@test.com | a        |
