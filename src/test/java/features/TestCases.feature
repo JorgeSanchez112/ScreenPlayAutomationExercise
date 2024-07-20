@@ -22,13 +22,34 @@ Feature: TestCases
       |   testTitle     |  testName    |  testloco4@test.com |   testPassword       | 2            | 12             |    2000       |FirstName Test | LastName Test | NameCompany Test  | Street #1 address | Street #2 address | Canada  | State 1 | Capital Canada | #22024#22 | 1002334531    |
 
 
-    Scenario Outline: Login user with correct parameters
+  Scenario Outline: Login user with correct parameters
       When User clicks on Signup Login button
       And User enters email '<Email>' and password '<Password>'
       And User clicks login button
       And User clicks Delete Account button
       Then User verifies that account has been deleted
 
-      Examples:
+      Examples: data of user registered
         | Email          | Password |
         | loco1@test.com | a        |
+
+  Scenario Outline: Login user with incorrect parameters
+    When User clicks on Signup Login button
+    And User enters email '<Email>' and password '<Password>'
+    And User clicks login button
+    Then Message of wrong email or password should be visible
+
+    Examples: incorrect data
+      | Email               | Password      |
+      | wrongEma1l@test.com | wrongPassword |
+
+  Scenario Outline: Logout user
+    When User clicks on Signup Login button
+    And User enters email '<Email>' and password '<Password>'
+    And User clicks login button
+    And User clicks logout button
+    Then User should be navigated to login page
+
+    Examples: data of user registered
+      | Email                    | Password |
+      | noDelete@thisAccount.com | a        |

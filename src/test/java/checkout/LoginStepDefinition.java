@@ -45,8 +45,8 @@ public class LoginStepDefinition {
         Actor user = OnStage.theActorCalled("user");
 
         user.attemptsTo(
-                TypeIn.the(LoginPage.emailAddressInputLogin,"loco1@test.com"),
-                TypeIn.the(LoginPage.passwordInput,"a")
+                TypeIn.the(LoginPage.emailAddressInputLogin,email),
+                TypeIn.the(LoginPage.passwordInput,password)
         );
 
     }
@@ -98,7 +98,7 @@ public class LoginStepDefinition {
         );
     }
 
-    @Then("the error message Your email or password is incorrect! should be visible")
+    @Then("Message of wrong email or password should be visible")
     public void isErrorMessageAboutLoginDataVisible() {
         Actor user = OnStage.theActorCalled("user");
 
@@ -107,7 +107,7 @@ public class LoginStepDefinition {
         );
     }
 
-    @Then("The user should be navigated to the login page")
+    @Then("User should be navigated to login page")
     public void isUserOnLoginPage() {
         Actor user = OnStage.theActorCalled("user");
 

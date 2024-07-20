@@ -183,7 +183,7 @@ public class HomeStepDefinition {
         );
     }
 
-    @When("The user clicks the Logout button")
+    @When("User clicks logout button")
     public void clickLogOutButton(){
         Actor user = OnStage.theActorCalled("user");
 
