@@ -53,3 +53,22 @@ Feature: TestCases
     Examples: data of user registered
       | Email                    | Password |
       | noDelete@thisAccount.com | a        |
+
+  Scenario: Register user with existing email
+    When User clicks on Signup Login button
+    And User enters name 'noDeleteMe' and email 'noDelete@thisAccount.com' address
+    And User clicks SignUp button
+    Then User verifies Email Address already exist! message is visible
+
+  Scenario Outline: Contact us form
+    When User clicks on Contact Us button
+    And User enters '<Name>' '<Email>' '<Subject>' '<Message>'
+    And User uploads file '<FilePath>'
+    And User clicks on Submit button
+    And User clicks on OK button
+    And User clicks on Home button
+    Then User should be navigated to the home page successfully
+
+    Examples:
+      | Name               | Email                 | Subject        | Message                       | FilePath                                     |
+      | nameUnacknowledged | emailUn@Knowledge.com | functionalTest | Message 00 T0 kn0w 1f 1t w0rk5| C:\Users\Jorge\Downloads\sampleFile(22).jpeg |

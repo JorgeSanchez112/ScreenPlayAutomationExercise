@@ -13,16 +13,15 @@ public class FillOutGetInTouchForm implements Task {
     private String message;
     private String filePath;
 
-    public FillOutGetInTouchForm(String name, String email, String subject, String message, String filePath){
+    public FillOutGetInTouchForm(String name, String email, String subject, String message){
         this.name = name;
         this.email = email;
         this.subject = subject;
         this.message = message;
-        this.filePath = filePath;
     }
 
-    public static FillOutGetInTouchForm withCredentials(String name, String email, String subject, String message, String filePath){
-        return new FillOutGetInTouchForm(name,email,subject,message,filePath);
+    public static FillOutGetInTouchForm withCredentials(String name, String email, String subject, String message){
+        return new FillOutGetInTouchForm(name,email,subject,message);
     }
 
     @Override
@@ -31,8 +30,7 @@ public class FillOutGetInTouchForm implements Task {
                 TypeIn.the(ContactUsPage.nameField,name),
                 TypeIn.the(ContactUsPage.emailField,email),
                 TypeIn.the(ContactUsPage.subjectField,subject),
-                TypeIn.the(ContactUsPage.messageField,message),
-                TypeIn.the(ContactUsPage.uploadFile,filePath)
+                TypeIn.the(ContactUsPage.messageField,message)
         );
     }
 }

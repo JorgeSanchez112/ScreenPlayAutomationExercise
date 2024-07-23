@@ -2,6 +2,7 @@ package checkout;
 
 import interactions.AcceptAlert;
 import interactions.ClickOn;
+import interactions.TypeIn;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.Actor;
@@ -13,16 +14,25 @@ import uiScreens.ContactUsPage;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 
 public class ContactUsStepDefinitions {
-    @When("The user fill out GET IN TOUCH form")
-    public void fillOutGetInTouchForm(){
+    @When("User enters {string} {string} {string} {string}")
+    public void fillOutGetInTouchForm(String name, String email, String subject, String message){
         Actor user = OnStage.theActorCalled("user");
 
         user.attemptsTo(
-                FillOutGetInTouchForm.withCredentials("test","test@testmail.com","testing","This is a message to test if the info is sent it correctly","C:\\Users\\Jorge\\Downloads\\sampleFile(22).jpeg")
+                FillOutGetInTouchForm.withCredentials(name,email,subject,message)
         );
     }
 
-    @When("The user clicks on Submit button")
+    @When("User uploads file {string}")
+    public void uploadAFile(String filePath){
+        Actor user = OnStage.theActorCalled("user");
+
+        user.attemptsTo(
+                TypeIn.the(ContactUsPage.uploadFile,filePath)
+        );
+    }
+
+    @When("User clicks on Submit button")
     public void clickOnSubmitButton(){
         Actor user = OnStage.theActorCalled("user");
 
@@ -31,7 +41,7 @@ public class ContactUsStepDefinitions {
         );
     }
 
-    @When("The user accept the alert")
+    @When("User clicks on OK button")
     public void acceptAlertOnContactUsPage(){
         Actor user = OnStage.theActorCalled("user");
 
@@ -40,7 +50,7 @@ public class ContactUsStepDefinitions {
         );
     }
 
-    @When("The user clicks the Home button")
+    @When("User clicks on Home button")
     public void clickOnHomeButton(){
         Actor user = OnStage.theActorCalled("user");
 

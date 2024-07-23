@@ -20,15 +20,10 @@ public class LoginStepDefinition {
     public void typeNameAndEmailAddress(String name, String email){
         Actor user = OnStage.theActorCalled("user");
 
-        if (DoesAccountExist.forEmail(email).answeredBy(user)){
-            System.out.println("Account has been already created");
-        }else{
-            user.attemptsTo(
-                    TypeIn.the(LoginPage.nameInput,name),
-                    TypeIn.the(LoginPage.emailAddressInputSignUp,email)
-            );
-        }
-
+        user.attemptsTo(
+                TypeIn.the(LoginPage.nameInput,name),
+                TypeIn.the(LoginPage.emailAddressInputSignUp,email)
+        );
     }
 
     @When("User clicks SignUp button")
@@ -70,16 +65,6 @@ public class LoginStepDefinition {
 
     }
 
-    @When("The user enter name and an already registered email address")
-    public void enterNameAndAlreadyRegisteredEmailAddress() {
-        Actor user = OnStage.theActorCalled("user");
-
-        user.attemptsTo(
-                TypeIn.the(LoginPage.nameInput,"loco2"),
-                TypeIn.the(LoginPage.emailAddressInputSignUp,"loco2@test.com")
-        );
-    }
-
     @Then("Login to your account should be visible")
     public void isLoginToYourAccountVisible() {
         Actor user = OnStage.theActorCalled("user");
@@ -118,7 +103,7 @@ public class LoginStepDefinition {
         );
     }
 
-    @Then("The error message Email Address already exist! should be visible")
+    @Then("User verifies Email Address already exist! message is visible")
     public void isEmailAlreadyExistMessageVisible() {
         Actor user = OnStage.theActorCalled("user");
 

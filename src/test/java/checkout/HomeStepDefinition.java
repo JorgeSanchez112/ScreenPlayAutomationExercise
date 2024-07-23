@@ -131,7 +131,7 @@ public class HomeStepDefinition {
         );
     }
 
-    @When("The user clicks on Contact Us button")
+    @When("User clicks on Contact Us button")
     public void clickOnContactUsButton(){
         Actor user = OnStage.theActorCalled("user");
 
@@ -417,9 +417,10 @@ public class HomeStepDefinition {
     }
 
 
-    @Then("The user should be navigated to the home page successfully {string}")
-    public void userShouldBeOnHomePage(String urlExpected){
+    @Then("User should be navigated to the home page successfully")
+    public void userShouldBeOnHomePage(){
         Actor user = OnStage.theActorCalled("user");
+        final String urlExpected = "https://automationexercise.com/";
 
         BrowseTheWeb.as(user).getDriver().navigate().refresh();
 
