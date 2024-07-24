@@ -69,11 +69,11 @@ public class ProductDetailsStepDefinitions {
         );
     }
 
-    @Then("The product detail page should be opened")
+    @Then("User is landed to product detail page")
     public void isProductDetailPageOpen() {
         Actor user = OnStage.theActorCalled("user");
 
-        String currentUrl = BrowseTheWeb.as(user).getDriver().getCurrentUrl();
+        String currentUrl = BrowseTheWeb.as(user).getDriver().getCurrentUrl(); //Try to do this with expression regular
 
         user.attemptsTo(
                 Ensure.that(currentUrl).isNotEqualTo("https://automationexercise.com/")
@@ -111,8 +111,8 @@ public class ProductDetailsStepDefinitions {
         );
     }
 
-    @Then("The product details should be visible")
-    public void isProductsDetailsVisible() {
+    @Then("User verifies product name is visible")
+    public void isProductNameInDetailsPageVisible() {
         Actor user = OnStage.theActorCalled("user");
 
         user.attemptsTo(
@@ -121,6 +121,72 @@ public class ProductDetailsStepDefinitions {
 
         user.should(
                 seeThat(CurrentVisibility.of(ProductDetailsPage.productName))
+        );
+    }
+
+    @Then("User verifies category is visible")
+    public void isCategoryInDetailsPageVisible() {
+        Actor user = OnStage.theActorCalled("user");
+
+        user.attemptsTo(
+                ScrollToElement.target(ProductDetailsPage.productCategory)
+        );
+
+        user.should(
+                seeThat(CurrentVisibility.of(ProductDetailsPage.productCategory))
+        );
+    }
+
+    @Then("User verifies price is visible")
+    public void isPriceInDetailsPageVisible() {
+        Actor user = OnStage.theActorCalled("user");
+
+        user.attemptsTo(
+                ScrollToElement.target(ProductDetailsPage.productPrice)
+        );
+
+        user.should(
+                seeThat(CurrentVisibility.of(ProductDetailsPage.productPrice))
+        );
+    }
+
+
+    @Then("User verifies availability is visible")
+    public void isAvailabilityInDetailsPageVisible() {
+        Actor user = OnStage.theActorCalled("user");
+
+        user.attemptsTo(
+                ScrollToElement.target(ProductDetailsPage.productAvailability)
+        );
+
+        user.should(
+                seeThat(CurrentVisibility.of(ProductDetailsPage.productAvailability))
+        );
+    }
+
+    @Then("User verifies condition is visible")
+    public void isConditionInDetailsPageVisible() {
+        Actor user = OnStage.theActorCalled("user");
+
+        user.attemptsTo(
+                ScrollToElement.target(ProductDetailsPage.productCondition)
+        );
+
+        user.should(
+                seeThat(CurrentVisibility.of(ProductDetailsPage.productCondition))
+        );
+    }
+
+    @Then("User verifies brand is visible")
+    public void isBrandInDetailsPageVisible() {
+        Actor user = OnStage.theActorCalled("user");
+
+        user.attemptsTo(
+                ScrollToElement.target(ProductDetailsPage.productBrand)
+        );
+
+        user.should(
+                seeThat(CurrentVisibility.of(ProductDetailsPage.productBrand))
         );
     }
 }

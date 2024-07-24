@@ -27,10 +27,9 @@ public class HomeStepDefinition {
         );
     }
 
-    @When("The user clicks on the Test Cases button")
+    @When("User clicks on Test Cases button")
     public void clickOnTestCasesButton(){
         Actor user = OnStage.theActorCalled("user");
-
 
         user.attemptsTo(
                 NavigateTo.withElementFacade(HeaderMenuComponent.headerMenu.resolveAllFor(user).get(4))
@@ -149,7 +148,7 @@ public class HomeStepDefinition {
         );
     }
 
-    @When("The user clicks on the Products button")
+    @When("User clicks on Products button")
     public void the_user_click_on_the_products_button() {
         Actor user = OnStage.theActorCalled("user");
 
@@ -223,7 +222,7 @@ public class HomeStepDefinition {
         } while (!validate);
     }
 
-    @When("The user clicks on the View Product button of the first product")
+    @When("User clicks on View Product of first product")
     public void clickOnTheViewProductButtonOfFirstProduct() {
         Actor user = OnStage.theActorCalled("user");
         AdBlockerJs.AdBlockerJs(BrowserStepDefinitions.driver);
