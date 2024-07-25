@@ -28,7 +28,6 @@ Feature: TestCases
 #      And User clicks login button
 #      And User clicks Delete Account button
 #      Then User verifies that account has been deleted
-#
 #      Examples: data of user registered
 #        | Email          | Password |
 #        | loco1@test.com | a        |
@@ -38,7 +37,6 @@ Feature: TestCases
 #    And User enters email '<Email>' and password '<Password>'
 #    And User clicks login button
 #    Then Message of wrong email or password should be visible
-#
 #    Examples: incorrect data
 #      | Email               | Password      |
 #      | wrongEma1l@test.com | wrongPassword |
@@ -49,7 +47,6 @@ Feature: TestCases
 #    And User clicks login button
 #    And User clicks logout button
 #    Then User should be navigated to login page
-#
 #    Examples: data of user registered
 #      | Email                    | Password |
 #      | noDelete@thisAccount.com | a        |
@@ -68,22 +65,42 @@ Feature: TestCases
 #    And User clicks on OK button
 #    And User clicks on Home button
 #    Then User should be navigated to the home page successfully
-#
 #    Examples:
 #      | Name               | Email                 | Subject        | Message                       | FilePath                                     |
 #      | nameUnacknowledged | emailUn@Knowledge.com | functionalTest | Message 00 T0 kn0w 1f 1t w0rk5| C:\Users\Jorge\Downloads\sampleFile(22).jpeg |
 
-    Scenario: Verify Test cases page
-      When User clicks on Test Cases button
-      Then User should be navigated to the test cases page successfully
+#    Scenario: Verify Test cases page
+#      When User clicks on Test Cases button
+#      Then User should be navigated to the test cases page successfully
+#
+#    Scenario: Verify products detail page
+#      When User clicks on Products button
+#      And User clicks on View Product of first product
+#      Then User is landed to product detail page
+#      And User verifies product name is visible
+#      And User verifies category is visible
+#      And User verifies price is visible
+#      And User verifies availability is visible
+#      And User verifies condition is visible
+#      And User verifies brand is visible
 
-    Scenario: Verify products detail page
-      When User clicks on Products button
-      And User clicks on View Product of first product
-      Then User is landed to product detail page
-      And User verifies product name is visible
-      And User verifies category is visible
-      And User verifies price is visible
-      And User verifies availability is visible
-      And User verifies condition is visible
-      And User verifies brand is visible
+  Scenario Outline: Search Product
+    When User clicks on Products button
+    And User enters the product name '<Name of product to search>' in the search input
+    And User clicks the search button
+    Then '<Name of product to search>' should be visible
+    And all the products related to the search '<Name of product to search>' should be visible
+    Examples:
+      | Name of product to search   |
+      | Sleeves Printed Top - White |
+
+  Scenario Outline: Verify subscription in home page
+    When User scrolls down to footer
+    And User enters email '<Email address>' address in the input
+    And User clicks arrow button
+    Then User sees a successful subscription message
+    Examples:
+      | Email address     |
+      | email@address.com |
+
+

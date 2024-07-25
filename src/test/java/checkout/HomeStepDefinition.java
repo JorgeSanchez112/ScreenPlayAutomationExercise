@@ -36,7 +36,7 @@ public class HomeStepDefinition {
         );
     }
 
-    @When("The user scroll down to the footer")
+    @When("User scrolls down to footer")
     public void scrollDownToFooter(){
         Actor user = OnStage.theActorCalled("user");
 
@@ -45,12 +45,12 @@ public class HomeStepDefinition {
         );
     }
 
-    @When("The user enter an email address in the input field")
-    public void the_user_enter_an_email_address_in_the_input_field() {
+    @When("User enters email {string} address in the input")
+    public void userTypeEmailAddressInInputFieldOfSubscription(String emailAddress) {
         Actor user = OnStage.theActorCalled("user");
 
         user.attemptsTo(
-                TypeIn.the(HomePage.subscribeEmailInput,"email@address.com")
+                TypeIn.the(HomePage.subscribeEmailInput,emailAddress)
         );
     }
 
@@ -64,7 +64,7 @@ public class HomeStepDefinition {
         );
     }
 
-    @When("The user clicks the arrow button")
+    @When("User clicks arrow button")
     public void clickOnArrowButton(){
         Actor user = OnStage.theActorCalled("user");
 
@@ -348,7 +348,7 @@ public class HomeStepDefinition {
         );
     }
 
-    @Then("The success message You have been successfully subscribed! should be visible")
+    @Then("User sees a successful subscription message")
     public void isMessageSuccessfullySubscribedVisible(){
         Actor user = OnStage.theActorCalled("user");
 

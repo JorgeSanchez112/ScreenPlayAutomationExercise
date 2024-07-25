@@ -8,7 +8,7 @@ public class ProductsPage extends PageObject {
     public static Target searchInput = Target.the("search input of products page").located(By.id("search_product"));
     public static Target searchButton = Target.the("search button of search input").located(By.id("submit_search"));
     public static Target productsTitle = Target.the("ALL PRODUCTS title").locatedBy(".features_items > .col-sm-4 >* .productinfo > p");
-    public static Target titleOFProduct = Target.the("title or name of each product").locatedBy(".productinfo > p");
+    public static Target titleOfProduct = Target.the("title or name of each product").locatedBy(".productinfo > p");
     public static Target brandsTitle = Target.the("Brands Title").locatedBy(".brands_products > h2");
     public static Target products = Target.the("Elements of products").locatedBy(".features_items > .col-sm-4");
     public static Target addToCartButtonOverlay = Target.the("Add To cart button in the overlay way").locatedBy(".product-overlay >* a");

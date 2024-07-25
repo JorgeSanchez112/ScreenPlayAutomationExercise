@@ -12,10 +12,12 @@ import net.serenitybdd.screenplay.questions.TextValue;
 import uiScreens.ProductsPage;
 
 
+import java.util.List;
+
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 
 public class AllProductsStepDefinitions {
-    @When("The user enter the product name {string} in the search input")
+    @When("User enters the product name {string} in the search input")
     public void userEnterProductNameInSearchInput(String productName) {
         Actor user = OnStage.theActorCalled("user");
 
@@ -24,7 +26,7 @@ public class AllProductsStepDefinitions {
         );
     }
 
-    @When("The user clicks the search button")
+    @When("User clicks the search button")
     public void userClickOnSearchButton() {
         Actor user = OnStage.theActorCalled("user");
 
@@ -108,22 +110,23 @@ public class AllProductsStepDefinitions {
         );
     }
 
-    @Then("all the products related to the search should be visible")
-    public void areAllProductsRelatedToSearchVisible() {
+    @Then("all the products related to the search {string} should be visible")
+    public void areAllProductsRelatedToSearchVisible(String productNameSearched) {
         Actor user = OnStage.theActorCalled("user");
 
-        int CurrentNumberOfProductsShowed = ProductsPage.products.resolveAllFor(user).size();
+        List<String> name = ProductsPage.titleOfProduct.resolveAllFor(user).textContents();
 
         user.attemptsTo(
-                Ensure.that(CurrentNumberOfProductsShowed).isLessThan(34)
+                Ensure.that(name).contains(productNameSearched)
         );
+
     }
 
     @Then("{string} should be visible")
     public void isProductTitleValueCorrect(String expectedProductTitle) {
         Actor user = OnStage.theActorCalled("user");
 
-        String valueOFProduct = user.asksFor(TextValue.of(ProductsPage.titleOFProduct));
+        String valueOFProduct = ProductsPage.titleOfProduct.resolveAllFor(user).get(0).getText();
 
         user.attemptsTo(
                 Ensure.that(valueOFProduct).isEqualTo(expectedProductTitle)
