@@ -44,38 +44,55 @@ public class CartStepDefinitions {
         );
     }
 
-    @Then("both products should be added to the cart")
+    @Then("User watch both products in cart")
     public void areProductsVisibleInCart() {
         Actor user = OnStage.theActorCalled("user");
 
-        user.should(
-                seeThat(CurrentVisibility.of(CartPage.products))
+        user.attemptsTo(
+                Ensure.that(CartPage.products.resolveAllFor(user)).hasSize(2)
         );
     }
 
-    @Then("The details of both products including their prices, quantities, and total price should be correct")
-    public void isTheUserDirectedToAllProductsPageSuccessfully() {
+    @Then("User watches their prices {string} {string}")
+    public void validatePricesOfTwoBeginProducts(String expectedFirstProductPrice, String expectedSecondProductPrice) {
         Actor user = OnStage.theActorCalled("user");
 
         String priceFirstProduct = CartPage.priceField.resolveAllFor(user).get(0).getText();
         String priceSecondProduct = CartPage.priceField.resolveAllFor(user).get(1).getText();
 
+        user.attemptsTo(
+                Ensure.that(priceFirstProduct).isEqualTo(expectedFirstProductPrice),
+                Ensure.that(priceSecondProduct).isEqualTo(expectedSecondProductPrice)
+        );
+
+
+    }
+
+    @Then("User watches their quantity {string} {string}")
+    public void validateQuantityOfTwoBeginProducts(String expectedFirstProductQuantity, String expectedSecondProductQuantity) {
+        Actor user = OnStage.theActorCalled("user");
+
         String quantityFirstProduct = CartPage.quantityField.resolveAllFor(user).get(0).getText();
         String quantitySecondProduct = CartPage.quantityField.resolveAllFor(user).get(1).getText();
+
+        user.attemptsTo(
+                Ensure.that(quantityFirstProduct).isEqualTo(expectedFirstProductQuantity),
+                Ensure.that(quantitySecondProduct).isEqualTo(expectedSecondProductQuantity)
+        );
+
+    }
+
+    @Then("User watches their total price {string} {string}")
+    public void validateTotalPriceOfTwoBeginProducts(String expectedFirstProductTotalPrice, String expectedSecondProductTotalPrice) {
+        Actor user = OnStage.theActorCalled("user");
 
         String totalFirstProduct = CartPage.totalField.resolveAllFor(user).get(0).getText();
         String totalSecondProduct = CartPage.totalField.resolveAllFor(user).get(1).getText();
 
-
         user.attemptsTo(
-                Ensure.that(priceFirstProduct).isEqualTo("Rs. 500"),
-                Ensure.that(priceSecondProduct).isEqualTo("Rs. 400"),
-                Ensure.that(quantityFirstProduct).isEqualTo("1"),
-                Ensure.that(quantitySecondProduct).isEqualTo("1"),
-                Ensure.that(totalFirstProduct).isEqualTo("Rs. 500"),
-                Ensure.that(totalSecondProduct).isEqualTo("Rs. 400")
+                Ensure.that(totalFirstProduct).isEqualTo(expectedFirstProductTotalPrice),
+                Ensure.that(totalSecondProduct).isEqualTo(expectedSecondProductTotalPrice)
         );
-
     }
 
     @Then("The user should be on the cart page")

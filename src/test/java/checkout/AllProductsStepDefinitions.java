@@ -35,7 +35,7 @@ public class AllProductsStepDefinitions {
         );
     }
 
-    @When("The user hover over the first product")
+    @When("User hovers over first product")
     public void hoverOverFirstProduct(){
         Actor user = OnStage.theActorCalled("user");
 
@@ -45,7 +45,7 @@ public class AllProductsStepDefinitions {
         );
     }
 
-    @When("The user clicks the Add to cart button overlay")
+    @When("User clicks on Add to cart button")
     public void clickOnAddToCartButtonOverlay(){
         Actor user = OnStage.theActorCalled("user");
 
@@ -54,7 +54,7 @@ public class AllProductsStepDefinitions {
         );
     }
 
-    @When("The user clicks the Continue Shopping button")
+    @When("User clicks Continue shopping button")
     public void clickOnContinueShoppingButton(){
         Actor user = OnStage.theActorCalled("user");
 
@@ -63,7 +63,7 @@ public class AllProductsStepDefinitions {
         );
     }
 
-    @When("The user hover over the second product")
+    @When("User hovers over second product")
     public void hoverOverSecondProduct(){
         Actor user = OnStage.theActorCalled("user");
 
@@ -73,7 +73,7 @@ public class AllProductsStepDefinitions {
         );
     }
 
-    @When("The user clicks the Add to cart button 2")
+    @When("User clicks on Add to cart button of second product")
     public void clickOnAddToCartButtonOverlay2(){
         Actor user = OnStage.theActorCalled("user");
 
@@ -82,7 +82,7 @@ public class AllProductsStepDefinitions {
         );
     }
 
-    @When("The user clicks the View Cart link")
+    @When("User clicks on View cart button")
     public void clickOnViewCartLink(){
         Actor user = OnStage.theActorCalled("user");
 

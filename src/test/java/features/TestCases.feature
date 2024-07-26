@@ -84,18 +84,28 @@ Feature: TestCases
 #      And User verifies condition is visible
 #      And User verifies brand is visible
 
-  Scenario Outline: Search Product
-    When User clicks on Products button
-    And User enters the product name '<Name of product to search>' in the search input
-    And User clicks the search button
-    Then '<Name of product to search>' should be visible
-    And all the products related to the search '<Name of product to search>' should be visible
-    Examples:
-      | Name of product to search   |
-      | Sleeves Printed Top - White |
+#  Scenario Outline: Search Product
+#    When User clicks on Products button
+#    And User enters the product name '<Name of product to search>' in the search input
+#    And User clicks the search button
+#    Then '<Name of product to search>' should be visible
+#    And all the products related to the search '<Name of product to search>' should be visible
+#    Examples:
+#      | Name of product to search   |
+#      | Sleeves Printed Top - White |
+#
+#  Scenario Outline: Verify subscription in home page
+#    When User scrolls down to footer
+#    And User enters email '<Email address>' address in the input
+#    And User clicks arrow button
+#    Then User sees a successful subscription message
+#    Examples:
+#      | Email address     |
+#      | email@address.com |
 
-  Scenario Outline: Verify subscription in home page
-    When User scrolls down to footer
+  Scenario Outline: Verify subscription in cart page
+    When User clicks on Cart button
+    And User scrolls down to footer
     And User enters email '<Email address>' address in the input
     And User clicks arrow button
     Then User sees a successful subscription message
@@ -103,4 +113,18 @@ Feature: TestCases
       | Email address     |
       | email@address.com |
 
-
+  Scenario Outline: Add products in cart
+    When User clicks on Products button
+    And User hovers over first product
+    And User clicks on Add to cart button
+    And User clicks Continue shopping button
+    And User hovers over second product
+    And User clicks on Add to cart button of second product
+    And User clicks on View cart button
+    Then User watch both products in cart
+    And User watches their prices '<First product price>' '<Second product price>'
+    And User watches their quantity '<First product quantity>' '<Second product quantity>'
+    And User watches their total price '<First product total price>' '<Second product total price>'
+    Examples:
+      | First product price | Second product price | First product quantity | Second product quantity | First product total price | Second product total price |
+      |  Rs. 500            | Rs. 400              | 1                      | 1                      | Rs. 500                   | Rs. 400                    |

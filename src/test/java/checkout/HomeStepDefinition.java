@@ -205,7 +205,7 @@ public class HomeStepDefinition {
         );
     }
 
-    @When("The user clicks the Cart button")
+    @When("User clicks on Cart button")
     public void clickOnCartButton() {
         Actor user = OnStage.theActorCalled("user");
         AdBlockerJs.AdBlockerJs(BrowserStepDefinitions.driver);
