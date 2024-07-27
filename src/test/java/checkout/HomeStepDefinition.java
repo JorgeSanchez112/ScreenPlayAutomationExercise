@@ -191,7 +191,7 @@ public class HomeStepDefinition {
         );
     }
 
-    @When("The user add products to the cart")
+    @When("User adds products to cart")
     public void AddProductsToCart() {
         Actor user = OnStage.theActorCalled("user");
         AdBlockerJs.AdBlockerJs(BrowserStepDefinitions.driver);
@@ -243,29 +243,19 @@ public class HomeStepDefinition {
         BrowseTheWeb.as(user).getDriver().navigate().refresh();
     }
 
-    @When("The user clicks the View Product button for any product")
+    @When("User clicks View product for any product")
     public void clickOnViewProductButtonForAnyProduct() {
         Actor user = OnStage.theActorCalled("user");
         AdBlockerJs.AdBlockerJs(BrowserStepDefinitions.driver);
-        boolean validate = false;
 
         user.attemptsTo(GenerateRandomNumber.Between(0,33));
-
         int randomNumber = user.recall("RANDOM_NUMBER");
 
-        do{
-            user.attemptsTo(
-                    ScrollToElement.elementFacade(HomePage.viewProductButton.resolveAllFor(user).get(randomNumber)),
-                    ClickOn.the(HomePage.viewProductButton.resolveAllFor(user).get(randomNumber))
-            );
+        user.attemptsTo(
+                ScrollToElement.elementFacade(HomePage.viewProductButton.resolveAllFor(user).get(randomNumber)),
+                ClickOn.the(HomePage.viewProductButton.resolveAllFor(user).get(randomNumber))
+        );
 
-
-            if (ProductDetailsPage.productName.isVisibleFor(user)){
-                validate = true;
-            }
-        } while (!validate);
-
-        BrowseTheWeb.as(user).getDriver().navigate().refresh();
     }
 
     @When("The user clicks on the Add To Cart button on a recommended product")
@@ -301,7 +291,7 @@ public class HomeStepDefinition {
         );
     }
 
-    @When("The user add a product to the cart")
+    @When("User adds product to cart")
     public void AddAProductToCart() {
         Actor user = OnStage.theActorCalled("user");
         AdBlockerJs.AdBlockerJs(BrowserStepDefinitions.driver);

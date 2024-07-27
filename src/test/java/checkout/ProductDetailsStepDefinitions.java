@@ -7,6 +7,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
+import net.serenitybdd.screenplay.actions.Clear;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.ensure.Ensure;
 import net.serenitybdd.screenplay.questions.CurrentVisibility;
@@ -20,17 +21,18 @@ import utils.AdBlockerJs;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 
 public class ProductDetailsStepDefinitions {
-    @When("The user increase the quantity to {string}")
+    @When("User increases quantity to {string}")
     public void increaseQuantityOfProduct(String quantity) {
         Actor user = OnStage.theActorCalled("user");
 
         user.attemptsTo(
                 ScrollToElement.target(ProductDetailsPage.inputOfProductQuantity),
+                Clear.field(ProductDetailsPage.inputOfProductQuantity),
                 TypeIn.the(ProductDetailsPage.inputOfProductQuantity, quantity)
         );
     }
 
-    @When("The user clicks the Add to cart button")
+    @When("User clicks Add to cart button")
     public void clickOnAddToCartButton() {
         Actor user = OnStage.theActorCalled("user");
 
@@ -59,7 +61,7 @@ public class ProductDetailsStepDefinitions {
         );
     }
 
-    @When("The user clicks the View Cart button")
+    @When("User clicks View Cart button")
     public void clickOnViewCartButton() {
         Actor user = OnStage.theActorCalled("user");
         AdBlockerJs.AdBlockerJs(BrowseTheWeb.as(user).getDriver());
@@ -81,7 +83,7 @@ public class ProductDetailsStepDefinitions {
     }
 
     //Weird assert, this needs a revision
-    @Then("The product should be displayed in the cart page with the exact quantity {string}")
+    @Then("User watches the product in cart page with the same quantity {string}")
     public void isQuantityProductSameOnCartPage(String expectedQuantity) {
         Actor user = OnStage.theActorCalled("user");
 

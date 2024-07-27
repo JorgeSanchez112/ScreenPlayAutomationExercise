@@ -54,16 +54,6 @@ public class LoginStepDefinition {
                 ClickOn.the(LoginPage.buttonLogin)
         );
     }
-    @When("The user enter an incorrect email address and password")
-    public void enterIncorrectInfoToLogin() {
-        Actor user = OnStage.theActorCalled("user");
-
-        user.attemptsTo(
-                TypeIn.the(LoginPage.emailAddressInputLogin,"incorrectEmail@test.com"),
-                TypeIn.the(LoginPage.passwordInput,"incorrect")
-        );
-
-    }
 
     @Then("Login to your account should be visible")
     public void isLoginToYourAccountVisible() {

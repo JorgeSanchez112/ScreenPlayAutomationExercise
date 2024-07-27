@@ -68,7 +68,7 @@ Feature: TestCases
 #    Examples:
 #      | Name               | Email                 | Subject        | Message                       | FilePath                                     |
 #      | nameUnacknowledged | emailUn@Knowledge.com | functionalTest | Message 00 T0 kn0w 1f 1t w0rk5| C:\Users\Jorge\Downloads\sampleFile(22).jpeg |
-
+#
 #    Scenario: Verify Test cases page
 #      When User clicks on Test Cases button
 #      Then User should be navigated to the test cases page successfully
@@ -83,7 +83,7 @@ Feature: TestCases
 #      And User verifies availability is visible
 #      And User verifies condition is visible
 #      And User verifies brand is visible
-
+#
 #  Scenario Outline: Search Product
 #    When User clicks on Products button
 #    And User enters the product name '<Name of product to search>' in the search input
@@ -102,29 +102,68 @@ Feature: TestCases
 #    Examples:
 #      | Email address     |
 #      | email@address.com |
+#
+#  Scenario Outline: Verify subscription in cart page
+#    When User clicks on Cart button
+#    And User scrolls down to footer
+#    And User enters email '<Email address>' address in the input
+#    And User clicks arrow button
+#    Then User sees a successful subscription message
+#    Examples:
+#      | Email address     |
+#      | email@address.com |
+#
+#  Scenario Outline: Add products in cart
+#    When User clicks on Products button
+#    And User hovers over first product
+#    And User clicks on Add to cart button
+#    And User clicks Continue shopping button
+#    And User hovers over second product
+#    And User clicks on Add to cart button of second product
+#    And User clicks on View cart button
+#    Then User watch both products in cart
+#    And User watches their prices '<First product price>' '<Second product price>'
+#    And User watches their quantity '<First product quantity>' '<Second product quantity>'
+#    And User watches their total price '<First product total price>' '<Second product total price>'
+#    Examples:
+#      | First product price | Second product price | First product quantity | Second product quantity | First product total price | Second product total price |
+#      |  Rs. 500            | Rs. 400              | 1                      | 1                      | Rs. 500                   | Rs. 400                    |
 
-  Scenario Outline: Verify subscription in cart page
-    When User clicks on Cart button
-    And User scrolls down to footer
-    And User enters email '<Email address>' address in the input
-    And User clicks arrow button
-    Then User sees a successful subscription message
+  Scenario Outline: Verify product quantity in cart
+    When User clicks View product for any product
+    And User increases quantity to '<Quantity>'
+    And User clicks Add to cart button
+    And User clicks View Cart button
+    Then User watches the product in cart page with the same quantity '<Quantity>'
     Examples:
-      | Email address     |
-      | email@address.com |
+      | Quantity |
+      | 4        |
 
-  Scenario Outline: Add products in cart
-    When User clicks on Products button
-    And User hovers over first product
-    And User clicks on Add to cart button
-    And User clicks Continue shopping button
-    And User hovers over second product
-    And User clicks on Add to cart button of second product
-    And User clicks on View cart button
-    Then User watch both products in cart
-    And User watches their prices '<First product price>' '<Second product price>'
-    And User watches their quantity '<First product quantity>' '<Second product quantity>'
-    And User watches their total price '<First product total price>' '<Second product total price>'
+
+  Scenario Outline: Place Order: Register while Checkout
+    When User adds products to cart
+    And User clicks on Cart button
+    And User clicks Proceed to checkout
+    And User clicks on Register Login button
+    And User enters name 'checkoutTest' and email 'Checkout@Test.com' address
+    And User clicks SignUp button
+    And User fills details of account information 'Ms.' '' 'a' '10' '12' '2000'
+    And User selects checkbox 'Sign up for our newsletter!'
+    And User selects checkbox 'Receive special offers from our partners!'
+    And User fills in the details of information 'Check' '0ut' 'danger' 'st. 124' 'N broodWay' 'US' 'michigan' 'california' '123412423' '1000222342'
+    And User clicks Create Account button
+    And User clicks Continue button
+    And User clicks on Cart button
+    And User clicks Proceed to checkout
+    And User enters description '<Description>' in comment text area
+    And User clicks Place holder
+    And User enters payment details '<Name on Card>' '<Card Number>' '<CVC>' '<Month expiration>' '<Year expiration>'
+    And User clicks on Pay and confirm order button
+    And User clicks Delete Account button
+    Then User verifies that account has been deleted
+    And User clicks Continue button
     Examples:
-      | First product price | Second product price | First product quantity | Second product quantity | First product total price | Second product total price |
-      |  Rs. 500            | Rs. 400              | 1                      | 1                      | Rs. 500                   | Rs. 400                    |
+      | Description           | Name on Card | Card Number | CVC | Month expiration | Year expiration |
+      | This is a description | Master       | 092124124   | 12  | 12               |   2100          |
+
+

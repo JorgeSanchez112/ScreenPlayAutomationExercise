@@ -15,7 +15,7 @@ import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 
 public class PaymentStepDefinitions {
 
-    @When("The user enter payment details: {string}, {string}, {string}, {string}, {string}")
+    @When("User enters payment details {string} {string} {string} {string} {string}")
     public void fillPaymentDetails(String nameOnCard, String cardNumber, String cvc, String monthExpiration, String yearExpiration) {
         Actor user = OnStage.theActorCalled("user");
 
@@ -24,7 +24,7 @@ public class PaymentStepDefinitions {
         );
     }
 
-    @When("The user clicks the Pay and Confirm Order button")
+    @When("User clicks on Pay and confirm order button")
     public void clickOnPayAndConfirmOrderButton() {
         Actor user = OnStage.theActorCalled("user");
 

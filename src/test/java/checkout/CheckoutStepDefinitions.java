@@ -14,7 +14,7 @@ import utils.AdBlockerJs;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 
 public class CheckoutStepDefinitions {
-    @When("The user enter a description {string} in the comment text area")
+    @When("User enters description {string} in comment text area")
     public void enterDescriptionInCommentTextArea(String comment) {
         Actor user = OnStage.theActorCalled("user");
 
@@ -24,7 +24,7 @@ public class CheckoutStepDefinitions {
 
     }
 
-    @When("The user clicks the Place Order button")
+    @When("User clicks Place holder")
     public void the_user_clicks_the_place_order_button() {
         Actor user = OnStage.theActorCalled("user");
 

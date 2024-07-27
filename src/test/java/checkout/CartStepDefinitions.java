@@ -15,7 +15,7 @@ import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 
 public class CartStepDefinitions {
 
-    @When("The user clicks Proceed To Checkout button")
+    @When("User clicks Proceed to checkout")
     public void clickOnProceedToCheckout() {
         Actor user = OnStage.theActorCalled("user");
 
@@ -41,6 +41,16 @@ public class CartStepDefinitions {
         user.attemptsTo(
                 ScrollToElement.target(CartPage.deleteProductButton),
                 ClickOn.the(CartPage.deleteProductButton)
+        );
+    }
+
+    @When("User clicks on Register Login button")
+    public void ClickOnRegisterLoginButton() {
+        Actor user = OnStage.theActorCalled("user");
+
+        user.attemptsTo(
+                ScrollToElement.target(CartPage.registerLoginLink),
+                ClickOn.the(CartPage.registerLoginLink)
         );
     }
 
