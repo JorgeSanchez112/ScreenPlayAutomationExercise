@@ -129,23 +129,46 @@ Feature: TestCases
 #      | First product price | Second product price | First product quantity | Second product quantity | First product total price | Second product total price |
 #      |  Rs. 500            | Rs. 400              | 1                      | 1                      | Rs. 500                   | Rs. 400                    |
 
-  Scenario Outline: Verify product quantity in cart
-    When User clicks View product for any product
-    And User increases quantity to '<Quantity>'
-    And User clicks Add to cart button
-    And User clicks View Cart button
-    Then User watches the product in cart page with the same quantity '<Quantity>'
-    Examples:
-      | Quantity |
-      | 4        |
+#  Scenario Outline: Verify product quantity in cart
+#    When User clicks View product for any product
+#    And User increases quantity to '<Quantity>'
+#    And User clicks Add to cart button
+#    And User clicks View Cart button
+#    Then User watches the product in cart page with the same quantity '<Quantity>'
+#    Examples:
+#      | Quantity |
+#      | 4        |
+#
+#
+#  Scenario Outline: Place Order: Register while Checkout
+#    When User adds products to cart
+#    And User clicks on Cart button
+#    And User clicks Proceed to checkout
+#    And User clicks on Register Login button
+#    And User enters name 'checkoutTest' and email 'Checkout@Test.com' address
+#    And User clicks SignUp button
+#    And User fills details of account information 'Ms.' '' 'a' '10' '12' '2000'
+#    And User selects checkbox 'Sign up for our newsletter!'
+#    And User selects checkbox 'Receive special offers from our partners!'
+#    And User fills in the details of information 'Check' '0ut' 'danger' 'st. 124' 'N broodWay' 'US' 'michigan' 'california' '123412423' '1000222342'
+#    And User clicks Create Account button
+#    And User clicks Continue button
+#    And User clicks on Cart button
+#    And User clicks Proceed to checkout
+#    And User enters description '<Description>' in comment text area
+#    And User clicks Place holder
+#    And User enters payment details '<Name on Card>' '<Card Number>' '<CVC>' '<Month expiration>' '<Year expiration>'
+#    And User clicks on Pay and confirm order button
+#    And User clicks Delete Account button
+#    Then User verifies that account has been deleted
+#    And User clicks Continue button
+#    Examples:
+#      | Description           | Name on Card | Card Number | CVC | Month expiration | Year expiration |
+#      | This is a description | Master       | 092124124   | 12  | 12               |   2100          |
 
-
-  Scenario Outline: Place Order: Register while Checkout
-    When User adds products to cart
-    And User clicks on Cart button
-    And User clicks Proceed to checkout
-    And User clicks on Register Login button
-    And User enters name 'checkoutTest' and email 'Checkout@Test.com' address
+  Scenario Outline: Place Order: Register before Checkout
+    When User clicks on Signup Login button
+    And User enters name 'checkoutTest1' and email 'Checkout1@Test.com' address
     And User clicks SignUp button
     And User fills details of account information 'Ms.' '' 'a' '10' '12' '2000'
     And User selects checkbox 'Sign up for our newsletter!'
@@ -153,6 +176,7 @@ Feature: TestCases
     And User fills in the details of information 'Check' '0ut' 'danger' 'st. 124' 'N broodWay' 'US' 'michigan' 'california' '123412423' '1000222342'
     And User clicks Create Account button
     And User clicks Continue button
+    And User adds products to cart
     And User clicks on Cart button
     And User clicks Proceed to checkout
     And User enters description '<Description>' in comment text area
@@ -164,6 +188,22 @@ Feature: TestCases
     And User clicks Continue button
     Examples:
       | Description           | Name on Card | Card Number | CVC | Month expiration | Year expiration |
-      | This is a description | Master       | 092124124   | 12  | 12               |   2100          |
+      | This is a description | Pepe         | 012124121   | 05  | 02               |   2050          |
 
-
+  Scenario Outline: Place Order: Login before Checkout
+    When User clicks on Signup Login button
+    And User enters email '<Email>' and password '<Password>'
+    And User clicks login button
+    And User adds products to cart
+    And User clicks on Cart button
+    And User clicks Proceed to checkout
+    And User enters description '<Description>' in comment text area
+    And User clicks Place holder
+    And User enters payment details '<Name on Card>' '<Card Number>' '<CVC>' '<Month expiration>' '<Year expiration>'
+    And User clicks on Pay and confirm order button
+    And User clicks Delete Account button
+    Then User verifies that account has been deleted
+    And User clicks Continue button
+    Examples:
+      | Email          | Password       | Description           | Name on Card | Card Number | CVC | Month expiration | Year expiration |
+      | On process     | On process     | This is a description | profession   | 213135232   | 02  | 05               |   2200          |
