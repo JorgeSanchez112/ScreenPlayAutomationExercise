@@ -73,7 +73,7 @@ public class HomeStepDefinition {
         );
     }
 
-    @When("The user clicks on the Women category")
+    @When("User clicks on Women category")
     public void clickOnWomenCategory(){
         Actor user = OnStage.theActorCalled("user");
 
@@ -84,7 +84,7 @@ public class HomeStepDefinition {
         );
     }
 
-    @When("The user clicks on {string} category link under Women category")
+    @When("User clicks on {string} subcategory link under Women category")
     public void clickOnSubWomenCategories(String subcategory){
         Actor user = OnStage.theActorCalled("user");
 
@@ -93,12 +93,13 @@ public class HomeStepDefinition {
         user.attemptsTo(
                 ScrollToElement.target(HomePage.brandsTitle),
                 ClickOn.the(HomePage.categories.resolveAllFor(user).get(0)),
+                WaitForVisibility.the(HomePage.womenCategories),
                 ClickOnAnElementByText.the(HomePage.womenCategories,subcategory)
         );
     }
 
-    @When("The user clicks on any sub-category link of Men category on the left sidebar")
-    public void goThroughMenSubCategory(){
+    @When("User clicks on {string} sub-category link of Men category on the left sidebar") //This should be in another place
+    public void goThroughMenSubCategory(String subCategory){
         Actor user = OnStage.theActorCalled("user");
 
         AdBlockerJs.AdBlockerJs(BrowserStepDefinitions.driver);
@@ -106,7 +107,8 @@ public class HomeStepDefinition {
         user.attemptsTo(
                 ScrollToElement.target(HomePage.brandsTitle),
                 ClickOn.the(HomePage.categories.resolveAllFor(user).get(1)),
-                ClickOnAnElementByText.the(HomePage.menCategories,"TSHIRTS")
+                WaitForVisibility.the(HomePage.menCategories),
+                ClickOnAnElementByText.the(HomePage.menCategories,subCategory)
         );
 
     }

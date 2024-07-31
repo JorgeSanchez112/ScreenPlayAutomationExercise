@@ -166,44 +166,63 @@ Feature: TestCases
 #      | Description           | Name on Card | Card Number | CVC | Month expiration | Year expiration |
 #      | This is a description | Master       | 092124124   | 12  | 12               |   2100          |
 
-  Scenario Outline: Place Order: Register before Checkout
-    When User clicks on Signup Login button
-    And User enters name 'checkoutTest1' and email 'Checkout1@Test.com' address
-    And User clicks SignUp button
-    And User fills details of account information 'Ms.' '' 'a' '10' '12' '2000'
-    And User selects checkbox 'Sign up for our newsletter!'
-    And User selects checkbox 'Receive special offers from our partners!'
-    And User fills in the details of information 'Check' '0ut' 'danger' 'st. 124' 'N broodWay' 'US' 'michigan' 'california' '123412423' '1000222342'
-    And User clicks Create Account button
-    And User clicks Continue button
-    And User adds products to cart
-    And User clicks on Cart button
-    And User clicks Proceed to checkout
-    And User enters description '<Description>' in comment text area
-    And User clicks Place holder
-    And User enters payment details '<Name on Card>' '<Card Number>' '<CVC>' '<Month expiration>' '<Year expiration>'
-    And User clicks on Pay and confirm order button
-    And User clicks Delete Account button
-    Then User verifies that account has been deleted
-    And User clicks Continue button
-    Examples:
-      | Description           | Name on Card | Card Number | CVC | Month expiration | Year expiration |
-      | This is a description | Pepe         | 012124121   | 05  | 02               |   2050          |
+#  Scenario Outline: Place Order: Register before Checkout
+#    When User clicks on Signup Login button
+#    And User enters name 'checkoutTest1' and email 'Checkout1@Test.com' address
+#    And User clicks SignUp button
+#    And User fills details of account information 'Ms.' '' 'a' '10' '12' '2000'
+#    And User selects checkbox 'Sign up for our newsletter!'
+#    And User selects checkbox 'Receive special offers from our partners!'
+#    And User fills in the details of information 'Check' '0ut' 'danger' 'st. 124' 'N broodWay' 'US' 'michigan' 'california' '123412423' '1000222342'
+#    And User clicks Create Account button
+#    And User clicks Continue button
+#    And User adds products to cart
+#    And User clicks on Cart button
+#    And User clicks Proceed to checkout
+#    And User enters description '<Description>' in comment text area
+#    And User clicks Place holder
+#    And User enters payment details '<Name on Card>' '<Card Number>' '<CVC>' '<Month expiration>' '<Year expiration>'
+#    And User clicks on Pay and confirm order button
+#    And User clicks Delete Account button
+#    Then User verifies that account has been deleted
+#    And User clicks Continue button
+#    Examples:
+#      | Description           | Name on Card | Card Number | CVC | Month expiration | Year expiration |
+#      | This is a description | Pepe         | 012124121   | 05  | 02               |   2050          |
+#
+#  Scenario Outline: Place Order: Login before Checkout              //This needs a verification and end
+#    When User clicks on Signup Login button
+#    And User enters email '<Email>' and password '<Password>'
+#    And User clicks login button
+#    And User adds products to cart
+#    And User clicks on Cart button
+#    And User clicks Proceed to checkout
+#    And User enters description '<Description>' in comment text area
+#    And User clicks Place holder
+#    And User enters payment details '<Name on Card>' '<Card Number>' '<CVC>' '<Month expiration>' '<Year expiration>'
+#    And User clicks on Pay and confirm order button
+#    And User clicks Delete Account button
+#    Then User verifies that account has been deleted
+#    And User clicks Continue button
+#    Examples:
+#      | Email          | Password       | Description           | Name on Card | Card Number | CVC | Month expiration | Year expiration |
+#      | On process     | On process     | This is a description | profession   | 213135232   | 02  | 05               |   2200          |
 
-  Scenario Outline: Place Order: Login before Checkout
-    When User clicks on Signup Login button
-    And User enters email '<Email>' and password '<Password>'
-    And User clicks login button
-    And User adds products to cart
+  Scenario: Remove Products From Cart
+    When User adds products to cart
     And User clicks on Cart button
-    And User clicks Proceed to checkout
-    And User enters description '<Description>' in comment text area
-    And User clicks Place holder
-    And User enters payment details '<Name on Card>' '<Card Number>' '<CVC>' '<Month expiration>' '<Year expiration>'
-    And User clicks on Pay and confirm order button
-    And User clicks Delete Account button
-    Then User verifies that account has been deleted
-    And User clicks Continue button
+    And User clicks the X button corresponding to a particular product
+    Then The product should be removed from the cart
+
+  Scenario Outline: View Category Products
+    When User clicks on Women category
+    When User clicks on '<Women subcategory>' subcategory link under Women category
+    When User clicks on '<Men subcategory>' sub-category link of Men category on the left sidebar
+    Then The category page should be displayed '<Url of men subcategory>'
     Examples:
-      | Email          | Password       | Description           | Name on Card | Card Number | CVC | Month expiration | Year expiration |
-      | On process     | On process     | This is a description | profession   | 213135232   | 02  | 05               |   2200          |
+      | Women subcategory | Men subcategory | Url of men subcategory                              |
+      | DRESS             | TSHIRTS         | https://automationexercise.com/category_products/3  |
+      | TOPS              | JEANS           | https://automationexercise.com/category_products/6  |
+      | SAREE             | TSHIRTS         | https://automationexercise.com/category_products/3  |
+
+

@@ -25,7 +25,7 @@ public class CartStepDefinitions {
         );
     }
 
-    @When("The user scroll down to the SUBSCRIPTION")
+    @When("The user scrolls down to the SUBSCRIPTION")
     public void scrollDownToSubscriptionText() {
         Actor user = OnStage.theActorCalled("user");
 
@@ -34,13 +34,14 @@ public class CartStepDefinitions {
         );
     }
 
-    @When("The user clicks the X button corresponding to a particular product")
+    @When("User clicks the X button corresponding to a particular product")
     public void clickOnXButtonCorrespondingToAProduct() {
         Actor user = OnStage.theActorCalled("user");
 
         user.attemptsTo(
                 ScrollToElement.target(CartPage.deleteProductButton),
-                ClickOn.the(CartPage.deleteProductButton)
+                ClickOn.the(CartPage.deleteProductButton),
+                ClickOn.the(CartPage.deleteProductButton) //This is an extraordinary case should be fixed
         );
     }
 
@@ -54,7 +55,7 @@ public class CartStepDefinitions {
         );
     }
 
-    @Then("User watch both products in cart")
+    @Then("User watches both products in cart")
     public void areProductsVisibleInCart() {
         Actor user = OnStage.theActorCalled("user");
 
