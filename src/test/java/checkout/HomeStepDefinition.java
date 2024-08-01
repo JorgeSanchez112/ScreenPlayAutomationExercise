@@ -160,7 +160,7 @@ public class HomeStepDefinition {
 
     }
 
-    @When("The user scroll down to Brands")
+    @When("User scrolls down to Brands")
     public void scrollDownToBrands(){
         Actor user = OnStage.theActorCalled("user");
 
@@ -169,7 +169,7 @@ public class HomeStepDefinition {
         );
     }
 
-    @When("The user clicks on any brand name")
+    @When("User clicks on any brand name")
     public void clickOnAnyBrandName(){
         Actor user = OnStage.theActorCalled("user");
         AdBlockerJs.AdBlockerJs(BrowserStepDefinitions.driver);

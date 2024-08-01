@@ -31,7 +31,7 @@ public class AllProductsStepDefinitions {
         Actor user = OnStage.theActorCalled("user");
 
         user.attemptsTo(
-                ClickOn.the(ProductsPage.searchButton)
+            ClickOn.the(ProductsPage.searchButton)
         );
     }
 
@@ -47,9 +47,11 @@ public class AllProductsStepDefinitions {
 
     @When("User clicks on Add to cart button")
     public void clickOnAddToCartButtonOverlay(){
+
         Actor user = OnStage.theActorCalled("user");
 
         user.attemptsTo(
+                ScrollToElement.elementFacade(ProductsPage.addToCartButtonOverlay.resolveAllFor(user).get(0)),
                 ClickOn.the(ProductsPage.addToCartButtonOverlay.resolveAllFor(user).get(0))
         );
     }

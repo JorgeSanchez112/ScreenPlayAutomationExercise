@@ -16,7 +16,7 @@ import utils.AdBlockerJs;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 
 public class BrandsStepDefinitions {
-    @When("The user clicks on any other brand link on the left sidebar")
+    @When("User clicks on any other brand link on the left sidebar") //change this, there is another similar in HomeStepDefintions
     public void clickOnAnyAnotherBrand(){
         Actor user = OnStage.theActorCalled("user");
         AdBlockerJs.AdBlockerJs(BrowserStepDefinitions.driver);
@@ -31,7 +31,7 @@ public class BrandsStepDefinitions {
         );
     }
 
-    @Then("The user should be navigated to the brand page {string}")
+    @Then("User should be navigated to the brand page {string}")
     public void isUrlIncorrectWithThePage(String urlUnexpected){
         Actor user = OnStage.theActorCalled("user");
 
@@ -42,7 +42,7 @@ public class BrandsStepDefinitions {
         );
     }
 
-    @Then("brand products should be displayed")
+    @Then("User can see brand products")
     public void areProductsOfBrandVisible(){
         Actor user = OnStage.theActorCalled("user");
 

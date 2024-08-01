@@ -208,21 +208,44 @@ Feature: TestCases
 #      | Email          | Password       | Description           | Name on Card | Card Number | CVC | Month expiration | Year expiration |
 #      | On process     | On process     | This is a description | profession   | 213135232   | 02  | 05               |   2200          |
 
-  Scenario: Remove Products From Cart
-    When User adds products to cart
+#  Scenario: Remove Products From Cart
+#    When User adds products to cart
+#    And User clicks on Cart button
+#    And User clicks the X button corresponding to a particular product
+#    Then The product should be removed from the cart
+#
+#  Scenario Outline: View Category Products
+#    When User clicks on Women category
+#    And User clicks on '<Women subcategory>' subcategory link under Women category
+#    And User clicks on '<Men subcategory>' sub-category link of Men category on the left sidebar
+#    Then The category page should be displayed '<Url of men subcategory>'
+#    Examples:
+#      | Women subcategory | Men subcategory | Url of men subcategory                              |
+#      | DRESS             | TSHIRTS         | https://automationexercise.com/category_products/3  |
+#      | TOPS              | JEANS           | https://automationexercise.com/category_products/6  |
+#      | SAREE             | TSHIRTS         | https://automationexercise.com/category_products/3  |
+
+  Scenario: View & Cart Brand Products
+    When User clicks on Products button
+    And User scrolls down to Brands
+    And User clicks on any brand name
+    And User clicks on any other brand link on the left sidebar
+    Then User should be navigated to the brand page 'https://automationexercise.com/brand_products/Biba'
+    And User can see brand products
+
+  Scenario Outline: Search Products and Verify Cart After Login
+    When User clicks on Products button
+    And User enters the product name 'Sleeveless Dress' in the search input
+    And User clicks the search button
+    And User hovers over first product
+    And User clicks on Add to cart button
+    And User clicks Continue shopping button
     And User clicks on Cart button
-    And User clicks the X button corresponding to a particular product
-    Then The product should be removed from the cart
-
-  Scenario Outline: View Category Products
-    When User clicks on Women category
-    When User clicks on '<Women subcategory>' subcategory link under Women category
-    When User clicks on '<Men subcategory>' sub-category link of Men category on the left sidebar
-    Then The category page should be displayed '<Url of men subcategory>'
-    Examples:
-      | Women subcategory | Men subcategory | Url of men subcategory                              |
-      | DRESS             | TSHIRTS         | https://automationexercise.com/category_products/3  |
-      | TOPS              | JEANS           | https://automationexercise.com/category_products/6  |
-      | SAREE             | TSHIRTS         | https://automationexercise.com/category_products/3  |
-
-
+    And User clicks on Signup Login button
+    And User enters email '<Email>' and password '<Password>'
+    And User clicks login button
+    And User clicks on Cart button
+    Then The products should still be visible in the cart after login
+    Examples: data of user registered
+      | Email                    | Password |
+      | noDelete@thisAccount.com | a        |
