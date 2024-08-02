@@ -126,7 +126,7 @@ public class CartStepDefinitions {
         );
     }
 
-    @Then("the product should be displayed in the cart page")
+    @Then("The product should be displayed in the cart page")
     public void isProductsOfCartPageNotEmpty() {
         Actor user = OnStage.theActorCalled("user");
 

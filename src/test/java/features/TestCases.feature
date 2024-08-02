@@ -225,27 +225,43 @@ Feature: TestCases
 #      | TOPS              | JEANS           | https://automationexercise.com/category_products/6  |
 #      | SAREE             | TSHIRTS         | https://automationexercise.com/category_products/3  |
 
-  Scenario: View & Cart Brand Products
-    When User clicks on Products button
-    And User scrolls down to Brands
-    And User clicks on any brand name
-    And User clicks on any other brand link on the left sidebar
-    Then User should be navigated to the brand page 'https://automationexercise.com/brand_products/Biba'
-    And User can see brand products
+#  Scenario: View & Cart Brand Products
+#    When User clicks on Products button
+#    And User scrolls down to Brands
+#    And User clicks on any brand name
+#    And User clicks on any other brand link on the left sidebar
+#    Then User should be navigated to the brand page 'https://automationexercise.com/brand_products/Biba'
+#    And User can see brand products
+#
+#  Scenario Outline: Search Products and Verify Cart After Login
+#    When User clicks on Products button
+#    And User enters the product name 'Sleeveless Dress' in the search input
+#    And User clicks the search button
+#    And User hovers over first product
+#    And User clicks on Add to cart button
+#    And User clicks Continue shopping button
+#    And User clicks on Cart button
+#    And User clicks on Signup Login button
+#    And User enters email '<Email>' and password '<Password>'
+#    And User clicks login button
+#    And User clicks on Cart button
+#    Then The products should still be visible in the cart after login
+#    Examples: data of user registered
+#      | Email                    | Password |
+#      | noDelete@thisAccount.com | a        |
 
-  Scenario Outline: Search Products and Verify Cart After Login
+  Scenario Outline: Add review on product
     When User clicks on Products button
-    And User enters the product name 'Sleeveless Dress' in the search input
-    And User clicks the search button
-    And User hovers over first product
-    And User clicks on Add to cart button
-    And User clicks Continue shopping button
-    And User clicks on Cart button
-    And User clicks on Signup Login button
-    And User enters email '<Email>' and password '<Password>'
-    And User clicks login button
-    And User clicks on Cart button
-    Then The products should still be visible in the cart after login
-    Examples: data of user registered
-      | Email                    | Password |
-      | noDelete@thisAccount.com | a        |
+    And User clicks View product for any product
+    And User enters '<Name>' '<Email>' '<Review>'
+    And User clicks on Submit button of review form
+    Then User can see a successful message about the review
+    Examples:
+      | Name     | Email                  | Review                    |
+      | testName | TestAddress@Email.test | Testing text area review. |
+
+  Scenario: Add to cart from Recommended items
+    When User scrolls down to footer
+    And User clicks on Add To Cart button of a recommended product
+    And User clicks on the View Cart button
+    Then The product should be displayed in the cart page

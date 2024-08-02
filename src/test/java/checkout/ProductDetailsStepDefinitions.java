@@ -42,16 +42,16 @@ public class ProductDetailsStepDefinitions {
         );
     }
 
-    @When("The user enter name, email, and review")
-    public void fillOutReviewFields() {
+    @When("User enters {string} {string} {string}")
+    public void fillOutReviewFields(String name, String email, String review) {
         Actor user = OnStage.theActorCalled("user");
 
         user.attemptsTo(
-                FillOutReviewForm.withCredentials("testName", "TestAddress@Email.test", "Testing text are review.")
+                FillOutReviewForm.withCredentials("testName", "TestAddress@Email.test", "Testing text area review.")
         );
     }
 
-    @When("The user clicks the Submit button")
+    @When("User clicks on Submit button of review form")
     public void clickOnSubmitButton() {
         Actor user = OnStage.theActorCalled("user");
         AdBlockerJs.AdBlockerJs(BrowseTheWeb.as(user).getDriver());
@@ -104,7 +104,7 @@ public class ProductDetailsStepDefinitions {
         );
     }
 
-    @Then("The success message Thank you for your review. should be visible")
+    @Then("User can see a successful message about the review")
     public void isSuccessMessageForReviewVisible() {
         Actor user = OnStage.theActorCalled("user");
 

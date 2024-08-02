@@ -51,7 +51,6 @@ public class AllProductsStepDefinitions {
         Actor user = OnStage.theActorCalled("user");
 
         user.attemptsTo(
-                ScrollToElement.elementFacade(ProductsPage.addToCartButtonOverlay.resolveAllFor(user).get(0)),
                 ClickOn.the(ProductsPage.addToCartButtonOverlay.resolveAllFor(user).get(0))
         );
     }

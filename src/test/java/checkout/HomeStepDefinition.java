@@ -260,7 +260,7 @@ public class HomeStepDefinition {
 
     }
 
-    @When("The user clicks on the Add To Cart button on a recommended product")
+    @When("User clicks on Add To Cart button of a recommended product")
     public void clickOnAddToCartButtonOnRecommendedProduct() {
         Actor user = OnStage.theActorCalled("user");
 
@@ -270,7 +270,7 @@ public class HomeStepDefinition {
         );
     }
 
-    @When("The user clicks on the View Cart button")
+    @When("User clicks on the View Cart button")
     public void clickOnViewCartButton() {
         Actor user = OnStage.theActorCalled("user");
 
