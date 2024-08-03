@@ -39,7 +39,7 @@ public class SignUpStepDefinitions{
         Actor user = OnStage.theActorCalled("user");
 
         user.attemptsTo(
-                FillAddressInformationFields.withCredentials("lola","12","IT","sfasf","afsadf","Israel","michigan","capital","asd1","1234567891")
+                FillAddressInformationFields.withCredentials(firstName,lastName,company,address,address2,country,state,city,zipCode,mobileNumber)
         );
 
     }
@@ -49,17 +49,6 @@ public class SignUpStepDefinitions{
         Actor user = OnStage.theActorCalled("user");
 
         user.attemptsTo(
-                ClickOn.the(SignUpPage.createAccountButton)
-        );
-    }
-
-    @When("The user fill all details in Signup and create an account")
-    public void fillAllDetailsInSignupAndCreateAccount() {
-        Actor user = OnStage.theActorCalled("user");
-
-        user.attemptsTo(
-                FillAccountInformationFields.the("Mr.","a","a","31","5","2000"),
-                FillAddressInformationFields.withCredentials("anything","12","IT","sfasf","afsadf","Israel","michigan","capital","asd1","1234567891"),
                 ClickOn.the(SignUpPage.createAccountButton)
         );
     }

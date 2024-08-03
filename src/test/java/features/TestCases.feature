@@ -18,8 +18,8 @@ Feature: TestCases
 #    Then User verifies that account has been deleted
 #    And User clicks Continue button
 #    Examples:
-#      |     Title       |     Name     |     Email           |       Password       | day of birth | month of birth | year of birth | First name     |  Last name    |  Company         |  Address          | Address2          | Country | State   | City           | Zipcode   | Mobile Number |
-#      |   testTitle     |  testName    |  testloco4@test.com |   testPassword       | 2            | 12             |    2000       |FirstName Test | LastName Test | NameCompany Test  | Street #1 address | Street #2 address | Canada  | State 1 | Capital Canada | #22024#22 | 1002334531    |
+#      |     Title  |     Name     |     Email           |       Password       | day of birth | month of birth | year of birth | First name     |  Last name    |  Company         |  Address          | Address2          | Country | State   | City           | Zipcode   | Mobile Number |
+#      |   Mrs.     |  testName    |  testloco4@test.com |   testPassword       | 2            | 12             |    2000       |FirstName Test | LastName Test | NameCompany Test  | Street #1 address | Street #2 address | Canada  | State 1 | Capital Canada | #22024#22 | 1002334531    |
 #
 #
 #  Scenario Outline: Login user with correct parameters
@@ -250,18 +250,69 @@ Feature: TestCases
 #      | Email                    | Password |
 #      | noDelete@thisAccount.com | a        |
 
-  Scenario Outline: Add review on product
-    When User clicks on Products button
-    And User clicks View product for any product
-    And User enters '<Name>' '<Email>' '<Review>'
-    And User clicks on Submit button of review form
-    Then User can see a successful message about the review
-    Examples:
-      | Name     | Email                  | Review                    |
-      | testName | TestAddress@Email.test | Testing text area review. |
+#  Scenario Outline: Add review on product
+#    When User clicks on Products button
+#    And User clicks View product for any product
+#    And User enters '<Name>' '<Email>' '<Review>'
+#    And User clicks on Submit button of review form
+#    Then User can see a successful message about the review
+#    Examples:
+#      | Name     | Email                  | Review                    |
+#      | testName | TestAddress@Email.test | Testing text area review. |
+#
+#  Scenario: Add to cart from Recommended items
+#    When User scrolls down to footer
+#    And User clicks on Add To Cart button of a recommended product
+#    And User clicks on the View Cart button
+#    Then The product should be displayed in the cart page
 
-  Scenario: Add to cart from Recommended items
-    When User scrolls down to footer
-    And User clicks on Add To Cart button of a recommended product
-    And User clicks on the View Cart button
-    Then The product should be displayed in the cart page
+  Scenario Outline: Verify address details in checkout page
+    When User clicks on Signup Login button
+    And User enters name '<Name>' and email '<Email>' address
+    And User clicks SignUp button
+    And User fills details of account information '<Title>' '' '<Password>' '<day of birth>' '<month of birth>' '<year of birth>'
+    And User selects checkbox 'Sign up for our newsletter!'
+    And User selects checkbox 'Receive special offers from our partners!'
+    And User fills in the details of information '<First name>' '<Last name>' '<Company>' '<Address>' '<Address2>' '<Country>' '<State>' '<City>' '<Zipcode>' '<Mobile Number>'
+    And User clicks Create Account button
+    And User clicks Continue button
+    And User adds products to cart
+    And User clicks on Cart button
+    And User clicks Proceed to checkout
+    Then User can see the same data completed in register at the delivery address '<Title>' '<First name>' '<Last name>' '<Company>' '<Address>' '<Address2>' '<Country>' '<State>' '<City>' '<Zipcode>' '<Mobile Number>'
+    And User can see the same data completed in register at the billing address '<Title>' '<First name>' '<Last name>' '<Company>' '<Address>' '<Address2>' '<Country>' '<State>' '<City>' '<Zipcode>' '<Mobile Number>'
+    When User clicks Delete Account button
+    Then User verifies that account has been deleted
+    And User clicks Continue button
+    Examples:
+      | Title         | Name             |  Email              | Password | day of birth | month of birth | year of birth | First name | Last name | Company | Address | Address2   | Country       | State    | City       | Zipcode   | Mobile Number |
+      | Mr.           | checkoutTest2    |  Checkout2@Test.com | a        | 10           | 12             |    2000       | Check      | 0ut       | danger  | st. 124 | N broodWay | United States | michigan | california | 123412423 | 1000222342    |
+
+  Scenario Outline: Download Invoice after purchase order
+    When User adds products to cart
+    And User clicks on Cart button
+    And User clicks Proceed to checkout
+    And User clicks on Register Login button
+    And User enters name '<Name>' and email '<Email>' address
+    And User clicks SignUp button
+    And User fills details of account information '<Title>' '' '<Password>' '<day of birth>' '<month of birth>' '<year of birth>'
+    And User selects checkbox 'Sign up for our newsletter!'
+    And User selects checkbox 'Receive special offers from our partners!'
+    And User fills in the details of information '<First name>' '<Last name>' '<Company>' '<Address>' '<Address2>' '<Country>' '<State>' '<City>' '<Zipcode>' '<Mobile Number>'
+    And User clicks Create Account button
+    And User clicks Continue button
+    And User clicks on Cart button
+    And User clicks Proceed to checkout
+    And User enters description '<Checkout description>' in comment text area
+    And User clicks Place holder
+    And User enters payment details '<Name on Card>' '<Card Number>' '<CVC>' '<Month expiration>' '<Year expiration>'
+    And User clicks on Pay and confirm order button
+    And User clicks the Download Invoice button
+    Then User can see the invoice downloaded in their respective path
+    When User clicks Continue button
+    And User clicks Delete Account button
+    Then User verifies that account has been deleted
+    And User clicks Continue button
+    Examples:
+      | Title | Name             |  Email              | Password | day of birth | month of birth | year of birth | First name | Last name | Company | Address | Address2   | Country       | State    | City       | Zipcode   | Mobile Number | Checkout description                                 | Name on Card | Card Number | CVC | Month expiration | Year expiration |
+      | Mr.   | checkoutTest3    |  Checkout3@Test.com | a        | 10           | 12             |    2000       | Check      | 0ut       | danger  | st. 124 | N broodWay | United States | michigan | california | 123412423 | 1000222342    | This is a description to be able to download invoice | Master       | 092124124   | 12  | 12               |   2100          |

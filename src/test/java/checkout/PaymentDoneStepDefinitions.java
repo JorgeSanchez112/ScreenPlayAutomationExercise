@@ -13,7 +13,7 @@ import static org.hamcrest.Matchers.is;
 
 public class PaymentDoneStepDefinitions {
 
-    @When("The user clicks the Download Invoice button")
+    @When("User clicks the Download Invoice button")
     public void clickOnDownloadInvoiceButton() {
         Actor user = OnStage.theActorCalled("user");
 
@@ -23,7 +23,7 @@ public class PaymentDoneStepDefinitions {
 
     }
 
-    @Then("The invoice should be downloaded successfully")
+    @Then("User can see the invoice downloaded in their respective path")
     public void isInvoiceDownloadedSuccessfully() {
         Actor user = OnStage.theActorCalled("user");
 

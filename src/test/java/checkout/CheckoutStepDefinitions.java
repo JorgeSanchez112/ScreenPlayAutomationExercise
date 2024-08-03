@@ -6,8 +6,10 @@ import interactions.TypeIn;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
 import net.serenitybdd.screenplay.Actor;
+import net.serenitybdd.screenplay.ensure.Ensure;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.questions.CurrentVisibility;
+import net.serenitybdd.screenplay.targets.Target;
 import uiScreens.CheckoutPage;
 import utils.AdBlockerJs;
 
@@ -37,22 +39,30 @@ public class CheckoutStepDefinitions {
 
     }
 
-    @Then("The delivery address should be visible")
-    public void isDeliveryAddressVisible() {
+    @Then("User can see the same data completed in register at the delivery address {string} {string} {string} {string} {string} {string} {string} {string} {string} {string} {string}")
+    public void isBillingAddressDataCorrect(String title, String firstname, String lastname, String company, String address, String address2, String country, String state, String city, String zipcode, String mobileNumber) {
         Actor user = OnStage.theActorCalled("user");
 
-        user.should(
-                seeThat(CurrentVisibility.of(CheckoutPage.deliveryAddress))
-        );
+        validateTitleAndFullName(CheckoutPage.deliveryAddress,title, firstname + " " +lastname);
+        validateCompany(CheckoutPage.deliveryAddress,company);
+        validateFirstAddress(CheckoutPage.deliveryAddress,address);
+        validateSecondAddress(CheckoutPage.deliveryAddress,address2);
+        validateResidenceInformation(CheckoutPage.deliveryAddress,state,city,zipcode);
+        validateCountry(CheckoutPage.deliveryAddress,country);
+        validateMobileNumber(CheckoutPage.deliveryAddress,mobileNumber);
     }
 
-    @Then("The billing address should be visible")
-    public void isBillingAddressVisible() {
+    @Then("User can see the same data completed in register at the billing address {string} {string} {string} {string} {string} {string} {string} {string} {string} {string} {string}")
+    public void isDeliveryAddressDataCorrect(String title, String firstname, String lastname, String company, String address, String address2, String country, String state, String city, String zipcode, String mobileNumber) {
         Actor user = OnStage.theActorCalled("user");
 
-        user.should(
-                seeThat(CurrentVisibility.of(CheckoutPage.billingAddress))
-        );
+        validateTitleAndFullName(CheckoutPage.billingAddress,title, firstname + " " +lastname);
+        validateCompany(CheckoutPage.billingAddress,company);
+        validateFirstAddress(CheckoutPage.billingAddress,address);
+        validateSecondAddress(CheckoutPage.billingAddress,address2);
+        validateResidenceInformation(CheckoutPage.billingAddress,state,city,zipcode);
+        validateCountry(CheckoutPage.billingAddress,country);
+        validateMobileNumber(CheckoutPage.billingAddress,mobileNumber);
     }
 
     @Then("Address Details and Review Your Order should be visible")
@@ -63,5 +73,78 @@ public class CheckoutStepDefinitions {
                 seeThat(CurrentVisibility.of(CheckoutPage.titles))
         );
     }
+
+    public void validateTitleAndFullName(Target target, String title, String fullName){
+        Actor user = OnStage.theActorCalled("user");
+
+        String nameInfo = target.resolveAllFor(user).get(1).getText();
+        String expectedNameInfo = title + " " + fullName;
+
+        user.attemptsTo(
+                Ensure.that(nameInfo).isEqualTo(expectedNameInfo)
+        );
+    }
+
+    public void validateCompany(Target target, String expectedCompany){
+        Actor user = OnStage.theActorCalled("user");
+
+        String company = target.resolveAllFor(user).get(2).getText();
+
+        user.attemptsTo(
+                Ensure.that(company).isEqualTo(expectedCompany)
+        );
+    }
+
+    public void validateFirstAddress(Target target, String expectedAddress){
+        Actor user = OnStage.theActorCalled("user");
+
+        String address = target.resolveAllFor(user).get(3).getText();
+
+        user.attemptsTo(
+                Ensure.that(address).isEqualTo(expectedAddress)
+        );
+    }
+
+    public void validateSecondAddress(Target target, String expectedAddress){
+        Actor user = OnStage.theActorCalled("user");
+
+        String address = target.resolveAllFor(user).get(4).getText();
+
+        user.attemptsTo(
+                Ensure.that(address).isEqualTo(expectedAddress)
+        );
+    }
+
+    public void validateResidenceInformation(Target target, String state, String city, String zipCode){
+        Actor user = OnStage.theActorCalled("user");
+
+        String residenceInformation = target.resolveAllFor(user).get(5).getText();
+        String expectedResidence = state + " " + city + " " + zipCode;
+
+        user.attemptsTo(
+                Ensure.that(residenceInformation).isEqualTo(residenceInformation)
+        );
+    }
+
+    public void validateCountry(Target target, String expectedCountry){
+        Actor user = OnStage.theActorCalled("user");
+
+        String country = target.resolveAllFor(user).get(6).getText();
+
+        user.attemptsTo(
+                Ensure.that(country).isEqualTo(expectedCountry)
+        );
+    }
+
+    public void validateMobileNumber(Target target, String expectedPhoneNumber){
+        Actor user = OnStage.theActorCalled("user");
+
+        String phoneNumber = target.resolveAllFor(user).get(7).getText();
+
+        user.attemptsTo(
+                Ensure.that(phoneNumber).isEqualTo(expectedPhoneNumber)
+        );
+    }
+
 
 }
