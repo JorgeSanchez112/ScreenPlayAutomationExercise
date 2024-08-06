@@ -113,7 +113,7 @@ public class HomeStepDefinition {
 
     }
 
-    @When("The user scroll down to the bottom of the page")
+    @When("User scrolls down page to bottom")
     public void scrollToBottomCarousel(){
         Actor user = OnStage.theActorCalled("user");
 
@@ -122,7 +122,7 @@ public class HomeStepDefinition {
         );
     }
 
-    @When("The user clicks on the arrow at the bottom right side to move upward")
+    @When("User clicks on the arrow at the bottom right side to move upward")
     public void clickOnTheArrowAtTheBottomRight(){
         Actor user = OnStage.theActorCalled("user");
 
@@ -141,7 +141,7 @@ public class HomeStepDefinition {
         );
     }
 
-    @When("The user scroll up to the top of the page")
+    @When("User scrolls up to the top of the page")
     public void scrollUpToTheTopOfThePage(){
         Actor user = OnStage.theActorCalled("user");
 
@@ -398,7 +398,7 @@ public class HomeStepDefinition {
         );
     }
 
-    @Then("Full-Fledged practice website for Automation Engineers should be visible on the screen")
+    @Then("User can see Full-Fledged practice website for Automation Engineers on the screen")
     public void isFullFledgedTextVisible(){
         Actor user = OnStage.theActorCalled("user");
 
