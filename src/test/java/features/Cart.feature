@@ -5,86 +5,83 @@ Feature: Cart
     And The user navigates to 'https://automationexercise.com/'
 
   Scenario: Successful redirect from home to cart page
-    When The user clicks the Cart button
+    When User clicks on Cart button
     Then The user should be on the cart page
 
   Scenario: Add products to the cart and the cart button redirect to the cart page
-    When The user add products to the cart
-    And The user clicks the Cart button
+    When User adds products to cart
+    And User clicks on Cart button
     Then The cart page should be displayed
 
   Scenario: Successful scroll down until watch the text SUBSCRIPTION
-    When The user clicks the Cart button
-    And The user scroll down to the footer
+    When User clicks on Cart button
+    And User scrolls down to footer
     Then The text SUBSCRIPTION should be visible
 
   Scenario: Successful subscription to newsletter from the cart page
-    When The user clicks the Cart button
-    And The user scroll down to the SUBSCRIPTION
-    And The user enter an email address in the input field
-    And The user clicks the arrow button
-    Then The success message You have been successfully subscribed! should be visible
+    When User clicks on Cart button
+    And User scrolls down to SUBSCRIPTION
+    And User enters email 'fake@email.fk' address in the input
+    And User clicks arrow button
+    Then User sees a successful subscription message
 
 
   Scenario: Create an account from cart
-    When The user clicks the Cart button
-    And The user clicks on SignupLogin button
-    And The user enters the name 'try1' and email 'tryOther1@thing.com' address
-    And The user clicks the Signup button
-    And The user fill all details in Signup and create an account
+    When User clicks on Cart button
+    And User clicks on Signup Login button
+    And User enters name 'fakeEmail' and email 'fake@email.fk' address
+    And User clicks SignUp button
+    And User fills details of account information 'Ms.' '' 'a' '10' '12' '2000'
+    And User selects checkbox 'Sign up for our newsletter!'
+    And User selects checkbox 'Receive special offers from our partners!'
+    And User fills in the details of information 'Check' '0ut' 'danger' 'st. 124' 'N broodWay' 'United States' 'michigan' 'california' '123412423' '1000222342'
+    And User clicks Create Account button
     Then ACCOUNT CREATED! should be visible
-    And The user clicks the Continue button
-    And Logged in as 'try1a' should be visible at the top
+    And User clicks Continue button
+    And Logged in as 'fakeEmail' should be visible at the top
 
   Scenario: All the products should be visible with the new account created
-    When The user clicks on SignupLogin button
-    And The user enter the correct email address and password
-    And The user clicks the login button
-    And The user add products to the cart
-    And The user clicks the Cart button
-    And The user clicks Proceed To Checkout button
+    When User clicks on Signup Login button
+    And User enters email 'tryOther1@thing.com' and password 'a'
+    And User clicks login button
+    And User adds products to cart
+    And User clicks on Cart button
+    And User clicks Proceed to checkout
     Then Address Details and Review Your Order should be visible
 
   Scenario: Adding products to the cart and address details are visible
-    When The user clicks on SignupLogin button
-    And The user enter the correct email address and password
-    And The user clicks the login button
-    And The user add products to the cart
-    And The user clicks the Cart button
-    And The user clicks Proceed To Checkout button
+    When User clicks on Signup Login button
+    And User enters email 'noDelete@thisAccount.com' and password 'a'
+    And User clicks login button
+    And User adds products to cart
+    And User clicks on Cart button
+    And User clicks Proceed to checkout
     Then Address Details and Review Your Order should be visible
 
   Scenario: Remove product from cart
-    When The user add a product to the cart
-    And The user clicks on the View Cart button
-    And The user clicks the X button corresponding to a particular product
+    When User adds product to cart
+    And User clicks on the View Cart button
+    And User clicks the X button corresponding to a particular product
     Then The product should be removed from the cart
 
   Scenario: Add recommended item to cart
-    When The user clicks on the Add To Cart button on a recommended product
-    And The user clicks on the View Cart button
-    Then the product should be displayed in the cart page
-
+    When User clicks on Add To Cart button of a recommended product
+    And User clicks on the View Cart button
+    Then The product should be displayed in the cart page
 
   Scenario: Add products to the cart
-    When The user add products to the cart
-    And The user clicks the Cart button
+    When User adds products to cart
+    And User clicks on Cart button
     Then The cart page should be displayed
 
-#  Scenario: Delete account
-#    When The user clicks the Delete Account button
-#    Then ACCOUNT DELETED! should be visible
-#    And The user clicks the Continue button
-
-
   Scenario: Verify cart after login
-    When The user clicks on SignupLogin button
-    And The user enter the correct email address and password
-    And The user clicks the login button
-    And The user add products to the cart
-    And The user clicks the Logout button
-    When The user clicks on SignupLogin button
-    And The user enter the correct email address and password
-    And The user clicks the login button
-    And The user clicks the Cart button
+    When User clicks on Signup Login button
+    And User enters email 'noDelete@thisAccount.com' and password 'a'
+    And User clicks login button
+    And User adds products to cart
+    And User clicks logout button
+    When User clicks on Signup Login button
+    And User enters email 'noDelete@thisAccount.com' and password 'a'
+    And User clicks login button
+    And User clicks on Cart button
     Then The products should still be visible in the cart after login

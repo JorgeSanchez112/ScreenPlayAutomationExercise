@@ -68,7 +68,7 @@ public class ContactUsStepDefinitions {
         );
     }
 
-    @Then("The success message Success! Your details have been submitted successfully. should be visible")
+    @Then("User can see success message")
     public void isSuccessMessageVisible(){
         Actor user = OnStage.theActorCalled("user");
 

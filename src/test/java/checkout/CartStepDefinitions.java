@@ -25,7 +25,7 @@ public class CartStepDefinitions {
         );
     }
 
-    @When("The user scrolls down to the SUBSCRIPTION")
+    @When("User scrolls down to SUBSCRIPTION")
     public void scrollDownToSubscriptionText() {
         Actor user = OnStage.theActorCalled("user");
 
@@ -113,7 +113,7 @@ public class CartStepDefinitions {
         String currentUrl = BrowseTheWeb.as(user).getDriver().getCurrentUrl();
 
         user.attemptsTo(
-                Ensure.that(currentUrl).isEqualTo("https://automationexercise.com/")
+                Ensure.that(currentUrl).isEqualTo("https://automationexercise.com/view_cart")
         );
     }
 
