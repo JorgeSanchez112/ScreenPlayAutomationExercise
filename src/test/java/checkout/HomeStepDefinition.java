@@ -110,7 +110,6 @@ public class HomeStepDefinition {
                 WaitForVisibility.the(HomePage.menCategories),
                 ClickOnAnElementByText.the(HomePage.menCategories,subCategory)
         );
-
     }
 
     @When("User scrolls down page to bottom")
@@ -318,12 +317,12 @@ public class HomeStepDefinition {
     }
 
 
-    @Then("Logged in as username should be visible")
-    public void isLoggedInVisible(){
+    @Then("Logged in as username {string} should be visible")
+    public void isLoggedInVisible(String name){
         Actor user = OnStage.theActorCalled("user");
 
         user.should(
-                seeThat(CurrentVisibility.of(HeaderMenuComponent.headerMenu.of("loco1a")))
+                seeThat(CurrentVisibility.of(HeaderMenuComponent.headerMenu.of(name))) // need to be fixed
         );
     }
 
@@ -362,7 +361,7 @@ public class HomeStepDefinition {
         );
     }
 
-    @Then("The user should see the Women categories")
+    @Then("User should see the Women categories")
     public void isWomenCategoriesVisible(){
         Actor user = OnStage.theActorCalled("user");
 

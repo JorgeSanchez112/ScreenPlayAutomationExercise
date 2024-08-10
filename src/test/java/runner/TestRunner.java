@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
-        features = "src/test/java/features/ContactUs.feature",
+        features = "src/test/java/features/Home.feature",
         glue = "checkout"
 )
 public class TestRunner {
