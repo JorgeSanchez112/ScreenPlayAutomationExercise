@@ -14,6 +14,7 @@ import uiScreens.CheckoutPage;
 import utils.AdBlockerJs;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
+import static org.hamcrest.Matchers.is;
 
 public class CheckoutStepDefinitions {
     @When("User enters description {string} in comment text area")
@@ -39,10 +40,28 @@ public class CheckoutStepDefinitions {
 
     }
 
-    @Then("User can see the same data completed in register at the delivery address {string} {string} {string} {string} {string} {string} {string} {string} {string} {string} {string}")
-    public void isBillingAddressDataCorrect(String title, String firstname, String lastname, String company, String address, String address2, String country, String state, String city, String zipcode, String mobileNumber) {
+    @Then("User can see delivery address")
+    public void isDeliveryAddressTitleVisible(){
         Actor user = OnStage.theActorCalled("user");
 
+        seeThat("the first delivery address is visible",
+                actor -> CheckoutPage.deliveryAddress.resolveAllFor(user).get(0).isVisible(),
+                is(true)
+        );
+    }
+
+    @Then("User can see billing address")
+    public void iBillingAddressTitleVisible(){
+        Actor user = OnStage.theActorCalled("user");
+
+        seeThat("the first delivery address is visible",
+                actor -> CheckoutPage.billingAddress.resolveAllFor(user).get(0).isVisible(),
+                is(true)
+        );
+    }
+
+    @Then("User can see the same data completed in register at the delivery address {string} {string} {string} {string} {string} {string} {string} {string} {string} {string} {string}")
+    public void isBillingAddressDataCorrect(String title, String firstname, String lastname, String company, String address, String address2, String country, String state, String city, String zipcode, String mobileNumber) {
         validateTitleAndFullName(CheckoutPage.deliveryAddress,title, firstname + " " +lastname);
         validateCompany(CheckoutPage.deliveryAddress,company);
         validateFirstAddress(CheckoutPage.deliveryAddress,address);
@@ -54,8 +73,6 @@ public class CheckoutStepDefinitions {
 
     @Then("User can see the same data completed in register at the billing address {string} {string} {string} {string} {string} {string} {string} {string} {string} {string} {string}")
     public void isDeliveryAddressDataCorrect(String title, String firstname, String lastname, String company, String address, String address2, String country, String state, String city, String zipcode, String mobileNumber) {
-        Actor user = OnStage.theActorCalled("user");
-
         validateTitleAndFullName(CheckoutPage.billingAddress,title, firstname + " " +lastname);
         validateCompany(CheckoutPage.billingAddress,company);
         validateFirstAddress(CheckoutPage.billingAddress,address);

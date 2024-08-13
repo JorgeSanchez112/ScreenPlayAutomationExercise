@@ -47,7 +47,7 @@ public class ProductDetailsStepDefinitions {
         Actor user = OnStage.theActorCalled("user");
 
         user.attemptsTo(
-                FillOutReviewForm.withCredentials("testName", "TestAddress@Email.test", "Testing text area review.")
+                FillOutReviewForm.withCredentials(name, email, review)
         );
     }
 

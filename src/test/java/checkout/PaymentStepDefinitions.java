@@ -33,7 +33,7 @@ public class PaymentStepDefinitions {
         );
     }
 
-    @Then("The success message Your order has been placed successfully! should be visible")
+    @Then("User can see a success message about the order")
     public void isSuccessMessageOfOrderSuccessfullyVisible() {
         Actor user = OnStage.theActorCalled("user");
 
