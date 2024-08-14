@@ -5,29 +5,29 @@ Feature: View Product
     And The user navigates to 'https://automationexercise.com/'
 
   Scenario: Successful navigation to view product showing the product's details
-    When The user clicks on the View Product button of the first product
-    Then The product details should be visible
+    When User clicks on View Product of first product
+    Then User can see the product details
 
   Scenario: The view product of any product show details about it
-    When The user clicks the View Product button for any product
-    Then The product detail page should be opened
+    When User clicks View product for any product
+    Then User is landed to product detail page
 
   Scenario Outline: Add product to cart with specific quantity
-    When The user clicks the View Product button for any product
-    And The user increase the quantity to 'quantity'
-    And The user clicks the Add to cart button
-    And The user clicks the View Cart button
-    Then The product should be displayed in the cart page with the exact quantity '<quantity>'
+    When User clicks View product for any product
+    And User increases quantity to '<quantity>'
+    And User clicks Add to cart button
+    And User clicks View Cart button
+    Then User watches the product in cart page with the same quantity '<quantity>'
     Examples:
       | quantity  |
       | 4         |
 
   Scenario: Successful perform of product's detail
-    When The user clicks the View Product button for any product
+    When User clicks View product for any product
     Then Write Your Review should be visible
 
   Scenario: Write a product review
-    When The user clicks the View Product button for any product
-    And The user enter name, email, and review
-    And The user clicks the Submit button
-    Then The success message Thank you for your review. should be visible
+    When User clicks View product for any product
+    And User enters 'test 1' 'test1@email.com' 'this is a review for testing'
+    And User clicks on Submit button of review form
+    Then User can see a successful message about the review

@@ -113,6 +113,16 @@ public class ProductDetailsStepDefinitions {
         );
     }
 
+    @Then("User can see the product details")
+    public void areProductDetailsVisible(){
+        isProductNameInDetailsPageVisible();
+        isCategoryInDetailsPageVisible();
+        isPriceInDetailsPageVisible();
+        isAvailabilityInDetailsPageVisible();
+        isConditionInDetailsPageVisible();
+        isBrandInDetailsPageVisible();
+    }
+
     @Then("User verifies product name is visible")
     public void isProductNameInDetailsPageVisible() {
         Actor user = OnStage.theActorCalled("user");
